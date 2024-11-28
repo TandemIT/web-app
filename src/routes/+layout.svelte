@@ -3,4 +3,7 @@
 	let { children } = $props();
 </script>
 
-{@render children()}
+<div class="min-h-height">
+
+	{@render children()}
+</div>
