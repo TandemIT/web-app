@@ -2,7 +2,6 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-html {
-	scroll-behavior: 'smooth';
-	padding: 1rem;
+body{
+    @apply bg-secondary-700 text-secondary-200;
 }
