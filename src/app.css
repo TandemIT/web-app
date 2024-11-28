@@ -11,7 +11,7 @@ body{
 
 
 .button{
-    @apply border border-transparent font-semibold px-5 py-2.5 rounded-tr-lg rounded-tl-2xl rounded-bl-lg rounded-br-2xl duration-300;
+    @apply inline-block border border-transparent font-semibold px-5 py-2.5 rounded-tr-lg rounded-tl-2xl rounded-bl-lg rounded-br-2xl duration-300;
 }
 .button:hover{
     @apply rounded-tl-lg rounded-tr-2xl rounded-br-lg rounded-bl-2xl;
