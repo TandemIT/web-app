@@ -11,7 +11,7 @@
                 <a href="#contact" class="button button-primary">
                     Contacteer ons
                 </a>
-                <a href="#contact" class="button button-primary">
+                <a href="#contact" class="button button-secondary">
                     Cases
                 </a>
             </div>

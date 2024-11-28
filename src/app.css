@@ -11,7 +11,7 @@ body{
 
 
 .button{
-    @apply inline-block border border-transparent font-semibold px-5 py-2.5 rounded-tr-lg rounded-tl-2xl rounded-bl-lg rounded-br-2xl duration-300;
+    @apply inline-block border-2 border-transparent font-semibold px-5 py-2.5 rounded-tr-lg rounded-tl-2xl rounded-bl-lg rounded-br-2xl duration-300;
 }
 .button:hover{
     @apply rounded-tl-lg rounded-tr-2xl rounded-br-lg rounded-bl-2xl;
@@ -27,5 +27,15 @@ body{
     @apply bg-primary-200 text-secondary-900;
 }
 .button.button-primary:focus{
+    @apply outline-primary-300/50
+}
+
+.button.button-secondary{
+    @apply border-primary-300 text-secondary-100;
+}
+.button.button-secondary:hover{
+    @apply border-primary-200 bg-primary-300/10 text-secondary-50;
+}
+.button.button-secondary:focus{
     @apply outline-primary-300/50
 }
