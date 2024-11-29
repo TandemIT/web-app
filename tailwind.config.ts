@@ -1,12 +1,12 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		extend: {
 			fontFamily: {
-				'sans': ['"Poppins", sans-serif', ...defaultTheme.fontFamily.sans],
-				'grotesk': ['"Space Grotesk Variable", sans-serif']
+				sans: ['"Poppins", sans-serif', ...defaultTheme.fontFamily.sans],
+				grotesk: ['"Space Grotesk Variable", sans-serif']
 			},
 			colors: {
 				secondary: {
@@ -22,14 +22,14 @@ export default {
 					900: '#000000'
 				},
 				primary: {
-					50: "#E8FFF4",
-					100: "#B9FFDF",
-					200: "#62F4B1",
-					300: "#2CED94", // Main color
-					400: "#1DCE7C",
-					500: "#13A260"
+					50: '#E8FFF4',
+					100: '#B9FFDF',
+					200: '#62F4B1',
+					300: '#2CED94', // Main color
+					400: '#1DCE7C',
+					500: '#13A260'
 				}
 			}
 		}
-	},
-}
+	}
+};
