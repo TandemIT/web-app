@@ -1,10 +1,14 @@
-<div class="relative flex min-h-[calc(100vh-4.35rem)] items-center overflow-hidden">
+<div
+	class="relative mt-10 flex min-h-[calc(100vh-4.35rem)] overflow-hidden md:mt-0 md:items-center"
+>
 	<div class="wrapper grid-cols-12 lg:grid">
 		<div class="col-span-7">
-			<h1 class="mb-4 font-grotesk text-6xl font-medium leading-tight text-secondary-50">
+			<h1
+				class="mb-4 font-grotesk text-4xl font-medium leading-tight text-secondary-50 md:text-6xl"
+			>
 				De partner voor infra- en security services door studenten.
 			</h1>
-			<p class="max-w-lg text-lg">
+			<p class="max-w-lg text-base md:text-lg">
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
 				invidunt ut labore et dolore magna
 			</p>

@@ -9,10 +9,10 @@
 </script>
 
 <nav class="wrapper flex items-center justify-between py-3">
-	<div class="flex items-center gap-x-14">
+	<div class="flex flex-col items-center gap-x-6 sm:flex-row md:gap-x-10 lg:gap-x-14">
 		<a
 			href="/"
-			class="flex items-center gap-x-2 font-grotesk text-lg font-medium text-secondary-50"
+			class="flex items-center gap-x-2 px-4 font-grotesk text-lg font-medium text-secondary-50"
 		>
 			<img src="/tandemIT.svg" alt="Tandem IT logo" width="32" height="32" />
 			Tandem
@@ -23,5 +23,5 @@
 			</a>
 		{/each}
 	</div>
-	<a href="/contact" class="button button-primary"> Contact </a>
+	<a href="/#contact" class="button button-primary ml-4"> Contact </a>
 </nav>
