@@ -1,12 +1,12 @@
 <script lang="ts">
-	import listMembers from '$lib/listmembers.json';
+	import listMembers from '../components/listmembers.json';
 
 	interface Member {
 		login: string;
 		avatar_url: string;
 		html_url: string;
 	}
-
+	
 	let members: Member[] = listMembers;
 </script>
 
