@@ -1,14 +1,15 @@
-<div
-	class="relative mt-10 flex min-h-[calc(100vh-4.35rem)] overflow-hidden md:mt-0 md:items-center"
->
+<script>
+
+	import Enthousiast from "@/components/Enthousiast.svelte";
+
+</script>
+<div class="relative flex min-h-[calc(100vh-4.35rem)] items-center overflow-hidden">
 	<div class="wrapper grid-cols-12 lg:grid">
 		<div class="col-span-7">
-			<h1
-				class="mb-4 font-grotesk text-4xl font-medium leading-tight text-secondary-50 md:text-6xl"
-			>
+			<h1 class="mb-4 font-grotesk text-6xl font-medium leading-tight text-secondary-50">
 				De partner voor infra- en security services door studenten.
 			</h1>
-			<p class="max-w-lg text-base md:text-lg">
+			<p class="max-w-lg text-lg">
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
 				invidunt ut labore et dolore magna
 			</p>
@@ -25,5 +26,15 @@
 		width="1542"
 		height="914"
 		class="absolute bottom-0 right-0 -z-10 w-3/4"
+	/>
+</div>
+<Enthousiast />
+<div class="wrapper">
+	<img
+		src="/Team.png"
+		alt="Tandem IT Team"
+		width="1640"
+		height="688"
+		class="relative -mt-20"
 	/>
 </div>

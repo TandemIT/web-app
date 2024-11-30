@@ -9,6 +9,16 @@ body {
 	@apply container mx-auto px-4;
 }
 
+.header{
+	@apply font-grotesk text-4xl font-semibold text-white mb-3 leading-tight;
+}
+.subtitle{
+	@apply font-grotesk text-secondary-400 font-medium;
+}
+.subtitle::before{
+	content: '~ '
+}
+
 .button {
 	@apply inline-block rounded-bl-lg rounded-br-2xl rounded-tl-2xl rounded-tr-lg border-2 border-transparent px-5 py-2.5 font-semibold duration-300;
 }
