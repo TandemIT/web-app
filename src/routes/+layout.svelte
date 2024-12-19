@@ -3,6 +3,7 @@
 	let { children } = $props();
 	import Header from '../components/Header.svelte';
 	import Footer from '../components/Footer.svelte';
+	// import Team from '../components/Team.svelte';
 	import '@fontsource/poppins';
 	import '@fontsource-variable/space-grotesk';
 </script>
@@ -11,4 +12,5 @@
 <div class="min-h-height">
 	{@render children()}
 </div>
+<!-- <Team/> -->
 <Footer />
