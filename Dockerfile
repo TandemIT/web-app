@@ -23,7 +23,7 @@ RUN --mount=type=cache,target=/root/.npm \
 
 ################################################################################
 # Create a stage for installing production dependencies.
-FROM base as deps
+FROM base AS deps
 
 # Download dependencies as a separate step to take advantage of Docker's caching.
 # Leverage a cache mount to /root/.local/share/pnpm/store to speed up subsequent builds.
@@ -36,7 +36,7 @@ RUN --mount=type=bind,source=package.json,target=package.json \
 
 ################################################################################
 # Create a stage for building the application.
-FROM deps as build
+FROM deps AS build
 
 # Download additional development dependencies before building, as some projects require
 # "devDependencies" to be installed to build. If you don't need this, remove this step.
@@ -68,8 +68,6 @@ COPY --chown=appuser:appgroup package.json ./
 # Copy the bash script into the container
 COPY getMembers.sh /usr/src/app/getMembers.sh
 
-# Give execution rights on the scripts
-RUN chmod +x /usr/local/bin/getMembers.sh && crond
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log && \
     chown appuser:appgroup /var/log/cron.log
