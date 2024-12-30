@@ -31,20 +31,20 @@
 	}
 </script>
 
-<footer class="mb-0 bg-gray-900 px-4 py-12 pb-4 font-sans text-gray-100">
+<footer class="mb-0 bg-secondary-900 px-4 py-12 pb-4 font-sans text-secondary-100">
 	<div class="mx-auto max-w-7xl">
 		<div class="grid grid-cols-1 gap-8 md:grid-cols-4">
 			<!-- Bedrijfsinformatie -->
 			<div>
-				<h3 class="mb-4 font-bold text-blue-400">Tandem IT</h3>
-				<p class="mb-4 text-gray-300">
+				<h3 class="mb-4 font-bold text-primary-400">Tandem IT</h3>
+				<p class="mb-4 text-secondary-300">
 					Tandem IT is een innovatief IT-bedrijf dat zich richt op het ontwikkelen van
 					toekomstbestendige softwareoplossingen. In samenwerking met studenten van de Hogeschool
 					Utrecht werken we aan uitdagende projecten voor echte klanten.
 				</p>
 				<button
 					on:click={scrollToTop}
-					class="flex items-center text-blue-400 transition-colors hover:text-blue-300"
+					class="flex items-center text-primary-400 transition-colors hover:text-primary-300"
 					aria-label="Scroll naar bovenkant pagina"
 				>
 					<ChevronUp class="mr-2" />
@@ -54,12 +54,12 @@
 
 			<!-- Snelle links -->
 			<div>
-				<h4 class="mb-4 font-semibold text-blue-400">Snelle links</h4>
+				<h4 class="mb-4 font-semibold text-primary-400">Snelle links</h4>
 				<nav>
 					<ul class="space-y-2">
 						{#each quickLinks as { href, label }}
 							<li>
-								<a {href} class="text-gray-300 transition-colors hover:text-blue-400">
+								<a {href} class="text-secondary-300 transition-colors hover:text-primary-400">
 									{label}
 								</a>
 							</li>
@@ -70,8 +70,8 @@
 
 			<!-- Contactinformatie -->
 			<div>
-				<h4 class="mb-4 font-semibold text-blue-400">Contact</h4>
-				<div class="space-y-2 text-gray-300">
+				<h4 class="mb-4 font-semibold text-primary-400">Contact</h4>
+				<div class="space-y-2 text-secondary-300">
 					<p>Bezoekadres:</p>
 					<p>Heidelberglaan 15</p>
 					<p>3584 CS Utrecht</p>
@@ -85,8 +85,8 @@
 
 			<!-- Openingstijden -->
 			<div>
-				<h4 class="mb-4 font-semibold text-blue-400">Openingstijden</h4>
-				<div class="space-y-2 text-gray-300">
+				<h4 class="mb-4 font-semibold text-primary-400">Openingstijden</h4>
+				<div class="space-y-2 text-secondary-300">
 					<p>Maandag: 09:00 - 17:00</p>
 					<p>Dinsdag: 09:00 - 17:00</p>
 					<p>Woensdag: 09:00 - 17:00</p>
@@ -101,14 +101,14 @@
 		<div
 			class="mt-8 flex flex-col items-center justify-between border-t border-gray-800 pt-6 md:flex-row"
 		>
-			<p class="mb-4 text-gray-400 md:mb-0">
-				© {currentYear} Tandem IT. Alle rechten voorbehouden.
+			<p class="mb-4 text-secondary-400 md:mb-0">
+				&copy; {currentYear} Tandem IT. Alle rechten voorbehouden.
 			</p>
 			<div class="flex space-x-4">
 				{#each socialLinks as { icon: Icon, url, name }}
 					<a
 						href={url}
-						class="text-gray-400 transition-colors hover:text-blue-400"
+						class="text-secondary-400 transition-colors hover:text-primary-400"
 						aria-label="Bezoek onze {name} pagina"
 						target="_blank"
 						rel="noopener noreferrer"

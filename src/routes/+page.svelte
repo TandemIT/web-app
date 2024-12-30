@@ -1,8 +1,4 @@
-<script>
-	import Enthousiast from '../components/Enthousiast.svelte';
-</script>
-
-<!-- / -->
+<!-- +page.svelte -->
 <div class="relative flex min-h-[calc(100vh-4.35rem)] items-center overflow-hidden">
 	<div class="wrapper grid-cols-12 lg:grid">
 		<div class="col-span-7">

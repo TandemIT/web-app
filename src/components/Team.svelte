@@ -61,14 +61,14 @@
 					loading="lazy"
 				/>
 				<div class="space-y-1 text-center">
-					<h2 class="text-xl font-medium text-gray-900">
+					<h2 class="text-xl font-medium text-secondary-900">
 						{member.name || member.login}
 					</h2>
 					{#if member.company}
-						<p class="text-sm font-medium text-gray-600">{member.company}</p>
+						<p class="text-sm font-medium text-secondary-600">{member.company}</p>
 					{/if}
 					{#if member.location}
-						<p class="flex items-center justify-center gap-1 text-sm text-gray-500">
+						<p class="flex items-center justify-center gap-1 text-sm text-secondary-500">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								class="h-4 w-4"
@@ -93,7 +93,7 @@
 							href={member.blog.startsWith('http') ? member.blog : `https://${member.blog}`}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="rounded-full bg-blue-50 px-3 py-1 text-sm text-blue-600 transition-colors hover:bg-blue-100 hover:text-blue-800"
+							class="rounded-full bg-secondary-50 px-3 py-1 text-sm text-primary-600 transition-colors hover:bg-secondary-300 hover:text-primary-800"
 						>
 							Website
 						</a>
@@ -102,7 +102,7 @@
 						href={member.html_url}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="rounded-full bg-gray-50 px-3 py-1 text-sm text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-800"
+						class="rounded-full bg-secondary-50 px-3 py-1 text-sm text-primary-600 transition-colors hover:bg-secondary-100 hover:text-secondary-800"
 					>
 						Profile
 					</a>

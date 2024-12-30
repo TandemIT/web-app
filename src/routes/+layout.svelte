@@ -10,7 +10,7 @@
 </script>
 
 <Header />
-<div class="min-h-height pb-20">
+<div class="min-h-height">
 	{@render children()}
 </div>
 <Enthousiast />
