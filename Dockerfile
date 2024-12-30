@@ -66,7 +66,7 @@ COPY --from=build --chown=appuser:appgroup /usr/src/app/ ./
 COPY --chown=appuser:appgroup package.json ./
 
 # Copy the bash script into the container
-COPY getMembers.sh /usr/local/bin/getMembers.sh
+COPY getMembers.sh /usr/src/app/getMembers.sh
 
 # Give execution rights on the scripts
 RUN chmod +x /usr/local/bin/getMembers.sh && crond
@@ -74,19 +74,13 @@ RUN chmod +x /usr/local/bin/getMembers.sh && crond
 RUN touch /var/log/cron.log && \
     chown appuser:appgroup /var/log/cron.log
 
-# Add the cron job (run every 24 hours)
-RUN echo "0 0 * * * /usr/src/app/getMembers.sh >> /var/log/cron.log 2>&1" > /etc/cron.d/getMembers && \
-    chmod 0644 /etc/cron.d/getMembers
-
 # Apply cron job
-RUN crontab /etc/cron.d/getMembers
-
-# Expose the port
-EXPOSE 4173
+RUN crontab cronjobs
 
 # Set user to non-root
 USER appuser
 
-# start the service and the server
-CMD ["sh", "-c", "sh getMembers.sh && \
-    pnpm run preview --host 0.0.0.0"]
+# Expose the port
+EXPOSE 4173
+
+CMD ["pnpm", "run", "preview", "--host", "0.0.0.0"]

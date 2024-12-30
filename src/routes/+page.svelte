@@ -1,8 +1,8 @@
 <script>
-
-	import Enthousiast from "@/components/Enthousiast.svelte";
-
+	import Enthousiast from '../components/Enthousiast.svelte';
 </script>
+
+<!-- / -->
 <div class="relative flex min-h-[calc(100vh-4.35rem)] items-center overflow-hidden">
 	<div class="wrapper grid-cols-12 lg:grid">
 		<div class="col-span-7">
@@ -10,12 +10,13 @@
 				De partner voor infra- en security services door studenten.
 			</h1>
 			<p class="max-w-lg text-lg">
-				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-				invidunt ut labore et dolore magna
+				Bij Tandem IT werken studenten aan uitdagende projecten in netwerkinfrastructuur en
+				cyberbeveiliging. We ondersteunen scholen en organisaties zonder expertise of budget voor
+				professionele diensten.
 			</p>
 			<div class="mt-7 flex items-center gap-x-3">
-				<a href="/#contact" class="button button-primary"> Contacteer ons </a>
-				<a href="/#contact" class="button button-secondary"> Cases </a>
+				<a href="/#contact" class="button button-primary">Contacteer ons</a>
+				<a href="/#cases" class="button button-secondary">Bekijk onze cases</a>
 			</div>
 		</div>
 	</div>
@@ -26,15 +27,5 @@
 		width="1542"
 		height="914"
 		class="absolute bottom-0 right-0 -z-10 w-3/4"
-	/>
-</div>
-<Enthousiast />
-<div class="wrapper">
-	<img
-		src="/Team.png"
-		alt="Tandem IT Team"
-		width="1640"
-		height="688"
-		class="relative -mt-20"
 	/>
 </div>

@@ -9,14 +9,14 @@ body {
 	@apply container mx-auto px-4;
 }
 
-.header{
-	@apply font-grotesk text-4xl font-semibold text-white mb-3 leading-tight;
+.header {
+	@apply mb-3 font-grotesk text-4xl font-semibold leading-tight text-white;
 }
-.subtitle{
-	@apply font-grotesk text-secondary-400 font-medium;
+.subtitle {
+	@apply font-grotesk font-medium text-secondary-400;
 }
-.subtitle::before{
-	content: '~ '
+.subtitle::before {
+	content: '~ ';
 }
 
 .button {
