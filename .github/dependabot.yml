@@ -5,7 +5,6 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    package-manager: "pnpm"
     labels:
       - "pnpm-dependencies"
       - "dependabot-auto-merge"
