@@ -17,6 +17,7 @@
 		description: string;
 	}
 
+	// Process Steps
 	const processes: Process[] = [
 		{
 			icon: MessageSquareText,
@@ -38,18 +39,38 @@
 		}
 	];
 
-	const Icons = [Milestone, Cog, Settings, Rocket, Puzzle, Code2, Construction, Map, MessageSquareText ];
+	// Icons Array (currently unused but kept for potential future use)
+	const icons = [
+		Milestone,
+		Cog,
+		Settings,
+		Rocket,
+		Puzzle,
+		Code2,
+		Construction,
+		Map,
+		MessageSquareText
+	];
+
+	// Smooth scroll to 'about' section
+	function goAbout() {
+		const aboutSection = document.getElementById('about');
+		if (aboutSection) {
+			aboutSection.scrollIntoView({ behavior: 'smooth' });
+		}
+	}
 </script>
 
-<!-- Hero Sectie -->
+<!-- Hero Section -->
 <section class="relative min-h-screen pt-20">
 	<div class="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
 		<div class="relative z-10">
-			<div
-				class="mb-6 subtitle inline-block rounded-full px-4 py-1 text-sm font-semibold text-primary-500"
+			<button
+				class="subtitle mb-6 inline-block rounded-full px-4 py-1 text-sm font-semibold text-primary-500"
+				onclick={goAbout}
 			>
 				Over ons
-			</div>
+			</button>
 			<div class="relative">
 				<h1
 					class="mb-6 max-w-3xl font-grotesk text-5xl font-medium leading-tight text-secondary-50 lg:text-6xl"
@@ -66,12 +87,13 @@
 	</div>
 </section>
 
-<!-- Proces Sectie -->
-<section class="relative min-h-screen ">
+<!-- Process Section -->
+<section class="relative min-h-screen">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="flex flex-col gap-20 lg:flex-row lg:gap-24">
+			<!-- Left Column: Process Steps -->
 			<div class="relative flex flex-col gap-16 lg:w-1/2">
-				{#each processes as process, index}
+				{#each processes as process}
 					<div class="relative flex rounded-xl border-2 border-secondary-50 bg-transparent p-6">
 						<!-- Icon -->
 						<div class="mr-6 shrink-0 text-secondary-50">
@@ -91,11 +113,11 @@
 				{/each}
 			</div>
 
-			<!-- Rechter kolom inhoud -->
+			<!-- Right Column: Content -->
 			<div class="lg:w-1/2">
 				<div class="top-24">
 					<div
-						class="mb-6 subtitle inline-block rounded-full  px-4 py-1 text-sm font-semibold text-primary-500"
+						class="subtitle mb-6 inline-block rounded-full px-4 py-1 text-sm font-semibold text-primary-500"
 					>
 						Over ons
 					</div>
@@ -114,12 +136,5 @@
 				</div>
 			</div>
 		</div>
-		<!-- <div class="mt-24 flex justify-center gap-6">
-			{#each Icons as icon}
-				<div>
-					<svelte:component this={icon} size={40} />
-				</div>
-			{/each}
-		</div> -->
 	</div>
 </section>

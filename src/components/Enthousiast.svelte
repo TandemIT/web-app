@@ -39,6 +39,14 @@
 		}
 	];
 
+	// Smooth scroll to 'about' section
+	function goAbout() {
+		const aboutSection = document.getElementById('about');
+		if (aboutSection) {
+			aboutSection.scrollIntoView({ behavior: 'smooth' });
+		}
+	}
+
 	// const stats = [
 	// 	{ number: '20+', label: 'Actieve studenten' },
 	// 	{ number: '15+', label: 'Afgeronde projecten' },
@@ -47,7 +55,7 @@
 	// ];
 </script>
 
-<section class="bg-neutral-50 pb-36 pt-16 text-neutral-800">
+<section class="pb-36 pt-16 dark:bg-neutral-50 dark:text-neutral-800">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="grid gap-10 lg:grid-cols-12">
 			<!-- Linker kolom met afbeelding en statistieken -->
@@ -81,7 +89,7 @@
 			<!-- Rechter kolom met content -->
 			<div class="lg:col-span-7 lg:col-start-6">
 				<div
-					class="subtitle mb-2 inline-block rounded-full  px-4 py-1 text-sm font-semibold text-primary-500"
+					class="subtitle mb-2 inline-block rounded-full px-4 py-1 text-sm font-semibold text-primary-500"
 				>
 					Over ons
 				</div>
@@ -99,7 +107,7 @@
 					{#each features as { icon: Icon, title, description }}
 						<div class="flex gap-x-3">
 							<div class="mt-1 flex-shrink-0">
-								<Icon class="h-6 w-6 text-primary-600" />
+								<Icon class="text-primary-600 h-6 w-6" />
 							</div>
 							<div>
 								<h3 class="font-semibold text-neutral-900">{title}</h3>

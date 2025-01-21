@@ -1,5 +1,5 @@
 <!-- +page.svelte -->
-<div class="relative flex min-h-[calc(100vh-4.35rem)] items-center overflow-hidden">
+<div id="about" class="relative flex min-h-[calc(100vh-4.35rem)] items-center overflow-hidden">
 	<div class="wrapper grid-cols-12 lg:grid">
 		<div class="col-span-7">
 			<h1 class="mb-4 font-grotesk text-6xl font-medium leading-tight text-secondary-50">

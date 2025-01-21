@@ -41,7 +41,7 @@
 
 			<!-- Mobiel menu knop -->
 			<button
-				on:click={() => (isMenuOpen = !isMenuOpen)}
+				onclick={() => (isMenuOpen = !isMenuOpen)}
 				class="ml-4 rounded p-2 text-secondary-50 hover:bg-secondary-900/10 md:hidden"
 				aria-label="Toggle menu"
 			>

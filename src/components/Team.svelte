@@ -93,7 +93,7 @@
 							href={member.blog.startsWith('http') ? member.blog : `https://${member.blog}`}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="rounded-full bg-secondary-50 px-3 py-1 text-sm text-primary-600 transition-colors hover:bg-secondary-300 hover:text-primary-800"
+							class="text-primary-600 hover:text-primary-800 rounded-full bg-secondary-50 px-3 py-1 text-sm transition-colors hover:bg-secondary-300"
 						>
 							Website
 						</a>
@@ -102,7 +102,7 @@
 						href={member.html_url}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="rounded-full bg-secondary-50 px-3 py-1 text-sm text-primary-600 transition-colors hover:bg-secondary-100 hover:text-secondary-800"
+						class="text-primary-600 rounded-full bg-secondary-50 px-3 py-1 text-sm transition-colors hover:bg-secondary-100 hover:text-secondary-800"
 					>
 						Profile
 					</a>

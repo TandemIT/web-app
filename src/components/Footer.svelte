@@ -4,6 +4,8 @@
 
 	const currentYear = new Date().getFullYear();
 
+	const startYear = 2024;
+
 	interface SocialLink {
 		icon: any;
 		url: string;
@@ -43,7 +45,7 @@
 					Utrecht werken we aan uitdagende projecten voor echte klanten.
 				</p>
 				<button
-					on:click={scrollToTop}
+					onclick={scrollToTop}
 					class="flex items-center text-primary-400 transition-colors hover:text-primary-300"
 					aria-label="Scroll naar bovenkant pagina"
 				>
@@ -102,7 +104,11 @@
 			class="mt-8 flex flex-col items-center justify-between border-t border-gray-800 pt-6 md:flex-row"
 		>
 			<p class="mb-4 text-secondary-400 md:mb-0">
-				&copy; {currentYear} Tandem IT. Alle rechten voorbehouden.
+				{#if startYear === currentYear}
+					&copy; {currentYear} Tandem IT. Alle rechten voorbehouden.
+				{:else}
+					&copy; {startYear}-{currentYear} Tandem IT. Alle rechten voorbehouden.
+				{/if}
 			</p>
 			<div class="flex space-x-4">
 				{#each socialLinks as { icon: Icon, url, name }}
