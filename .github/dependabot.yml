@@ -11,16 +11,6 @@ updates:
       - 'pnpm-dependencies'
       - 'dependabot-auto-merge'
 
-  # Update dependencies for npm
-  - package-ecosystem: 'npm'
-    directory: '/' # Root directory for package.json
-    schedule:
-      interval: 'weekly' # Check for updates weekly
-
-    labels:
-      - 'npm-dependencies'
-      - 'dependabot-auto-merge'
-
   # Update GitHub Actions workflows << BEST PRACTICE
   - package-ecosystem: 'github-actions'
     directory: '/'
