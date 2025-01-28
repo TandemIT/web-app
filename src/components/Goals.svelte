@@ -74,7 +74,7 @@
 				<div class="mb-10 grid gap-8 sm:grid-cols-2">
 					{#each Objectives as { icon: Icon, title, description }}
 						<div class="flex flex-col gap-x-4 rounded-2xl bg-secondary-600 p-4">
-							<div class="mt-1 flex gap-2 flex-shrink-0">
+							<div class="mt-1 flex flex-shrink-0 gap-2">
 								<Icon class="text-primary-600 h-7 w-7" aria-hidden="true" />
 								<h3 class="text-lg font-semibold dark:text-white">{title}</h3>
 							</div>
@@ -84,19 +84,18 @@
 						</div>
 					{/each}
 					<div class="flex flex-col justify-between rounded-2xl bg-primary-300 p-4">
-						<h3 class="text-2xl font-bold  dark:text-black">Laten we kennis maken</h3>
+						<h3 class="text-2xl font-bold dark:text-black">Laten we kennis maken</h3>
 
 						<!-- Call-to-action knoppen -->
-							<a
-								href="/contact"
-								class="group inline-flex underline items-center p-2 text-sm dark:text-black transition"
-								aria-label="Neem contact op"
-							>
-								Neem contact op
-								<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
-							</a>
+						<a
+							href="/contact"
+							class="group inline-flex items-center p-2 text-sm underline transition dark:text-black"
+							aria-label="Neem contact op"
+						>
+							Neem contact op
+							<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
+						</a>
 					</div>
-
 				</div>
 			</div>
 		</div>
