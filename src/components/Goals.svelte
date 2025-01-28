@@ -1,9 +1,10 @@
 <script lang="ts">
 	import ArrowRight from '@tabler/icons-svelte/icons/arrow-right';
 	import Globe from '@tabler/icons-svelte/icons/globe';
-	import Lightbulb from '@tabler/icons-svelte/icons/bulb';
-	import Tools from '@tabler/icons-svelte/icons/tools';
-	import People from '@tabler/icons-svelte/icons/users';
+	// import Lightbulb from '@tabler/icons-svelte/icons/bulb';
+	// import Tools from '@tabler/icons-svelte/icons/tools';
+	// import People from '@tabler/icons-svelte/icons/users';
+	import IconRosetteDiscountCheck from '@tabler/icons-svelte/icons/rosette-discount-check';
 
 	interface Objective {
 		icon: typeof Globe; // Een van de iconen als type
@@ -13,29 +14,29 @@
 
 	const Objectives: Objective[] = [
 		{
-			icon: People,
-			title: 'Samenwerking centraal',
+			icon: IconRosetteDiscountCheck,
+			title: 'Personal Goal 1',
 			description:
-				'Een team dat bouwt op sterke samenwerking, transparante communicatie en gezamenlijke groei.'
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 		},
 		{
-			icon: Tools,
-			title: 'Praktische expertise',
+			icon: IconRosetteDiscountCheck,
+			title: 'Personal Goal 2',
 			description:
-				'We combineren technische vaardigheden met een hands-on aanpak voor effectieve oplossingen.'
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 		},
 		{
-			icon: Lightbulb,
-			title: 'Innovatie in actie',
+			icon: IconRosetteDiscountCheck,
+			title: 'Personal Goal 3',
 			description:
-				'Wij omarmen nieuwe technologieën en creatieve ideeën om grenzen te verleggen en impact te maken.'
-		},
-		{
-			icon: Globe,
-			title: 'Duurzaam en toekomstgericht',
-			description:
-				'Onze projecten zijn gericht op duurzame, schaalbare oplossingen die waarde toevoegen aan de toekomst.'
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 		}
+		// {
+		// 	icon: IconRosetteDiscountCheck,
+		// 	title: 'Laten we kennis maken',
+		// 	description:
+		// 		'Onze projecten zijn gericht op duurzame, schaalbare oplossingen die waarde toevoegen aan de toekomst.'
+		// }
 	];
 
 	// Functie om soepel naar een sectie te scrollen
@@ -61,45 +62,41 @@
 			<!-- Rechter kolom met content -->
 			<div class="lg:col-span-7">
 				<button
-					onclick={() => scrollToSection('about')}
-					class="subtitle text-primary-600 mb-3 inline-block rounded-full bg-primary-50 px-4 py-1 text-sm font-semibold hover:bg-primary-100"
-					aria-label="Scroll naar Over ons"
+					onclick={() => scrollToSection('mission')}
+					class="subtitle text-primary-600 mb-3 inline-block rounded-full px-4 text-sm font-semibold"
+					aria-label="Scroll naar onze missie"
 				>
-					Over ons
+					Onze missie
 				</button>
-				<h2 class="mb-6 text-4xl font-bold lg:text-5xl">Wat drijft ons</h2>
+				<h2 class="mb-6 text-4xl font-bold lg:text-5xl dark:text-white">Onze missie:</h2>
+				<h2 class="mb-6 text-xl font-bold lg:text-2xl">Missie beschrijving</h2>
 
 				<div class="mb-10 grid gap-8 sm:grid-cols-2">
 					{#each Objectives as { icon: Icon, title, description }}
-						<div class="flex gap-x-4">
-							<div class="mt-1 flex-shrink-0">
+						<div class="flex flex-col gap-x-4 rounded-2xl bg-secondary-600 p-4">
+							<div class="mt-1 flex gap-2 flex-shrink-0">
 								<Icon class="text-primary-600 h-7 w-7" aria-hidden="true" />
+								<h3 class="text-lg font-semibold dark:text-white">{title}</h3>
 							</div>
 							<div>
-								<h3 class="text-lg font-semibold">{title}</h3>
 								<p class="mt-2 text-sm">{description}</p>
 							</div>
 						</div>
 					{/each}
-				</div>
+					<div class="flex flex-col justify-between rounded-2xl bg-primary-300 p-4">
+						<h3 class="text-2xl font-bold  dark:text-black">Laten we kennis maken</h3>
 
-				<div class="flex gap-4">
-					<a
-						href="/contact"
-						class="bg-primary-600 hover:bg-primary-700 group inline-flex items-center gap-x-2 rounded-lg px-6 py-3 text-sm font-semibold shadow-md"
-						aria-label="Neem contact op"
-					>
-						Neem contact op
-						<ArrowRight class="transition group-hover:translate-x-1" aria-hidden="true" />
-					</a>
-					<a
-						href="/projecten"
-						class="hover: inline-flex items-center gap-x-2 rounded-lg border px-6 py-3 text-sm font-semibold"
-						aria-label="Bekijk projecten"
-					>
-						Bekijk projecten
-						<ArrowRight aria-hidden="true" />
-					</a>
+						<!-- Call-to-action knoppen -->
+							<a
+								href="/contact"
+								class="group inline-flex underline items-center p-2 text-sm dark:text-black transition"
+								aria-label="Neem contact op"
+							>
+								Neem contact op
+								<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
+							</a>
+					</div>
+
 				</div>
 			</div>
 		</div>
