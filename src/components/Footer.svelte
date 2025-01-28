@@ -3,7 +3,6 @@
 	import { ChevronUp, Facebook, Twitter, Instagram, Linkedin } from 'lucide-svelte';
 
 	const currentYear = new Date().getFullYear();
-
 	const startYear = 2024;
 
 	interface SocialLink {
@@ -19,13 +18,34 @@
 		{ icon: Linkedin, url: 'https://www.linkedin.com/company/tandemit', name: 'LinkedIn' }
 	];
 
-	const quickLinks = [
+	interface QuickLink {
+		href: string;
+		label: string;
+	}
+
+	const quickLinks: QuickLink[] = [
 		{ href: '/', label: 'Home' },
 		{ href: '/about', label: 'Over ons' },
 		{ href: '/services', label: 'Diensten' },
 		{ href: '/projects', label: 'Projecten' },
 		{ href: '/stages', label: 'Stageplekken' },
 		{ href: '/contact', label: 'Contact' }
+	];
+
+	const contactInfo = {
+		visitAddress: ['Heidelberglaan 15', '3584 CS Utrecht'],
+		postAddress: ['Postbus 182', '3500 AD Utrecht'],
+		email: 'info.tandemit@hu.nl',
+		phone: '088-481 82 00'
+	};
+
+	const openingHours = [
+		{ day: 'Maandag', time: '09:00 - 17:00' },
+		{ day: 'Dinsdag', time: '09:00 - 17:00' },
+		{ day: 'Woensdag', time: '09:00 - 17:00' },
+		{ day: 'Donderdag', time: '09:00 - 17:00' },
+		{ day: 'Vrijdag', time: '09:00 - 16:30' },
+		{ day: 'Weekend', time: 'Gesloten' }
 	];
 
 	function scrollToTop() {
@@ -75,13 +95,15 @@
 				<h4 class="mb-4 font-semibold text-primary-400">Contact</h4>
 				<div class="space-y-2 text-secondary-300">
 					<p>Bezoekadres:</p>
-					<p>Heidelberglaan 15</p>
-					<p>3584 CS Utrecht</p>
+					{#each contactInfo.visitAddress as line}
+						<p>{line}</p>
+					{/each}
 					<p class="mt-4">Postadres:</p>
-					<p>Postbus 182</p>
-					<p>3500 AD Utrecht</p>
-					<p class="mt-4">Email: info.tandemit@hu.nl</p>
-					<p>Tel: 088-481 82 00</p>
+					{#each contactInfo.postAddress as line}
+						<p>{line}</p>
+					{/each}
+					<p class="mt-4">Email: {contactInfo.email}</p>
+					<p>Tel: {contactInfo.phone}</p>
 				</div>
 			</div>
 
@@ -89,12 +111,9 @@
 			<div>
 				<h4 class="mb-4 font-semibold text-primary-400">Openingstijden</h4>
 				<div class="space-y-2 text-secondary-300">
-					<p>Maandag: 09:00 - 17:00</p>
-					<p>Dinsdag: 09:00 - 17:00</p>
-					<p>Woensdag: 09:00 - 17:00</p>
-					<p>Donderdag: 09:00 - 17:00</p>
-					<p>Vrijdag: 09:00 - 16:30</p>
-					<p>Weekend: Gesloten</p>
+					{#each openingHours as { day, time }}
+						<p>{day}: {time}</p>
+					{/each}
 				</div>
 			</div>
 		</div>

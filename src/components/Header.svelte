@@ -11,9 +11,22 @@
 	];
 
 	let isMenuOpen = false;
+
+	// Sluit het mobiele menu wanneer er buiten geklikt wordt
+	function closeMenu(event: MouseEvent) {
+		const target = event.target as HTMLElement;
+		if (!target.closest('nav') && !target.closest('.mobile-menu')) {
+			isMenuOpen = false;
+		}
+	}
+
+	// Sluit het mobiele menu wanneer een link wordt aangeklikt
+	function handleLinkClick() {
+		isMenuOpen = false;
+	}
 </script>
 
-<header class="w-full">
+<header class="w-full bg-transparent">
 	<nav class="wrapper flex items-center justify-between py-3">
 		<!-- Logo en hoofdnavigatie -->
 		<div class="flex flex-col items-center gap-x-6 sm:flex-row md:gap-x-10 lg:gap-x-14">
@@ -28,7 +41,11 @@
 			<!-- Desktop navigatie -->
 			<div class="hidden gap-x-6 md:flex lg:gap-x-8">
 				{#each links as link}
-					<a href={link.href} class="font-medium duration-300 hover:text-secondary-50">
+					<a
+						href={link.href}
+						class="font-medium duration-300 hover:text-secondary-50"
+						aria-current={link.href === '/' ? 'page' : undefined}
+					>
 						{link.name}
 					</a>
 				{/each}
@@ -44,6 +61,7 @@
 				onclick={() => (isMenuOpen = !isMenuOpen)}
 				class="ml-4 rounded p-2 text-secondary-50 hover:bg-secondary-900/10 md:hidden"
 				aria-label="Toggle menu"
+				aria-expanded={isMenuOpen}
 			>
 				{#if isMenuOpen}
 					<X class="h-6 w-6" />
@@ -56,16 +74,26 @@
 
 	<!-- Mobiel menu -->
 	{#if isMenuOpen}
-		<div transition:fade={{ duration: 200 }} class="wrapper md:hidden">
-			<ul class=" flex items-center justify-between gap-2 rounded-lg p-4">
-				{#each links as link}
-					<li>
-						<a href={link.href} class="block font-medium duration-300 hover:text-secondary-50">
-							{link.name}
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</div>
+		<button
+			transition:fade={{ duration: 200 }}
+			class="fixed inset-0 z-50 bg-secondary-900/50 backdrop-blur-sm md:hidden"
+			onclick={closeMenu}
+		>
+			<div class="wrapper mobile-menu mt-16 rounded-lg bg-secondary-800 p-4">
+				<ul class="space-y-4">
+					{#each links as link (link.href)}
+						<li>
+							<a
+								href={link.href}
+								class="block font-medium duration-300 hover:text-secondary-50"
+								onclick={handleLinkClick}
+							>
+								{link.name}
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</div>
+		</button>
 	{/if}
 </header>
