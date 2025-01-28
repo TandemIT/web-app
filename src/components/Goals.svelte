@@ -48,27 +48,26 @@
 </script>
 
 <section class="py-16">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 min-h-full">
+	<div class="mx-auto min-h-full max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="grid gap-10 lg:grid-cols-12">
 			<!-- Linker kolom met afbeelding -->
 			<div class="relative lg:col-span-5">
-				<div class="h-full w-full rounded-2xl bg-cover bg-center shadow-lg"
-					style="background-image: url('/pattern.png');">
-				</div>
+				<div
+					class="h-full w-full rounded-2xl bg-cover bg-center shadow-lg"
+					style="background-image: url('/pattern.png');"
+				></div>
 			</div>
 
 			<!-- Rechter kolom met content -->
 			<div class="lg:col-span-7">
 				<button
 					onclick={() => scrollToSection('about')}
-					class="subtitle mb-3 inline-block rounded-full bg-primary-50 px-4 py-1 text-sm font-semibold text-primary-600 hover:bg-primary-100"
+					class="subtitle text-primary-600 mb-3 inline-block rounded-full bg-primary-50 px-4 py-1 text-sm font-semibold hover:bg-primary-100"
 					aria-label="Scroll naar Over ons"
 				>
 					Over ons
 				</button>
-				<h2 class="mb-6 text-4xl font-bold  lg:text-5xl">
-					Wat drijft ons
-				</h2>
+				<h2 class="mb-6 text-4xl font-bold lg:text-5xl">Wat drijft ons</h2>
 
 				<div class="mb-10 grid gap-8 sm:grid-cols-2">
 					{#each Objectives as { icon: Icon, title, description }}
@@ -77,8 +76,8 @@
 								<Icon class="text-primary-600 h-7 w-7" aria-hidden="true" />
 							</div>
 							<div>
-								<h3 class="text-lg font-semibold ">{title}</h3>
-								<p class="mt-2 text-sm ">{description}</p>
+								<h3 class="text-lg font-semibold">{title}</h3>
+								<p class="mt-2 text-sm">{description}</p>
 							</div>
 						</div>
 					{/each}
@@ -87,7 +86,7 @@
 				<div class="flex gap-4">
 					<a
 						href="/contact"
-						class="group inline-flex items-center gap-x-2 rounded-lg bg-primary-600 px-6 py-3 text-sm font-semibold  shadow-md hover:bg-primary-700"
+						class="bg-primary-600 hover:bg-primary-700 group inline-flex items-center gap-x-2 rounded-lg px-6 py-3 text-sm font-semibold shadow-md"
 						aria-label="Neem contact op"
 					>
 						Neem contact op
@@ -95,7 +94,7 @@
 					</a>
 					<a
 						href="/projecten"
-						class="inline-flex items-center gap-x-2 rounded-lg border  px-6 py-3 text-sm font-semibold  hover:"
+						class="hover: inline-flex items-center gap-x-2 rounded-lg border px-6 py-3 text-sm font-semibold"
 						aria-label="Bekijk projecten"
 					>
 						Bekijk projecten

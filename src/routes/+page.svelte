@@ -1,3 +1,9 @@
+<script>
+	import Enthousiast from '../components/Enthousiast.svelte';
+	import Goals from '../components/Goals.svelte';
+	import Aanpak from '../components/Aanpak.svelte';
+</script>
+
 <!-- +page.svelte -->
 <div id="about" class="relative flex min-h-[calc(100vh-4.35rem)] items-center overflow-hidden">
 	<div class="wrapper grid-cols-12 lg:grid">
@@ -25,3 +31,13 @@
 		class="absolute bottom-0 right-0 -z-10 w-3/4"
 	/>
 </div>
+
+<!-- Other section, this will make sense for the routing in sveltekit -->
+<Enthousiast />
+<div class="wrapper">
+	<img src="/Team.png" alt="Tandem IT Team" width="1640" height="688" class="relative -mt-20" />
+</div>
+<Aanpak />
+<Goals />
+<!-- Devider for better viewing of the sections -->
+<!-- <div class="h-1 min-w-full bg-secondary-50"></div> -->
