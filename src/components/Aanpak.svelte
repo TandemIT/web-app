@@ -62,7 +62,7 @@
 </script>
 
 <!-- Hero Section -->
-<section class="relative min-h-screen pt-20">
+<section class="relative mb-20 min-h-screen pt-20">
 	<div class="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
 		<div class="relative z-10">
 			<button

@@ -4,6 +4,7 @@
 	import Header from '../components/Header.svelte';
 	import Footer from '../components/Footer.svelte';
 	import Enthousiast from '../components/Enthousiast.svelte';
+	import Goals from '../components/Goals.svelte';
 	import Aanpak from '../components/Aanpak.svelte';
 	import '@fontsource/poppins';
 	import '@fontsource-variable/space-grotesk';
@@ -18,4 +19,7 @@
 	<img src="/Team.png" alt="Tandem IT Team" width="1640" height="688" class="relative -mt-20" />
 </div>
 <Aanpak />
+<Goals />
 <Footer />
+<!-- Devider for better viewing of the sections -->
+<!-- <div class="h-1 min-w-full bg-secondary-50"></div> -->
