@@ -108,15 +108,14 @@
 				</p>
 
 				<!-- Call-to-action knoppen -->
-					<a
-						href="/contact"
-						class="group inline-flex items-center rounded-lg  text-sm font-semibold dark:text-black underline transition "
-						aria-label="Neem contact op"
-					>
-						Neem contact op
-						<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
-					</a>
-
+				<a
+					href="/contact"
+					class="group inline-flex items-center rounded-lg text-sm font-semibold underline transition dark:text-black"
+					aria-label="Neem contact op"
+				>
+					Neem contact op
+					<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
+				</a>
 			</div>
 		</div>
 	</div>
