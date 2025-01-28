@@ -108,24 +108,15 @@
 				</p>
 
 				<!-- Call-to-action knoppen -->
-				<div class="flex gap-4">
 					<a
 						href="/contact"
-						class="group inline-flex items-center gap-x-2 rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
+						class="group inline-flex items-center rounded-lg  text-sm font-semibold dark:text-black underline transition "
 						aria-label="Neem contact op"
 					>
 						Neem contact op
 						<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
 					</a>
-					<a
-						href="/projecten"
-						class="inline-flex items-center gap-x-2 rounded-lg border border-neutral-300 px-6 py-3 text-sm font-semibold text-neutral-700 transition hover:bg-neutral-50"
-						aria-label="Bekijk projecten"
-					>
-						Bekijk projecten
-						<ArrowRight aria-hidden="true" />
-					</a>
-				</div>
+
 			</div>
 		</div>
 	</div>
