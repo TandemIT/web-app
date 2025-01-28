@@ -10,6 +10,7 @@
 		Code2,
 		Milestone
 	} from 'lucide-svelte';
+	import ArrowRight from '@tabler/icons-svelte/icons/arrow-right';
 
 	interface Process {
 		icon: any;
@@ -52,11 +53,11 @@
 		MessageSquareText
 	];
 
-	// Smooth scroll to 'about' section
-	function goAbout() {
-		const aboutSection = document.getElementById('about');
-		if (aboutSection) {
-			aboutSection.scrollIntoView({ behavior: 'smooth' });
+	// Smooth scroll to a section
+	function scrollToSection(id: string) {
+		const section = document.getElementById(id);
+		if (section) {
+			section.scrollIntoView({ behavior: 'smooth' });
 		}
 	}
 </script>
@@ -67,9 +68,9 @@
 		<div class="relative z-10">
 			<button
 				class="subtitle mb-6 inline-block rounded-full px-4 py-1 text-sm font-semibold text-primary-500"
-				onclick={goAbout}
+				onclick={() => scrollToSection('aanpak')}
 			>
-				Over ons
+				Onze aanpak
 			</button>
 			<div class="relative">
 				<h1
@@ -118,9 +119,9 @@
 				<div class="top-24">
 					<button
 						class="subtitle mb-2 inline-block rounded-full px-4 py-1 text-sm font-semibold text-primary-500"
-						onclick={goAbout}
+						onclick={() => scrollToSection('aanpak')}
 					>
-						Over ons
+						Onze aanpak
 					</button>
 					<h2 class="mb-6 text-4xl font-bold tracking-tight text-secondary-50 lg:text-5xl">
 						Van een vraag naar een doordachte oplossing.
@@ -131,8 +132,9 @@
 						bewezen ontwikkelmethoden. Dit stelt ons in staat om complexe vraagstukken te vertalen
 						naar effectieve oplossingen die direct waarde toevoegen aan uw organisatie.
 					</p>
-					<a href="/#contact" class="button button-primary inline-flex items-center">
+					<a href="/#contact" class=" group inline-flex items-center underline">
 						Neem contact op
+						<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
 					</a>
 				</div>
 			</div>
