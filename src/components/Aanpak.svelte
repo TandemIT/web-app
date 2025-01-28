@@ -116,11 +116,12 @@
 			<!-- Right Column: Content -->
 			<div class="lg:w-1/2">
 				<div class="top-24">
-					<div
-						class="subtitle mb-6 inline-block rounded-full px-4 py-1 text-sm font-semibold text-primary-500"
+					<button
+						class="subtitle mb-2 inline-block rounded-full px-4 py-1 text-sm font-semibold text-primary-500"
+						onclick={goAbout}
 					>
 						Over ons
-					</div>
+					</button>
 					<h2 class="mb-6 text-4xl font-bold tracking-tight text-secondary-50 lg:text-5xl">
 						Van een vraag naar een doordachte oplossing.
 					</h2>

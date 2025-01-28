@@ -88,11 +88,12 @@
 
 			<!-- Rechter kolom met content -->
 			<div class="lg:col-span-7 lg:col-start-6">
-				<div
+				<button
 					class="subtitle mb-2 inline-block rounded-full px-4 py-1 text-sm font-semibold text-primary-500"
+					onclick={goAbout}
 				>
 					Over ons
-				</div>
+				</button>
 				<h2 class="mb-6 text-4xl font-bold tracking-tight text-neutral-900 lg:text-5xl">
 					Een hecht team van enthousiaste HBO-ICT studenten
 				</h2>
