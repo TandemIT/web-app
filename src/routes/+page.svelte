@@ -2,6 +2,7 @@
 	import Enthousiast from '../components/Enthousiast.svelte';
 	import Goals from '../components/Goals.svelte';
 	import Aanpak from '../components/Aanpak.svelte';
+	import Bewijs from '../components/Bewijs.svelte';
 </script>
 
 <!-- +page.svelte -->
@@ -39,5 +40,6 @@
 </div>
 <Aanpak />
 <Goals />
+<Bewijs />
 <!-- Devider for better viewing of the sections -->
 <!-- <div class="h-1 min-w-full bg-secondary-50"></div> -->

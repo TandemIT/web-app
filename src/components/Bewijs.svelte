@@ -1,0 +1,75 @@
+<script lang="ts">
+	// Nu wat echte data invullen
+	const projects = [
+		{
+			title: 'Project 1',
+			description: 'Een geavanceerd project met moderne technologieën.',
+			link: '#',
+			image: 'https://placehold.co/600x400'
+		},
+		{
+			title: 'Project 2',
+			description: 'Een innovatief project gericht op schaalbare oplossingen.',
+			link: '#',
+			image: 'https://placehold.co/600x400'
+		},
+		{
+			title: 'Project 3',
+			description: 'Een creatief project met een focus op gebruiksvriendelijkheid.',
+			link: '#',
+			image: 'https://placehold.co/600x400'
+		}
+	];
+</script>
+
+<!-- Bewijs van Excellence -->
+<section
+	class="mx-auto flex max-w-[calc(100vw-4rem)] flex-col justify-center py-12"
+>
+	<!-- Titel -->
+    <p class="subtitle mb-6 inline-block rounded-full px-4 py-1 text-sm font-semibold text-primary-500 translate-y-6 -translate-x-4">cases</p>
+	<h1 class="font-grotesk text-4xl font-medium">Bewijs van Excellence</h1>
+
+	<!-- Projecten grid -->
+	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+		{#each projects as project}
+			<div class="flex flex-col gap-2">
+				<h2 class="w-fit translate-y-12 rounded-xl bg-secondary-300 p-1 font-grotesk text-2xl">
+					{project.title}
+				</h2>
+				<img
+					class="h-full w-full rounded-xl object-cover"
+					src={project.image}
+					alt={project.title}
+				/>
+				<p class=" w-[75%] -translate-y-8 rounded-xl bg-secondary-300 p-2">{project.description}</p>
+			</div>
+		{/each}
+	</div>
+</section>
+
+<!-- Meest recente Blogs -->
+<section
+	class="mx-auto flex max-w-[calc(100vw-4rem)] flex-col justify-center py-12"
+>
+	<!-- Titel -->
+    <p class="subtitle mb-6 inline-block rounded-full px-4 py-1 text-sm font-semibold text-primary-500 translate-y-6 -translate-x-4">cases</p>
+	<h1 class="font-grotesk text-4xl font-medium">Meest recente Blogs</h1>
+
+	<!-- Projecten grid -->
+	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+		{#each projects as project}
+			<div class="flex flex-col gap-2">
+				<h2 class="w-fit translate-y-12 rounded-xl bg-secondary-300 p-1 font-grotesk text-2xl">
+					{project.title}
+				</h2>
+				<img
+					class="h-full w-full rounded-xl object-cover"
+					src={project.image}
+					alt={project.title}
+				/>
+				<p class=" w-[75%] -translate-y-8 rounded-xl bg-secondary-300 p-2">{project.description}</p>
+			</div>
+		{/each}
+	</div>
+</section>
