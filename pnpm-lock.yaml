@@ -58,7 +58,7 @@ importers:
         specifier: ^0.6.11
         version: 0.6.11(prettier-plugin-svelte@3.3.3(prettier@3.4.2)(svelte@5.19.5))(prettier@3.4.2)
       svelte:
-        specifier: ^5.0.0
+        specifier: ^5.19.5
         version: 5.19.5
       svelte-check:
         specifier: ^4.0.0
