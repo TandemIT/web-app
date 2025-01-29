@@ -67,18 +67,18 @@
 	<div class="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
 		<div class="relative z-10">
 			<button
-				class="subtitle mb-6 inline-block rounded-full px-4 py-1 text-sm font-semibold text-primary-500"
+				class="subtitle text-primary-500 mb-6 inline-block rounded-full px-4 py-1 text-sm font-semibold"
 				onclick={() => scrollToSection('aanpak')}
 			>
 				Onze aanpak
 			</button>
 			<div class="relative">
 				<h1
-					class="mb-6 max-w-3xl font-grotesk text-5xl font-medium leading-tight text-secondary-50 lg:text-6xl"
+					class="font-grotesk text-secondary-50 mb-6 max-w-3xl text-5xl leading-tight font-medium lg:text-6xl"
 				>
 					Een effectieve organisatie dankzij onze scrum-aanpak.
 				</h1>
-				<p class="max-w-lg text-lg text-secondary-200">
+				<p class="text-secondary-200 max-w-lg text-lg">
 					Bij Tandem IT geloven we in de kracht van agile ontwikkeling. Door onze scrum-aanpak
 					kunnen we flexibel inspelen op veranderende behoeften en leveren we consequent
 					hoogwaardige resultaten die aansluiten bij uw doelstellingen.
@@ -95,15 +95,15 @@
 			<!-- Left Column: Process Steps -->
 			<div class="relative flex flex-col gap-16 lg:w-1/2">
 				{#each processes as process}
-					<div class="relative flex rounded-xl border-2 border-secondary-50 bg-transparent p-6">
+					<div class="border-secondary-50 relative flex rounded-xl border-2 bg-transparent p-6">
 						<!-- Icon -->
-						<div class="mr-6 shrink-0 text-secondary-50">
+						<div class="text-secondary-50 mr-6 shrink-0">
 							<svelte:component this={process.icon} size={40} />
 						</div>
 
 						<!-- Content -->
 						<div>
-							<h2 class="mb-3 text-xl font-bold text-secondary-50 lg:text-2xl">
+							<h2 class="text-secondary-50 mb-3 text-xl font-bold lg:text-2xl">
 								{process.title}
 							</h2>
 							<p class="text-secondary-200">
@@ -118,15 +118,15 @@
 			<div class="lg:w-1/2">
 				<div class="top-24">
 					<button
-						class="subtitle mb-2 inline-block rounded-full px-4 py-1 text-sm font-semibold text-primary-500"
+						class="subtitle text-primary-500 mb-2 inline-block rounded-full px-4 py-1 text-sm font-semibold"
 						onclick={() => scrollToSection('aanpak')}
 					>
 						Onze aanpak
 					</button>
-					<h2 class="mb-6 text-4xl font-bold tracking-tight text-secondary-50 lg:text-5xl">
+					<h2 class="text-secondary-50 mb-6 text-4xl font-bold tracking-tight lg:text-5xl">
 						Van een vraag naar een doordachte oplossing.
 					</h2>
-					<p class="mb-8 text-lg text-secondary-200">
+					<p class="text-secondary-200 mb-8 text-lg">
 						Onze aanpak is gebaseerd op jaren ervaring in software ontwikkeling en
 						projectmanagement. We combineren de flexibiliteit van scrum met de stabiliteit van
 						bewezen ontwikkelmethoden. Dit stelt ons in staat om complexe vraagstukken te vertalen

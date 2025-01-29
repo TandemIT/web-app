@@ -26,7 +26,7 @@
 <section class="mx-auto flex max-w-[calc(100vw-4rem)] flex-col justify-center py-12">
 	<!-- Titel -->
 	<p
-		class="subtitle mb-6 inline-block -translate-x-4 translate-y-6 rounded-full px-4 py-1 text-sm font-semibold text-primary-500"
+		class="subtitle text-primary-500 mb-6 inline-block -translate-x-4 translate-y-6 rounded-full px-4 py-1 text-sm font-semibold"
 	>
 		Cases
 	</p>
@@ -36,7 +36,7 @@
 	<div class="grid grid-cols-1 gap-16 sm:grid-cols-2">
 		{#each projects as project}
 			<div class="flex flex-col gap-2">
-				<h2 class="w-fit translate-y-12 rounded-xl bg-secondary-300 p-1 font-grotesk text-2xl">
+				<h2 class="bg-secondary-300 font-grotesk w-fit translate-y-12 rounded-xl p-1 text-2xl">
 					{project.title}
 				</h2>
 				<a href={project.link} target="_blank" rel="noopener noreferrer">
@@ -48,7 +48,7 @@
 					/>
 				</a>
 
-				<p class=" w-[75%] -translate-y-6 rounded-xl bg-secondary-300 p-2">{project.description}</p>
+				<p class=" bg-secondary-300 w-[75%] -translate-y-6 rounded-xl p-2">{project.description}</p>
 			</div>
 		{/each}
 	</div>
@@ -58,7 +58,7 @@
 <section class="mx-auto flex max-w-[calc(100vw-4rem)] flex-col justify-center py-12">
 	<!-- Titel -->
 	<p
-		class="subtitle mb-6 inline-block -translate-x-4 translate-y-6 rounded-full px-4 py-1 text-sm font-semibold text-primary-500"
+		class="subtitle text-primary-500 mb-6 inline-block -translate-x-4 translate-y-6 rounded-full px-4 py-1 text-sm font-semibold"
 	>
 		Insights
 	</p>
@@ -68,7 +68,7 @@
 	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 		{#each projects as project}
 			<div class="flex flex-col gap-2">
-				<h2 class="w-fit translate-y-12 rounded-xl bg-secondary-300 p-1 font-grotesk text-2xl">
+				<h2 class="bg-secondary-300 font-grotesk w-fit translate-y-12 rounded-xl p-1 text-2xl">
 					{project.title}
 				</h2>
 				<a href={project.link} target="_blank" rel="noopener noreferrer">
@@ -80,9 +80,9 @@
 					/>
 				</a>
 
-				<p class=" w-[75%] -translate-y-8 rounded-xl bg-secondary-300 p-2">{project.description}</p>
+				<p class=" bg-secondary-300 w-[75%] -translate-y-8 rounded-xl p-2">{project.description}</p>
 			</div>
 		{/each}
 	</div>
-	<button class="mx-auto w-fit rounded-xl p-1 font-grotesk underline">Alle insights</button>
+	<button class="font-grotesk mx-auto w-fit rounded-xl p-1 underline">Alle insights</button>
 </section>

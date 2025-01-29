@@ -47,7 +47,7 @@
 	}
 </script>
 
-<section class="pb-36 pt-16 dark:bg-neutral-50 dark:text-neutral-800">
+<section class="pt-16 pb-36 dark:bg-neutral-50 dark:text-neutral-800">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="grid gap-10 lg:grid-cols-12">
 			<!-- Linker kolom met afbeelding en statistieken -->
@@ -70,7 +70,7 @@
 			<div class="lg:col-span-7 lg:col-start-6">
 				<button
 					on:click={goAbout}
-					class="subtitle mb-2 inline-block rounded-full px-4 py-1 text-sm font-semibold text-primary-500 transition hover:bg-primary-50"
+					class="subtitle text-primary-500 hover:bg-primary-50 mb-2 inline-block rounded-full px-4 py-1 text-sm font-semibold transition"
 					aria-label="Scroll naar de Over ons sectie"
 				>
 					Over ons

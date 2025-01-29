@@ -5,27 +5,27 @@
 @plugin '@tailwindcss/container-queries';
 
 @theme {
-  --font-sans: 'Poppins', sans-serif, ui-sans-serif, system-ui, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --font-grotesk: 'Space Grotesk Variable', sans-serif;
+	--font-sans: 'Poppins', sans-serif, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+		'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+	--font-grotesk: 'Space Grotesk Variable', sans-serif;
 
-  --color-secondary-50: #ffffff;
-  --color-secondary-100: #d8e4e5;
-  --color-secondary-200: #b9cbcc;
-  --color-secondary-300: #7c9ea0;
-  --color-secondary-400: #5b8d93;
-  --color-secondary-500: #336f76;
-  --color-secondary-600: #1a545a;
-  --color-secondary-700: #004147;
-  --color-secondary-800: #002124;
-  --color-secondary-900: #000000;
+	--color-secondary-50: #ffffff;
+	--color-secondary-100: #d8e4e5;
+	--color-secondary-200: #b9cbcc;
+	--color-secondary-300: #7c9ea0;
+	--color-secondary-400: #5b8d93;
+	--color-secondary-500: #336f76;
+	--color-secondary-600: #1a545a;
+	--color-secondary-700: #004147;
+	--color-secondary-800: #002124;
+	--color-secondary-900: #000000;
 
-  --color-primary-50: #e8fff4;
-  --color-primary-100: #b9ffdf;
-  --color-primary-200: #62f4b1;
-  --color-primary-300: #2ced94;
-  --color-primary-400: #1dce7c;
-  --color-primary-500: #13a260;
+	--color-primary-50: #e8fff4;
+	--color-primary-100: #b9ffdf;
+	--color-primary-200: #62f4b1;
+	--color-primary-300: #2ced94;
+	--color-primary-400: #1dce7c;
+	--color-primary-500: #13a260;
 }
 
 /*
@@ -37,13 +37,13 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentColor);
+	}
 }
 
 body {
@@ -54,23 +54,23 @@ body {
 }
 
 .header {
-	@apply mb-3 font-grotesk text-4xl font-semibold leading-tight text-white;
+	@apply font-grotesk mb-3 text-4xl leading-tight font-semibold text-white;
 }
 .subtitle {
-	@apply font-grotesk font-medium text-secondary-400;
+	@apply font-grotesk text-secondary-400 font-medium;
 }
 .subtitle::before {
 	content: '~ ';
 }
 
 .button {
-	@apply inline-block rounded-bl-lg rounded-br-2xl rounded-tl-2xl rounded-tr-lg border-2 border-transparent px-5 py-2.5 font-semibold duration-300;
+	@apply inline-block rounded-tl-2xl rounded-tr-lg rounded-br-2xl rounded-bl-lg border-2 border-transparent px-5 py-2.5 font-semibold duration-300;
 }
 .button:hover {
-	@apply rounded-bl-2xl rounded-br-lg rounded-tl-lg rounded-tr-2xl;
+	@apply rounded-tl-lg rounded-tr-2xl rounded-br-lg rounded-bl-2xl;
 }
 .button:focus {
-	@apply outline outline-2 outline-offset-2;
+	@apply outline outline-offset-2;
 }
 
 .button.button-primary {

@@ -32,7 +32,7 @@
 		<div class="flex flex-col items-center gap-x-6 sm:flex-row md:gap-x-10 lg:gap-x-14">
 			<a
 				href="/"
-				class="flex items-center gap-x-2 px-4 font-grotesk text-lg font-medium text-secondary-50"
+				class="font-grotesk text-secondary-50 flex items-center gap-x-2 px-4 text-lg font-medium"
 			>
 				<img src="/tandemIT.svg" alt="Tandem IT logo" width="32" height="32" />
 				Tandem
@@ -43,7 +43,7 @@
 				{#each links as link}
 					<a
 						href={link.href}
-						class="font-medium duration-300 hover:text-secondary-50"
+						class="hover:text-secondary-50 font-medium duration-300"
 						aria-current={link.href === '/' ? 'page' : undefined}
 					>
 						{link.name}
@@ -59,7 +59,7 @@
 			<!-- Mobiel menu knop -->
 			<button
 				onclick={() => (isMenuOpen = !isMenuOpen)}
-				class="ml-4 rounded-sm p-2 text-secondary-50 hover:bg-secondary-900/10 md:hidden"
+				class="text-secondary-50 hover:bg-secondary-900/10 ml-4 rounded-sm p-2 md:hidden"
 				aria-label="Toggle menu"
 				aria-expanded={isMenuOpen}
 			>
@@ -76,16 +76,16 @@
 	{#if isMenuOpen}
 		<button
 			transition:fade={{ duration: 200 }}
-			class="fixed inset-0 z-50 bg-secondary-900/50 backdrop-blur-xs md:hidden"
+			class="bg-secondary-900/50 fixed inset-0 z-50 backdrop-blur-xs md:hidden"
 			onclick={closeMenu}
 		>
-			<div class="wrapper mobile-menu mt-16 rounded-lg bg-secondary-800 p-4">
+			<div class="wrapper mobile-menu bg-secondary-800 mt-16 rounded-lg p-4">
 				<ul class="space-y-4">
 					{#each links as link (link.href)}
 						<li>
 							<a
 								href={link.href}
-								class="block font-medium duration-300 hover:text-secondary-50"
+								class="hover:text-secondary-50 block font-medium duration-300"
 								onclick={handleLinkClick}
 							>
 								{link.name}

@@ -53,20 +53,20 @@
 	}
 </script>
 
-<footer class=" bg-secondary-900 px-4 py-12 pb-4 font-sans text-secondary-100">
+<footer class=" bg-secondary-900 text-secondary-100 px-4 py-12 pb-4 font-sans">
 	<div class="mx-auto max-w-7xl">
 		<div class="grid grid-cols-1 gap-8 md:grid-cols-4">
 			<!-- Bedrijfsinformatie -->
 			<div>
-				<h3 class="mb-4 font-bold text-primary-400">Tandem IT</h3>
-				<p class="mb-4 text-secondary-300">
+				<h3 class="text-primary-400 mb-4 font-bold">Tandem IT</h3>
+				<p class="text-secondary-300 mb-4">
 					Tandem IT is een innovatief IT-bedrijf dat zich richt op het ontwikkelen van
 					toekomstbestendige softwareoplossingen. In samenwerking met studenten van de Hogeschool
 					Utrecht werken we aan uitdagende projecten voor echte klanten.
 				</p>
 				<button
 					onclick={scrollToTop}
-					class="flex items-center text-primary-400 transition-colors hover:text-primary-300"
+					class="text-primary-400 hover:text-primary-300 flex items-center transition-colors"
 					aria-label="Scroll naar bovenkant pagina"
 				>
 					<ChevronUp class="mr-2" />
@@ -76,12 +76,12 @@
 
 			<!-- Snelle links -->
 			<div>
-				<h4 class="mb-4 font-semibold text-primary-400">Snelle links</h4>
+				<h4 class="text-primary-400 mb-4 font-semibold">Snelle links</h4>
 				<nav>
 					<ul class="space-y-2">
 						{#each quickLinks as { href, label }}
 							<li>
-								<a {href} class="text-secondary-300 transition-colors hover:text-primary-400">
+								<a {href} class="text-secondary-300 hover:text-primary-400 transition-colors">
 									{label}
 								</a>
 							</li>
@@ -92,8 +92,8 @@
 
 			<!-- Contactinformatie -->
 			<div>
-				<h4 class="mb-4 font-semibold text-primary-400">Contact</h4>
-				<div class="space-y-2 text-secondary-300">
+				<h4 class="text-primary-400 mb-4 font-semibold">Contact</h4>
+				<div class="text-secondary-300 space-y-2">
 					<p>Bezoekadres:</p>
 					{#each contactInfo.visitAddress as line}
 						<p>{line}</p>
@@ -109,8 +109,8 @@
 
 			<!-- Openingstijden -->
 			<div>
-				<h4 class="mb-4 font-semibold text-primary-400">Openingstijden</h4>
-				<div class="space-y-2 text-secondary-300">
+				<h4 class="text-primary-400 mb-4 font-semibold">Openingstijden</h4>
+				<div class="text-secondary-300 space-y-2">
 					{#each openingHours as { day, time }}
 						<p>{day}: {time}</p>
 					{/each}
@@ -122,7 +122,7 @@
 		<div
 			class="mt-8 flex flex-col items-center justify-between border-t border-gray-800 pt-6 md:flex-row"
 		>
-			<p class="mb-4 text-secondary-400 md:mb-0">
+			<p class="text-secondary-400 mb-4 md:mb-0">
 				{#if startYear === currentYear}
 					&copy; {currentYear} Tandem IT. Alle rechten voorbehouden.
 				{:else}
@@ -133,7 +133,7 @@
 				{#each socialLinks as { icon: Icon, url, name }}
 					<a
 						href={url}
-						class="text-secondary-400 transition-colors hover:text-primary-400"
+						class="text-secondary-400 hover:text-primary-400 transition-colors"
 						aria-label="Bezoek onze {name} pagina"
 						target="_blank"
 						rel="noopener noreferrer"

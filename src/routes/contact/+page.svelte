@@ -2,10 +2,9 @@
 	let email = '7d9Mw@example.com';
 </script>
 
-
 <div class="wrapper mt-10 grid gap-4 lg:grid-cols-12">
 	<div class="col-span-4">
-		<div class="flex h-fit flex-col gap-6 rounded-xl bg-secondary-600 p-10">
+		<div class="bg-secondary-600 flex h-fit flex-col gap-6 rounded-xl p-10">
 			<h2 class="text-xl font-medium">Contact &amp; info</h2>
 			<div>
 				<p class="mb-2 text-lg font-medium">Mail ons</p>
@@ -31,13 +30,13 @@
 	</div>
 	<div class="col-span-1"></div>
 	<div class="col-span-7">
-		<form class="flex flex-col gap-5 rounded-xl bg-secondary-600 p-10">
+		<form class="bg-secondary-600 flex flex-col gap-5 rounded-xl p-10">
 			<div class="grid gap-x-5 lg:grid-cols-2">
 				<div class="mb-5">
 					<label for="firstName" class="mb-1 block text-sm font-medium">Voornaam</label><input
 						id="firstName"
 						type="text"
-						class="w-full rounded-lg border-2 border-secondary-400 bg-transparent px-3 py-3 outline-hidden duration-300 focus:bg-secondary-50/5"
+						class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 outline-hidden duration-300"
 						required
 						name="firstName"
 						value=""
@@ -47,7 +46,7 @@
 					<label for="lastName" class="mb-1 block text-sm font-medium">Achternaam</label><input
 						id="lastName"
 						type="text"
-						class="w-full rounded-lg border-2 border-secondary-400 bg-transparent px-3 py-3 outline-hidden duration-300 focus:bg-secondary-50/5"
+						class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 outline-hidden duration-300"
 						required
 						name="lastName"
 						value=""
@@ -58,7 +57,7 @@
 				<label for="company" class="mb-1 block text-sm font-medium">Bedrijfsnaam</label><input
 					id="company"
 					type="text"
-					class="w-full rounded-lg border-2 border-secondary-400 bg-transparent px-3 py-3 outline-hidden duration-300 focus:bg-secondary-50/5"
+					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 outline-hidden duration-300"
 					required
 					name="company"
 					value=""
@@ -68,7 +67,7 @@
 				<label for="email" class="mb-1 block text-sm font-medium">E-mailadres</label><input
 					id="email"
 					type="text"
-					class="w-full rounded-lg border-2 border-secondary-400 bg-transparent px-3 py-3 outline-hidden duration-300 focus:bg-secondary-50/5"
+					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 outline-hidden duration-300"
 					required
 					name="email"
 					value=""
@@ -78,7 +77,7 @@
 				<label for="phoneNumber" class="mb-1 block text-sm font-medium">Telefoonnummer</label><input
 					id="phoneNumber"
 					type="text"
-					class="w-full rounded-lg border-2 border-secondary-400 bg-transparent px-3 py-3 outline-hidden duration-300 focus:bg-secondary-50/5"
+					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 outline-hidden duration-300"
 					required
 					name="phoneNumber"
 					value=""
@@ -90,7 +89,7 @@
 				><textarea
 					name="message"
 					id="message"
-					class="w-full rounded-lg border-2 border-secondary-400 bg-transparent px-3 py-3 outline-hidden duration-300 focus:bg-secondary-50/5"
+					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 outline-hidden duration-300"
 					rows="4"
 					required
 				></textarea>
@@ -105,7 +104,7 @@
 						name="agree"
 						value=""
 					/><span
-						class="outline-primary/50 flex h-5 w-5 items-center justify-center rounded-sm border-2 border-secondary-400 text-transparent outline-2 outline-offset-1 peer-checked:border-secondary-50/50 peer-checked:bg-secondary-50/50 peer-checked:text-white peer-focus:outline"
+						class="outline-primary/50 border-secondary-400 peer-checked:border-secondary-50/50 peer-checked:bg-secondary-50/50 flex h-5 w-5 items-center justify-center rounded-sm border-2 text-transparent outline-2 outline-offset-1 peer-checked:text-white peer-focus:outline"
 						><svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="14"

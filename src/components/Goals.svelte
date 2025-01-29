@@ -73,7 +73,7 @@
 
 				<div class="mb-10 grid gap-8 sm:grid-cols-2">
 					{#each Objectives as { icon: Icon, title, description }}
-						<div class="flex flex-col gap-x-4 rounded-2xl bg-secondary-600 p-4">
+						<div class="bg-secondary-600 flex flex-col gap-x-4 rounded-2xl p-4">
 							<div class="mt-1 flex shrink-0 gap-2">
 								<Icon class="text-primary-600 h-7 w-7" aria-hidden="true" />
 								<h3 class="text-lg font-semibold dark:text-white">{title}</h3>
@@ -83,7 +83,7 @@
 							</div>
 						</div>
 					{/each}
-					<div class="flex flex-col justify-between rounded-2xl bg-primary-300 p-4">
+					<div class="bg-primary-300 flex flex-col justify-between rounded-2xl p-4">
 						<h3 class="text-2xl font-bold dark:text-black">Laten we kennis maken</h3>
 
 						<!-- Call-to-action knoppen -->
