@@ -55,7 +55,7 @@
 				<div class="top-8 h-full w-full rounded-2xl bg-cover bg-center">
 					<div class="relative mb-8 h-full w-full rounded-2xl p-6">
 						<div
-							class="absolute inset-0 h-full w-full rounded"
+							class="absolute inset-0 h-full w-full rounded-sm"
 							style="
 								background-image: url('/pattern.png');
 								background-size: cover;
@@ -89,7 +89,7 @@
 				<div class="mb-12 grid gap-8 sm:grid-cols-2">
 					{#each features as { icon: Icon, title, description }}
 						<div class="flex gap-x-3">
-							<div class="mt-1 flex-shrink-0">
+							<div class="mt-1 shrink-0">
 								<Icon class="text-primary-600 h-6 w-6" aria-hidden="true" />
 							</div>
 							<div>

@@ -59,7 +59,7 @@
 			<!-- Mobiel menu knop -->
 			<button
 				onclick={() => (isMenuOpen = !isMenuOpen)}
-				class="ml-4 rounded p-2 text-secondary-50 hover:bg-secondary-900/10 md:hidden"
+				class="ml-4 rounded-sm p-2 text-secondary-50 hover:bg-secondary-900/10 md:hidden"
 				aria-label="Toggle menu"
 				aria-expanded={isMenuOpen}
 			>
@@ -76,7 +76,7 @@
 	{#if isMenuOpen}
 		<button
 			transition:fade={{ duration: 200 }}
-			class="fixed inset-0 z-50 bg-secondary-900/50 backdrop-blur-sm md:hidden"
+			class="fixed inset-0 z-50 bg-secondary-900/50 backdrop-blur-xs md:hidden"
 			onclick={closeMenu}
 		>
 			<div class="wrapper mobile-menu mt-16 rounded-lg bg-secondary-800 p-4">

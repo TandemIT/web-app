@@ -37,7 +37,7 @@
 					<label for="firstName" class="mb-1 block text-sm font-medium">Voornaam</label><input
 						id="firstName"
 						type="text"
-						class="w-full rounded-lg border-2 border-secondary-400 bg-transparent px-3 py-3 outline-none duration-300 focus:bg-secondary-50/5"
+						class="w-full rounded-lg border-2 border-secondary-400 bg-transparent px-3 py-3 outline-hidden duration-300 focus:bg-secondary-50/5"
 						required
 						name="firstName"
 						value=""
@@ -47,7 +47,7 @@
 					<label for="lastName" class="mb-1 block text-sm font-medium">Achternaam</label><input
 						id="lastName"
 						type="text"
-						class="w-full rounded-lg border-2 border-secondary-400 bg-transparent px-3 py-3 outline-none duration-300 focus:bg-secondary-50/5"
+						class="w-full rounded-lg border-2 border-secondary-400 bg-transparent px-3 py-3 outline-hidden duration-300 focus:bg-secondary-50/5"
 						required
 						name="lastName"
 						value=""
@@ -58,7 +58,7 @@
 				<label for="company" class="mb-1 block text-sm font-medium">Bedrijfsnaam</label><input
 					id="company"
 					type="text"
-					class="w-full rounded-lg border-2 border-secondary-400 bg-transparent px-3 py-3 outline-none duration-300 focus:bg-secondary-50/5"
+					class="w-full rounded-lg border-2 border-secondary-400 bg-transparent px-3 py-3 outline-hidden duration-300 focus:bg-secondary-50/5"
 					required
 					name="company"
 					value=""
@@ -68,7 +68,7 @@
 				<label for="email" class="mb-1 block text-sm font-medium">E-mailadres</label><input
 					id="email"
 					type="text"
-					class="w-full rounded-lg border-2 border-secondary-400 bg-transparent px-3 py-3 outline-none duration-300 focus:bg-secondary-50/5"
+					class="w-full rounded-lg border-2 border-secondary-400 bg-transparent px-3 py-3 outline-hidden duration-300 focus:bg-secondary-50/5"
 					required
 					name="email"
 					value=""
@@ -78,7 +78,7 @@
 				<label for="phoneNumber" class="mb-1 block text-sm font-medium">Telefoonnummer</label><input
 					id="phoneNumber"
 					type="text"
-					class="w-full rounded-lg border-2 border-secondary-400 bg-transparent px-3 py-3 outline-none duration-300 focus:bg-secondary-50/5"
+					class="w-full rounded-lg border-2 border-secondary-400 bg-transparent px-3 py-3 outline-hidden duration-300 focus:bg-secondary-50/5"
 					required
 					name="phoneNumber"
 					value=""
@@ -90,7 +90,7 @@
 				><textarea
 					name="message"
 					id="message"
-					class="w-full rounded-lg border-2 border-secondary-400 bg-transparent px-3 py-3 outline-none duration-300 focus:bg-secondary-50/5"
+					class="w-full rounded-lg border-2 border-secondary-400 bg-transparent px-3 py-3 outline-hidden duration-300 focus:bg-secondary-50/5"
 					rows="4"
 					required
 				></textarea>
@@ -105,7 +105,7 @@
 						name="agree"
 						value=""
 					/><span
-						class="outline-primary/50 flex h-5 w-5 items-center justify-center rounded border-2 border-secondary-400 text-transparent outline-2 outline-offset-1 peer-checked:border-secondary-50/50 peer-checked:bg-secondary-50/50 peer-checked:text-white peer-focus:outline"
+						class="outline-primary/50 flex h-5 w-5 items-center justify-center rounded-sm border-2 border-secondary-400 text-transparent outline-2 outline-offset-1 peer-checked:border-secondary-50/50 peer-checked:bg-secondary-50/50 peer-checked:text-white peer-focus:outline"
 						><svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="14"

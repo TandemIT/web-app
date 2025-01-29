@@ -74,7 +74,7 @@
 				<div class="mb-10 grid gap-8 sm:grid-cols-2">
 					{#each Objectives as { icon: Icon, title, description }}
 						<div class="flex flex-col gap-x-4 rounded-2xl bg-secondary-600 p-4">
-							<div class="mt-1 flex flex-shrink-0 gap-2">
+							<div class="mt-1 flex shrink-0 gap-2">
 								<Icon class="text-primary-600 h-7 w-7" aria-hidden="true" />
 								<h3 class="text-lg font-semibold dark:text-white">{title}</h3>
 							</div>

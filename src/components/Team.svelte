@@ -52,7 +52,7 @@
 	<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 		{#each members as member (member.id)}
 			<div
-				class="flex flex-col items-center rounded-lg border border-gray-100 bg-white p-6 shadow-sm transition-shadow duration-300 hover:shadow-md"
+				class="flex flex-col items-center rounded-lg border border-gray-100 bg-white p-6 shadow-xs transition-shadow duration-300 hover:shadow-md"
 			>
 				<img
 					src={member.avatar_url}
