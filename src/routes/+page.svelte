@@ -18,7 +18,7 @@
 				professionele diensten.
 			</p>
 			<div class="mt-7 flex items-center gap-x-3">
-				<a href="/#contact" class="button button-primary">Contacteer ons</a>
+				<a href="/contact" class="button button-primary">Contacteer ons</a>
 				<a href="/#cases" class="button button-secondary">Bekijk onze cases</a>
 			</div>
 		</div>

@@ -54,7 +54,7 @@
 
 		<div class="flex items-center">
 			<!-- CTA Button -->
-			<a href="/#contact" class="button button-primary ml-4"> Contact </a>
+			<a href="/contact" class="button button-primary ml-4"> Contact </a>
 
 			<!-- Mobiel menu knop -->
 			<button

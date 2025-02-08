@@ -132,7 +132,7 @@
 						bewezen ontwikkelmethoden. Dit stelt ons in staat om complexe vraagstukken te vertalen
 						naar effectieve oplossingen die direct waarde toevoegen aan uw organisatie.
 					</p>
-					<a href="/#contact" class=" group inline-flex items-center underline">
+					<a href="/contact" class=" group inline-flex items-center underline">
 						Neem contact op
 						<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
 					</a>
