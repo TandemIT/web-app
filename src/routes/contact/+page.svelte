@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	let email = '7d9Mw@example.com';
 </script>
 

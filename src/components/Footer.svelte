@@ -12,10 +12,10 @@
 	}
 
 	const socialLinks: SocialLink[] = [
-		{ icon: Facebook, url: 'https://www.facebook.com/tandemit', name: 'Facebook' },
-		{ icon: Twitter, url: 'https://www.twitter.com/tandemit', name: 'Twitter' },
-		{ icon: Instagram, url: 'https://www.instagram.com/tandemit', name: 'Instagram' },
-		{ icon: Linkedin, url: 'https://www.linkedin.com/company/tandemit', name: 'LinkedIn' }
+		{ icon: Facebook, url: 'https://www.facebook.com/tandem-it', name: 'Facebook' },
+		{ icon: Twitter, url: 'https://www.twitter.com/tandem-it', name: 'Twitter' },
+		{ icon: Instagram, url: 'https://www.instagram.com/tandem-it', name: 'Instagram' },
+		{ icon: Linkedin, url: 'https://www.linkedin.com/company/tandem-it', name: 'LinkedIn' }
 	];
 
 	interface QuickLink {
@@ -53,13 +53,13 @@
 	}
 </script>
 
-<footer class=" bg-secondary-900 text-secondary-100 px-4 py-12 pb-4 font-sans">
+<footer class=" bg-secondary-800 text-secondary-100 px-4 py-12 pb-4 font-sans">
 	<div class="mx-auto max-w-7xl">
 		<div class="grid grid-cols-1 gap-8 md:grid-cols-4">
 			<!-- Bedrijfsinformatie -->
 			<div>
 				<h3 class="text-primary-400 mb-4 font-bold">Tandem IT</h3>
-				<p class="text-secondary-300 mb-4">
+				<p class=" mb-4">
 					Tandem IT is een innovatief IT-bedrijf dat zich richt op het ontwikkelen van
 					toekomstbestendige softwareoplossingen. In samenwerking met studenten van de Hogeschool
 					Utrecht werken we aan uitdagende projecten voor echte klanten.
@@ -81,7 +81,7 @@
 					<ul class="space-y-2">
 						{#each quickLinks as { href, label }}
 							<li>
-								<a {href} class="text-secondary-300 hover:text-primary-400 transition-colors">
+								<a {href} class="hover:text-primary-400 transition-colors">
 									{label}
 								</a>
 							</li>
@@ -93,7 +93,7 @@
 			<!-- Contactinformatie -->
 			<div>
 				<h4 class="text-primary-400 mb-4 font-semibold">Contact</h4>
-				<div class="text-secondary-300 space-y-2">
+				<div class="space-y-2">
 					<p>Bezoekadres:</p>
 					{#each contactInfo.visitAddress as line}
 						<p>{line}</p>
@@ -110,7 +110,7 @@
 			<!-- Openingstijden -->
 			<div>
 				<h4 class="text-primary-400 mb-4 font-semibold">Openingstijden</h4>
-				<div class="text-secondary-300 space-y-2">
+				<div class="space-y-2">
 					{#each openingHours as { day, time }}
 						<p>{day}: {time}</p>
 					{/each}

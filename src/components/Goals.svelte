@@ -31,12 +31,6 @@
 			description:
 				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 		}
-		// {
-		// 	icon: IconRosetteDiscountCheck,
-		// 	title: 'Laten we kennis maken',
-		// 	description:
-		// 		'Onze projecten zijn gericht op duurzame, schaalbare oplossingen die waarde toevoegen aan de toekomst.'
-		// }
 	];
 
 	// Functie om soepel naar een sectie te scrollen

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Enthousiast from '../components/Enthousiast.svelte';
 	import Goals from '../components/Goals.svelte';
 	import Aanpak from '../components/Aanpak.svelte';
@@ -6,7 +6,7 @@
 </script>
 
 <!-- +page.svelte -->
-<div id="about" class="relative flex min-h-[calc(100vh-4.35rem)] items-center overflow-hidden">
+<div class="relative flex min-h-[calc(100vh-4.35rem)] items-center overflow-hidden">
 	<div class="wrapper grid-cols-12 lg:grid">
 		<div class="col-span-7">
 			<h1 class="font-grotesk text-secondary-50 mb-4 text-6xl leading-tight font-medium">

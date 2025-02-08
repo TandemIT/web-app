@@ -40,10 +40,7 @@
 
 	// Smooth scroll naar de 'about' sectie
 	function goAbout() {
-		const aboutSection = document.getElementById('about');
-		if (aboutSection) {
-			aboutSection.scrollIntoView({ behavior: 'smooth' });
-		}
+		window.open('/about', '_self');
 	}
 </script>
 
@@ -102,20 +99,29 @@
 
 				<p class="mb-8 text-neutral-600">
 					Onze missie is het bieden van hoogwaardige IT-oplossingen die het verschil maken voor onze
-					klanten, terwijl we studenten de kans geven om praktijkervaring op te doen in een
-					professionele omgeving. We geloven in de kracht van jong talent en innovatie, ondersteund
-					door gedegen begeleiding en moderne ontwikkelmethoden.
+					klanten, terwijl wij als studenten de kans krijgen om praktijkervaring op te doen in een
+					professionele omgeving.
 				</p>
 
 				<!-- Call-to-action knoppen -->
-				<a
-					href="/contact"
-					class="group inline-flex items-center rounded-lg text-sm font-semibold underline transition dark:text-black"
-					aria-label="Neem contact op"
-				>
-					Neem contact op
-					<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
-				</a>
+				<div class="flex justify-between">
+					<a
+						href="/about"
+						class="group text-secondary-600 right-auto left-0 inline-flex items-center rounded-lg text-sm font-semibold underline transition"
+						aria-label="Lees meer"
+					>
+						Lees meer
+						<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
+					</a>
+					<a
+						href="/contact"
+						class="group text-secondary-600 right-0 left-auto inline-flex items-center rounded-lg text-sm font-semibold underline transition"
+						aria-label="Neem contact op"
+					>
+						Neem contact op
+						<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>
