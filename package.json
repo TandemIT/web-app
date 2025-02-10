@@ -22,22 +22,22 @@
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@tailwindcss/forms": "^0.5.10",
-		"@tailwindcss/postcss": "^4.0.3",
+		"@tailwindcss/postcss": "^4.0.6",
 		"@tailwindcss/typography": "^0.5.16",
-		"lucide-svelte": "^0.474.0",
+		"lucide-svelte": "^0.475.0",
 		"mdsvex": "^0.12.3",
-		"prettier": "^3.4.2",
+		"prettier": "^3.5.0",
 		"prettier-plugin-svelte": "^3.3.3",
 		"prettier-plugin-tailwindcss": "^0.6.11",
-		"svelte": "^5.19.7",
+		"svelte": "^5.19.9",
 		"svelte-check": "^4.1.4",
 		"tailwindcss": "^4.0.3",
 		"typescript": "^5.7.3",
-		"vite": "^6.0.11"
+		"vite": "^6.1.0"
 	},
 	"dependencies": {
 		"@fontsource-variable/space-grotesk": "^5.1.1",
 		"@fontsource/poppins": "^5.1.1",
-		"@tabler/icons-svelte": "^3.29.0"
+		"@tabler/icons-svelte": "^3.30.0"
 	}
 }
