@@ -92,14 +92,13 @@
 					class="group relative"
 					on:mouseenter={() => handleMouseEnter(index)}
 					on:mouseleave={handleMouseLeave}
-
 				>
 					<button
 						class="bg-secondary-600 hover:bg-secondary-500 focus-visible:ring-primary-300 block w-full transform
-								   rounded-xl p-6 text-left
-								   transition-all duration-300
-								   hover:shadow-xl focus:outline-none
-								   focus-visible:ring-2 focus-visible:ring-offset-2 cursor-pointer"
+								   cursor-pointer rounded-xl p-6
+								   text-left transition-all
+								   duration-300 hover:shadow-xl
+								   focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
 						on:click={(e) => goHref(job.href, e)}
 						on:keydown={(e) => handleKeyPress(e, job.href)}
 					>

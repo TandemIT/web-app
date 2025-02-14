@@ -36,15 +36,15 @@
 		visitAddress: ['Heidelberglaan 15', '3584 CS Utrecht'],
 		postAddress: ['Postbus 182', '3500 AD Utrecht'],
 		email: 'info.tandemit@hu.nl',
-		phone: '088-481 82 00'
+		phone: '06 12345678'
 	};
 
 	const openingHours = [
-		{ day: 'Maandag', time: '09:00 - 17:00' },
-		{ day: 'Dinsdag', time: '09:00 - 17:00' },
-		{ day: 'Woensdag', time: '09:00 - 17:00' },
-		{ day: 'Donderdag', time: '09:00 - 17:00' },
-		{ day: 'Vrijdag', time: '09:00 - 16:30' },
+		{ day: 'Maandag', time: '09:30 - 16:30' },
+		{ day: 'Dinsdag', time: '09:30 - 16:30' },
+		{ day: 'Woensdag', time: '09:30 - 16:30' },
+		{ day: 'Donderdag', time: '09:30 - 16:30' },
+		{ day: 'Vrijdag', time: '09:30 - 16:30' },
 		{ day: 'Weekend', time: 'Gesloten' }
 	];
 
