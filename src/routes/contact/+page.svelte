@@ -33,7 +33,7 @@
 		<form class="bg-secondary-600 flex flex-col gap-5 rounded-xl p-10">
 			<div class="grid gap-x-5 lg:grid-cols-2">
 				<div class="mb-5">
-					<label for="firstName" class="mb-1 block text-sm font-medium">Voornaam</label><input
+					<label for="firstName" class="mb-1 block text-base font-medium">Voornaam</label><input
 						id="firstName"
 						type="text"
 						class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
@@ -43,7 +43,7 @@
 					/>
 				</div>
 				<div class="mb-5">
-					<label for="lastName" class="mb-1 block text-sm font-medium">Achternaam</label><input
+					<label for="lastName" class="mb-1 block text-base font-medium">Achternaam</label><input
 						id="lastName"
 						type="text"
 						class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
@@ -54,7 +54,7 @@
 				</div>
 			</div>
 			<div class="mb-5">
-				<label for="company" class="mb-1 block text-sm font-medium">Bedrijfsnaam</label><input
+				<label for="company" class="mb-1 block text-base font-medium">Bedrijfsnaam</label><input
 					id="company"
 					type="text"
 					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
@@ -64,7 +64,7 @@
 				/>
 			</div>
 			<div class="mb-5">
-				<label for="email" class="mb-1 block text-sm font-medium">E-mailadres</label><input
+				<label for="email" class="mb-1 block text-base font-medium">E-mailadres</label><input
 					id="email"
 					type="text"
 					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
@@ -74,7 +74,7 @@
 				/>
 			</div>
 			<div class="mb-5">
-				<label for="phoneNumber" class="mb-1 block text-sm font-medium">Telefoonnummer</label><input
+				<label for="phoneNumber" class="mb-1 block text-base font-medium">Telefoonnummer</label><input
 					id="phoneNumber"
 					type="text"
 					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
@@ -84,7 +84,7 @@
 				/>
 			</div>
 			<div class="mb-5">
-				<label for="message" class="mb-1 block text-sm font-medium"
+				<label for="message" class="mb-1 block text-base font-medium"
 					>Bericht, vraag of opmerking</label
 				><textarea
 					name="message"
@@ -95,7 +95,7 @@
 				></textarea>
 			</div>
 			<div class="mb-5">
-				<label for="agree" class="relative flex gap-x-3 text-sm font-medium"
+				<label for="agree" class="relative flex gap-x-3 text-base font-medium"
 					><input
 						id="agree"
 						type="checkbox"

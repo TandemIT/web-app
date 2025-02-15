@@ -5,6 +5,7 @@
 	// import Tools from '@tabler/icons-svelte/icons/tools';
 	// import People from '@tabler/icons-svelte/icons/users';
 	import IconRosetteDiscountCheck from '@tabler/icons-svelte/icons/rosette-discount-check';
+	import About from './about/About.svelte';
 
 	interface Objective {
 		icon: typeof Globe; // Een van de iconen als type
@@ -57,7 +58,7 @@
 			<div class="lg:col-span-7">
 				<button
 					onclick={() => scrollToSection('mission')}
-					class="subtitle text-primary-600 mb-3 inline-block rounded-full px-4 text-sm font-semibold"
+					class="subtitle text-primary-600 mb-3 inline-block rounded-full px-4 text-base font-semibold"
 					aria-label="Scroll naar onze missie"
 				>
 					Onze missie
@@ -70,26 +71,27 @@
 						<div class="bg-secondary-600 flex flex-col gap-x-4 rounded-2xl p-4">
 							<div class="mt-1 flex shrink-0 gap-2">
 								<Icon class="text-primary-600 h-7 w-7" aria-hidden="true" />
-								<h3 class="text-lg font-semibold dark:text-white">{title}</h3>
+								<h3 class="text-xl font-semibold dark:text-white">{title}</h3>
 							</div>
 							<div>
-								<p class="mt-2 text-sm">{description}</p>
+								<p class="mt-2 text-base">{description}</p>
 							</div>
 						</div>
 					{/each}
-					<div class="bg-primary-300 flex flex-col justify-between rounded-2xl p-4">
-						<h3 class="text-2xl font-bold dark:text-black">Laten we kennis maken</h3>
-
-						<!-- Call-to-action knoppen -->
-						<a
-							href="/contact"
-							class="group inline-flex items-center p-2 text-sm underline transition dark:text-black"
-							aria-label="Neem contact op"
-						>
-							Neem contact op
-							<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
-						</a>
-					</div>
+					<a class="bg-primary-300 flex flex-col justify-between rounded-2xl p-4"
+					href="/contact">
+				   
+				   <h3 class="text-xl font-bold dark:text-black">Laten we kennis maken</h3>
+				 
+				   <!-- Call-to-action knoppen -->
+				   <p class="group inline-flex items-center p-2 text-xl underline transition dark:text-black"
+					  aria-label="Neem contact op">
+					 Neem contact op
+					 <ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
+				   </p>
+				   
+				 </a>
+				 
 				</div>
 			</div>
 		</div>

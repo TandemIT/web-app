@@ -112,7 +112,7 @@
 									{job.title}
 								</h3>
 								{#if job.date}
-									<p class="text-secondary-300 text-sm">{job.date}</p>
+									<p class="text-secondary-300 text-base">{job.date}</p>
 								{/if}
 							</div>
 
@@ -134,7 +134,7 @@
 								{#each job.tags as tag}
 									<span
 										class="bg-secondary-700 text-secondary-100 rounded-full px-3
-												   py-1 text-sm"
+												   py-1 text-base"
 									>
 										{tag}
 									</span>

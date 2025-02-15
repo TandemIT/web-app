@@ -65,10 +65,10 @@
 						{member.name || member.login}
 					</h2>
 					{#if member.company}
-						<p class="text-secondary-600 text-sm font-medium">{member.company}</p>
+						<p class="text-secondary-600 text-base font-medium">{member.company}</p>
 					{/if}
 					{#if member.location}
-						<p class="text-secondary-500 flex items-center justify-center gap-1 text-sm">
+						<p class="text-secondary-500 flex items-center justify-center gap-1 text-base">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								class="h-4 w-4"
@@ -93,7 +93,7 @@
 							href={member.blog.startsWith('http') ? member.blog : `https://${member.blog}`}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="text-primary-600 hover:text-primary-800 bg-secondary-50 hover:bg-secondary-300 rounded-full px-3 py-1 text-sm transition-colors"
+							class="text-primary-600 hover:text-primary-800 bg-secondary-50 hover:bg-secondary-300 rounded-full px-3 py-1 text-base transition-colors"
 						>
 							Website
 						</a>
@@ -102,7 +102,7 @@
 						href={member.html_url}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="text-primary-600 bg-secondary-50 hover:bg-secondary-100 hover:text-secondary-800 rounded-full px-3 py-1 text-sm transition-colors"
+						class="text-primary-600 bg-secondary-50 hover:bg-secondary-100 hover:text-secondary-800 rounded-full px-3 py-1 text-base transition-colors"
 					>
 						Profile
 					</a>

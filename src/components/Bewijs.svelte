@@ -26,7 +26,7 @@
 <section class="mx-auto flex max-w-[calc(100vw-4rem)] flex-col justify-center py-12">
 	<!-- Titel -->
 	<p
-		class="subtitle text-primary-500 mb-6 inline-block -translate-x-4 translate-y-6 rounded-full px-4 py-1 text-sm font-semibold"
+		class="subtitle text-primary-500 mb-6 inline-block -translate-x-4 translate-y-6 rounded-full px-4 py-1 text-base font-semibold"
 	>
 		Cases
 	</p>
@@ -58,7 +58,7 @@
 <section class="mx-auto flex max-w-[calc(100vw-4rem)] flex-col justify-center py-12">
 	<!-- Titel -->
 	<p
-		class="subtitle text-primary-500 mb-6 inline-block -translate-x-4 translate-y-6 rounded-full px-4 py-1 text-sm font-semibold"
+		class="subtitle text-primary-500 mb-6 inline-block -translate-x-4 translate-y-6 rounded-full px-4 py-1 text-base font-semibold"
 	>
 		Insights
 	</p>
