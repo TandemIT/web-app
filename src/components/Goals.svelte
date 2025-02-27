@@ -78,20 +78,18 @@
 							</div>
 						</div>
 					{/each}
-					<a class="bg-primary-300 flex flex-col justify-between rounded-2xl p-4"
-					href="/contact">
-				   
-				   <h3 class="text-xl font-bold dark:text-black">Laten we kennis maken</h3>
-				 
-				   <!-- Call-to-action knoppen -->
-				   <p class="group inline-flex items-center p-2 text-xl underline transition dark:text-black"
-					  aria-label="Neem contact op">
-					 Neem contact op
-					 <ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
-				   </p>
-				   
-				 </a>
-				 
+					<a class="bg-primary-300 flex flex-col justify-between rounded-2xl p-4" href="/contact">
+						<h3 class="text-xl font-bold dark:text-black">Laten we kennis maken</h3>
+
+						<!-- Call-to-action knoppen -->
+						<p
+							class="group inline-flex items-center p-2 text-xl underline transition dark:text-black"
+							aria-label="Neem contact op"
+						>
+							Neem contact op
+							<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
+						</p>
+					</a>
 				</div>
 			</div>
 		</div>

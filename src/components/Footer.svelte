@@ -53,7 +53,7 @@
 	}
 </script>
 
-<footer class=" bg-secondary-800 text-secondary-100 px-4 py-12 pb-4 font-sans">
+<footer class=" bg-secondary-700 text-secondary-100 px-4 py-12 pb-4 font-sans">
 	<div class="mx-auto max-w-7xl">
 		<div class="grid grid-cols-1 gap-8 md:grid-cols-4">
 			<!-- Bedrijfsinformatie -->

@@ -6,7 +6,7 @@
 </script>
 
 <!-- +page.svelte -->
-<div class="relative flex min-h-[calc(100vh-4.35rem)] items-center overflow-hidden">
+<div class="relative flex min-h-[calc(100vh-4.35rem)] items-center">
 	<div class="wrapper grid-cols-12 lg:grid">
 		<div class="col-span-7">
 			<h1 class="font-grotesk text-secondary-50 mb-4 text-6xl leading-tight font-medium">
@@ -23,13 +23,12 @@
 			</div>
 		</div>
 	</div>
-
 	<img
 		src="/Heading.svg"
 		alt="Tandem IT logo"
 		width="1542"
 		height="914"
-		class="absolute right-0 bottom-0 -z-10 w-3/4"
+		class=" overflow-invisible absolute inset-y-0 right-0 bottom-0 -z-10 h-auto w-3/4 origin-bottom-right object-contain"
 	/>
 </div>
 

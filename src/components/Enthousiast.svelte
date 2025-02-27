@@ -90,8 +90,8 @@
 								<Icon class="text-primary-600 h-6 w-6" aria-hidden="true" />
 							</div>
 							<div>
-								<h3 class="font-semibold text-lg text-neutral-900">{title}</h3>
-								<p class="mt-2 text-neutral-600 text-base">{description}</p>
+								<h3 class="text-lg font-semibold text-neutral-900">{title}</h3>
+								<p class="mt-2 text-base text-neutral-600">{description}</p>
 							</div>
 						</div>
 					{/each}
@@ -105,15 +105,15 @@
 
 				<!-- Call-to-action knoppen -->
 				<!-- <div class="flex justify-between"> -->
-					<a
-						href="/about"
-						class="group text-secondary-600 right-auto left-0 inline-flex items-center rounded-lg text-base font-semibold underline transition"
-						aria-label="Lees meer"
-					>
-						Lees meer
-						<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
-					</a>
-					<!-- <a
+				<a
+					href="/about"
+					class="group text-secondary-600 right-auto left-0 inline-flex items-center rounded-lg text-base font-semibold underline transition"
+					aria-label="Lees meer"
+				>
+					Lees meer
+					<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
+				</a>
+				<!-- <a
 						href="/contact"
 						class="group text-secondary-600 right-0 left-auto inline-flex items-center rounded-lg text-base font-semibold underline transition"
 						aria-label="Neem contact op"

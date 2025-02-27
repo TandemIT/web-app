@@ -5,7 +5,8 @@
 
 @theme {
 	/* Typography */
-	--font-sans: 'Poppins', sans-serif, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+	--font-sans:
+		'Poppins', sans-serif, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
 		'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 	--font-grotesk: 'Space Grotesk Variable', sans-serif;
 
@@ -109,7 +110,7 @@
 
 		/* Improved focus states */
 		&:focus-visible {
-			@apply outline outline-2 outline-offset-2;
+			@apply outline outline-offset-2;
 		}
 
 		/* Hover animation */

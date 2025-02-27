@@ -74,7 +74,8 @@
 				/>
 			</div>
 			<div class="mb-5">
-				<label for="phoneNumber" class="mb-1 block text-base font-medium">Telefoonnummer</label><input
+				<label for="phoneNumber" class="mb-1 block text-base font-medium">Telefoonnummer</label
+				><input
 					id="phoneNumber"
 					type="text"
 					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
