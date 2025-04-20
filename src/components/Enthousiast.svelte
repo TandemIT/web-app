@@ -22,7 +22,7 @@
 			icon: Code,
 			title: 'Technisch onderlegd',
 			description:
-				'Expertise in moderne frameworks zoals React, Svelte, Node.js en expertise in cloud-oplossingen.'
+				'Expertise in moderne frameworks zoals React, Svelte, Node.js, netwerken en expertise in cloud-oplossingen.'
 		},
 		{
 			icon: Rocket,
@@ -78,8 +78,7 @@
 				<p class="mb-8 text-lg text-neutral-600">
 					Bij Tandem IT combineren we theoretische kennis met praktische ervaring. Als
 					studentbedrijf van de Hogeschool Utrecht werken we aan real-world projecten onder
-					begeleiding van ervaren professionals. Onze unieke positie stelt ons in staat om
-					innovatieve oplossingen te bieden tegen studentvriendelijke tarieven.
+					begeleiding van ervaren professionals.
 				</p>
 
 				<!-- Features grid -->

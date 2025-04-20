@@ -89,7 +89,7 @@
 </section>
 
 <!-- Process Section -->
-<section class="relative min-h-screen">
+<section class="relative min-h-screen" id="aanpak">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="flex flex-col gap-20 lg:flex-row lg:gap-24">
 			<!-- Left Column: Process Steps -->
