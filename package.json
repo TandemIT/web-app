@@ -25,15 +25,15 @@
 		"@tailwindcss/postcss": "^4.1.4",
 		"@tailwindcss/typography": "^0.5.16",
 		"lucide-svelte": "^0.503.0",
-		"mdsvex": "^0.12.4",
+		"mdsvex": "^0.12.5",
 		"prettier": "^3.5.3",
 		"prettier-plugin-svelte": "^3.3.3",
 		"prettier-plugin-tailwindcss": "^0.6.11",
-		"svelte": "^5.28.1",
+		"svelte": "^5.28.2",
 		"svelte-check": "^4.1.6",
 		"tailwindcss": "^4.1.4",
 		"typescript": "^5.8.3",
-		"vite": "^6.3.2"
+		"vite": "^6.3.3"
 	},
 	"dependencies": {
 		"@fontsource-variable/space-grotesk": "^5.2.6",
