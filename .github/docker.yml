@@ -6,10 +6,13 @@ on:
       - main
       - master
 
-
 jobs:
   docker:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [linux/amd64, linux/arm64]
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,7 +29,6 @@ jobs:
       - name: Generate semantic version
         id: semver
         run: |
-          # Calculate version based on the run number
           RUN_NUMBER=${GITHUB_RUN_NUMBER}
           MAJOR=$((RUN_NUMBER / 100))
           MINOR=$(((RUN_NUMBER % 100) / 10))
@@ -35,7 +37,6 @@ jobs:
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Calculated version: $VERSION (from run #$RUN_NUMBER)"
-      
 
       - name: Set lowercase repo name
         run: echo "REPO_LC=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
@@ -48,9 +49,13 @@ jobs:
             ${{ env.REPO_LC }}:latest
             ${{ env.REPO_LC }}:${{ env.VERSION }}
             ${{ env.REPO_LC }}:${{ env.VERSION }}-${{ github.sha }}
-          platforms: linux/amd64,linux/arm64
+          platforms: ${{ matrix.platform }}
           push: ${{ github.event_name != 'pull_request' }}
-
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Clean up unused Docker images
-        run: docker image prune -af
+        run: |
+          if [ ${{ github.event_name != 'pull_request' }} ]; then
+            docker image prune -af
+          fi
