@@ -2,6 +2,10 @@ name: Build and Push Docker Image on Add/Remove
 
 on:
   push:
+    branches:
+      - main
+      - master
+
 
 jobs:
   docker:
@@ -31,6 +35,10 @@ jobs:
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Calculated version: $VERSION (from run #$RUN_NUMBER)"
+      
+
+      - name: Set lowercase repo name
+        run: echo "REPO_LC=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v6
