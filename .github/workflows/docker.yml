@@ -1,4 +1,4 @@
-name: Build and Push Docker Image on Add/Remove
+name: Build and Push Docker Image
 
 on:
   workflow_dispatch:
@@ -6,9 +6,6 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        platform: [linux/amd64, linux/arm64]
 
     steps:
       - name: Checkout repository
@@ -38,21 +35,19 @@ jobs:
       - name: Set lowercase repo name
         run: echo "REPO_LC=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
 
-      - name: Build and Push Docker Image
+      - name: Build and Push Multi-Arch Docker Image
         uses: docker/build-push-action@v6
         with:
           context: .
+          push: true
+          platforms: linux/amd64,linux/arm64
           tags: |
             ${{ env.REPO_LC }}:latest
             ${{ env.REPO_LC }}:${{ env.VERSION }}
             ${{ env.REPO_LC }}:${{ env.VERSION }}-${{ github.sha }}
-          platforms: ${{ matrix.platform }}
-          push: ${{ github.event_name != 'pull_request' }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
       - name: Clean up unused Docker images
-        run: |
-          if [ ${{ github.event_name != 'pull_request' }} ]; then
-            docker image prune -af
-          fi
+        if: github.event_name != 'pull_request'
+        run: docker image prune -af
