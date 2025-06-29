@@ -66,7 +66,7 @@
 			<!-- Rechter kolom met content -->
 			<div class="lg:col-span-7 lg:col-start-6">
 				<button
-					on:click={goAbout}
+					onclick={goAbout}
 					class="subtitle text-primary-500 hover:bg-primary-50 mb-2 inline-block rounded-full px-4 py-1 text-sm font-semibold transition"
 					aria-label="Scroll naar de Over ons sectie"
 				>

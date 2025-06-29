@@ -44,8 +44,8 @@
 		}
 	];
 
-	let activeSection: number | null = null;
-	let isAnimating = false;
+	let activeSection = $state<number | null>(null);
+	let isAnimating = $state(false);
 
 	function handleMouseEnter(index: number) {
 		activeSection = index;
@@ -77,9 +77,9 @@
 					class="group bg-secondary-600 hover:bg-secondary-500 relative transform overflow-hidden
                                rounded-xl p-6 transition-all duration-300
                                hover:scale-[1.02] hover:shadow-xl"
-					on:mouseenter={() => handleMouseEnter(index)}
-					on:mouseleave={handleMouseLeave}
-					on:keydown={(e) => handleKeyDown(e, index)}
+					onmouseenter={() => handleMouseEnter(index)}
+					onmouseleave={handleMouseLeave}
+					onkeydown={(e) => handleKeyDown(e, index)}
 					role="button"
 					tabindex="0"
 				>

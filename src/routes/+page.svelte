@@ -1,8 +1,24 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import Enthousiast from '../components/Enthousiast.svelte';
 	import Goals from '../components/Goals.svelte';
 	import Aanpak from '../components/Aanpak.svelte';
 	import Bewijs from '../components/Bewijs.svelte';
+
+	// Handle smooth scrolling for anchor links
+	function handleScrollToSection(event: MouseEvent, sectionId: string) {
+		if (!browser) return;
+		
+		event.preventDefault();
+		const element = document.getElementById(sectionId);
+		
+		if (element) {
+			element.scrollIntoView({ 
+				behavior: 'smooth',
+				block: 'start'
+			});
+		}
+	}
 </script>
 
 <!-- +page.svelte -->
@@ -19,7 +35,12 @@
 			</p>
 			<div class="mt-7 flex items-center gap-x-3">
 				<a href="/contact" class="button button-primary">Contacteer ons</a>
-				<a href="/#cases" class="button button-secondary">Bekijk onze cases</a>
+				<button 
+					onclick={(e) => handleScrollToSection(e, 'cases')}
+					class="button button-secondary"
+				>
+					Bekijk onze cases
+				</button>
 			</div>
 		</div>
 	</div>
@@ -37,8 +58,9 @@
 <div class="wrapper">
 	<img src="/Team.png" alt="Tandem IT Team" width="1640" height="688" class="relative -mt-20" />
 </div>
-<Aanpak />
-<Goals />
-<Bewijs />
-<!-- Devider for better viewing of the sections -->
+
+	<Aanpak />
+	<Goals />
+	<Bewijs />
+	<!-- Devider for better viewing of the sections -->
 <!-- <div class="h-1 min-w-full bg-secondary-50"></div> -->

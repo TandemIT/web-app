@@ -15,7 +15,13 @@ const config = {
 		adapter: adapter()
 	},
 
-	extensions: ['.svelte', '.svx']
+	extensions: ['.svelte', '.svx'],
+	
+	// Svelte 5 specific options
+	compilerOptions: {
+		// Enable modern compilation mode for better performance
+		modernAst: true
+	}
 };
 
 export default config;

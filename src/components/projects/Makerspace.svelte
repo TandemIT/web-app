@@ -49,7 +49,7 @@
 		window.open(href, '_blank', 'noopener,noreferrer');
 	}
 
-	let hoveredIndex: number | null = null;
+	let hoveredIndex = $state<number | null>(null);
 
 	function handleMouseEnter(index: number) {
 		hoveredIndex = index;
@@ -90,8 +90,8 @@
 			{#each jobs as job, index}
 				<li
 					class="group relative"
-					on:mouseenter={() => handleMouseEnter(index)}
-					on:mouseleave={handleMouseLeave}
+					onmouseenter={() => handleMouseEnter(index)}
+					onmouseleave={handleMouseLeave}
 				>
 					<button
 						class="bg-secondary-600 hover:bg-secondary-500 focus-visible:ring-primary-300 block w-full transform
@@ -99,8 +99,8 @@
 								   text-left transition-all
 								   duration-300 hover:shadow-xl
 								   focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-						on:click={(e) => goHref(job.href, e)}
-						on:keydown={(e) => handleKeyPress(e, job.href)}
+						onclick={(e) => goHref(job.href, e)}
+						onkeydown={(e) => handleKeyPress(e, job.href)}
 					>
 						<div class="mb-4 flex items-start justify-between">
 							<div class="flex-1">

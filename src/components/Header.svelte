@@ -1,16 +1,52 @@
 <script lang="ts">
 	import { Menu, X } from 'lucide-svelte';
 	import { fade } from 'svelte/transition';
+	import { browser } from '$app/environment';
+	import { page } from '$app/stores';
 
 	const links = [
-		{ href: '/', name: 'Home' },
-		{ href: '/#approach', name: 'Aanpak' },
-		{ href: '/#mission', name: 'Missie' },
-		{ href: '/#cases', name: 'Cases' },
-		{ href: '/#insights', name: 'Insights' }
+		{ href: '/', name: 'Home', id: null },
+		{ href: '/#aanpak', name: 'Aanpak', id: 'aanpak' },
+		{ href: '/#missie', name: 'Missie', id: 'missie' },
+		{ href: '/#cases', name: 'Cases', id: 'cases' },
+		{ href: '/about', name: 'Over ons', id: null }
 	];
 
-	let isMenuOpen = false;
+	let isMenuOpen = $state(false);
+	let activeSection = $state<string | null>(null);
+
+	// Intersection Observer to detect active section
+	$effect(() => {
+		if (!browser) return;
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+						activeSection = entry.target.id;
+					}
+				});
+			},
+			{
+				threshold: 0.5,
+				rootMargin: '-100px 0px -100px 0px'
+			}
+		);
+
+		// Observe all sections
+		const sections = document.querySelectorAll('#aanpak, #missie, #cases');
+		sections.forEach((section) => observer.observe(section));
+
+		return () => observer.disconnect();
+	});
+
+	// Check if link is active
+	const isActiveLink = $derived((link: typeof links[0]) => {
+		if (link.id) {
+			return activeSection === link.id;
+		}
+		return $page.url.pathname === link.href;
+	});
 
 	// Sluit het mobiele menu wanneer er buiten geklikt wordt
 	function closeMenu(event: MouseEvent) {
@@ -22,6 +58,28 @@
 
 	// Sluit het mobiele menu wanneer een link wordt aangeklikt
 	function handleLinkClick() {
+		isMenuOpen = false;
+	}
+
+	// Handle smooth scrolling for anchor links
+	function handleNavClick(event: MouseEvent, href: string) {
+		if (!browser) return;
+		
+		// Check if it's an anchor link
+		if (href.startsWith('/#')) {
+			event.preventDefault();
+			const id = href.substring(2); // Remove '/#'
+			const element = document.getElementById(id);
+			
+			if (element) {
+				element.scrollIntoView({ 
+					behavior: 'smooth',
+					block: 'start'
+				});
+			}
+		}
+		
+		// Close mobile menu
 		isMenuOpen = false;
 	}
 </script>
@@ -43,8 +101,11 @@
 				{#each links as link}
 					<a
 						href={link.href}
-						class="hover:text-secondary-50 font-medium duration-300"
-						aria-current={link.href === '/' ? 'page' : undefined}
+						class="font-medium duration-300 {isActiveLink(link) 
+							? 'text-primary-300 border-b-2 border-primary-300' 
+							: 'hover:text-secondary-50'}"
+						aria-current={isActiveLink(link) ? 'page' : undefined}
+						onclick={(e) => handleNavClick(e, link.href)}
 					>
 						{link.name}
 					</a>
@@ -55,20 +116,19 @@
 		<div class="flex items-center">
 			<!-- CTA Button -->
 			<a href="/contact" class="button button-primary ml-4"> Contact </a>
-
-			<!-- Mobiel menu knop -->
-			<button
-				onclick={() => (isMenuOpen = !isMenuOpen)}
-				class="text-secondary-50 hover:bg-secondary-900/10 ml-4 rounded-sm p-2 md:hidden"
-				aria-label="Toggle menu"
-				aria-expanded={isMenuOpen}
-			>
-				{#if isMenuOpen}
-					<X class="h-6 w-6" />
-				{:else}
-					<Menu class="h-6 w-6" />
-				{/if}
-			</button>
+		<!-- Mobiel menu knop -->
+		<button
+			onclick={() => (isMenuOpen = !isMenuOpen)}
+			class="text-secondary-50 hover:bg-secondary-900/10 ml-4 rounded-sm p-2 md:hidden"
+			aria-label="Toggle menu"
+			aria-expanded={isMenuOpen}
+		>
+			{#if isMenuOpen}
+				<X class="h-6 w-6" />
+			{:else}
+				<Menu class="h-6 w-6" />
+			{/if}
+		</button>
 		</div>
 	</nav>
 
@@ -85,8 +145,10 @@
 						<li>
 							<a
 								href={link.href}
-								class="hover:text-secondary-50 block font-medium duration-300"
-								onclick={handleLinkClick}
+								class="block font-medium duration-300 {isActiveLink(link) 
+									? 'text-primary-300' 
+									: 'hover:text-secondary-50'}"
+								onclick={(e) => handleNavClick(e, link.href)}
 							>
 								{link.name}
 							</a>

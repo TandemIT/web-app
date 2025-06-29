@@ -8,7 +8,7 @@
 	import '@fontsource-variable/space-grotesk';
 </script>
 
-<div class="flex min-h-screen flex-col justify-between">
+<div class="flex min-h-screen flex-col justify-between ">
 	<Header />
 	<div class="min-h-height">
 		{@render children()}
@@ -17,3 +17,5 @@
 
 	<Footer />
 </div>
+
+<!-- min-h-screen bg-gradient-to-br from-secondary-800 via-secondary-700 to-secondary-900 flex items-center justify-center px-4 -->
