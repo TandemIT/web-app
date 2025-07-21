@@ -18,7 +18,7 @@
 	"devDependencies": {
 		"@playwright/test": "^1.54.1",
 		"@sveltejs/adapter-auto": "^4.0.0",
-		"@sveltejs/kit": "^2.22.5",
+		"@sveltejs/kit": "^2.25.1",
 		"@sveltejs/vite-plugin-svelte": "^5.1.1",
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@tailwindcss/forms": "^0.5.10",
@@ -29,8 +29,8 @@
 		"prettier": "^3.6.2",
 		"prettier-plugin-svelte": "^3.4.0",
 		"prettier-plugin-tailwindcss": "^0.6.14",
-		"svelte": "^5.35.7",
-		"svelte-check": "^4.2.2",
+		"svelte": "^5.36.13",
+		"svelte-check": "^4.3.0",
 		"tailwindcss": "^4.1.11",
 		"typescript": "^5.8.3",
 		"vite": "^6.3.5"
@@ -38,7 +38,7 @@
 	"dependencies": {
 		"@fontsource-variable/space-grotesk": "^5.2.8",
 		"@fontsource/poppins": "^5.2.6",
-		"@tabler/icons-svelte": "^3.34.0"
+		"@tabler/icons-svelte": "^3.34.1"
 	},
 	"packageManager": "pnpm@10.7.1+sha512.2d92c86b7928dc8284f53494fb4201f983da65f0fb4f0d40baafa5cf628fa31dae3e5968f12466f17df7e97310e30f343a648baea1b9b350685dafafffdf5808"
 }
