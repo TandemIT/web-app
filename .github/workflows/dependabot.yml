@@ -19,9 +19,15 @@ jobs:
     if: ${{ github.actor == 'dependabot[bot]'  && startsWith(github.event.pull_request.title, 'Bump') && contains(github.event.pull_request.labels.*.name, 'dependabot-auto-merge') }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
+
+      - name: Set up Git user
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
 
       - name: Validate PR is up-to-date
         run: |
