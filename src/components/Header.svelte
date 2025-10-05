@@ -3,6 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
+	import Button from './ui/Button.svelte';
 
 	const links = [
 		{ href: '/', name: 'Home', id: null },
@@ -130,7 +131,7 @@
 
 		<div class="flex items-center">
 			<!-- CTA Button -->
-			<a href="/contact" class="button button-primary ml-4"> Contact </a>
+			<Button variant="primary" href="/contact" class="ml-4">Contact</Button>
 		<!-- Mobiel menu knop -->
 		<button
 			onclick={() => (isMenuOpen = !isMenuOpen)}

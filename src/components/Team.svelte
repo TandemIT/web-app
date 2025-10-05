@@ -1,5 +1,6 @@
 <script lang="ts">
 	import rawMembers from '$lib/api/summaryReport.json';
+	import Heading from './ui/Heading.svelte';
 
 	interface Member {
 		login: string;
@@ -73,9 +74,9 @@
 		</div>
 
 		<div class="space-y-2 text-center">
-			<h3 class="font-grotesk text-secondary-900 text-2xl font-semibold">
+			<Heading level={3} variant="card">
 				{member.name || member.login}
-			</h3>
+			</Heading>
 			{#if member.company}
 				<p class="text-secondary-700 text-lg font-medium">{member.company}</p>
 			{/if}
@@ -149,9 +150,9 @@
 <div class="py-16 bg-secondary-800">
 	<div class="container mx-auto px-4">
 		<div class="mb-12 text-center">
-			<h2 class="font-grotesk text-secondary-200 mb-4 text-4xl font-semibold">
+			<Heading level={2} variant="section" class="text-secondary-200 mb-4">
 				Ons Team
-			</h2>
+			</Heading>
 			<p class="text-secondary-300 mx-auto max-w-2xl text-lg">
 				De mensen achter Tandem IT - enthousiaste studenten met passie voor technologie en innovatie.
 			</p>
