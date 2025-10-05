@@ -46,6 +46,12 @@
 			following: member.following || 0
 		}))
 		.filter(validateMember);
+
+	// Decode encoded blog URLs client-side to avoid scrapers
+	let decodedMembers = $derived(members.map(member => ({
+		...member,
+		blog: member.blog ? member.blog.replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec)) : null
+	})));
 </script>
 
 {#snippet memberCard(member: Member)}
@@ -152,7 +158,7 @@
 		</div>
 
 		<div class="flex flex-wrap justify-center gap-6">
-			{#each members as member (member.id)}
+			{#each decodedMembers as member (member.id)}
 				{@render memberCard(member)}
 			{/each}
 		</div>

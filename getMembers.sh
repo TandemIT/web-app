@@ -24,7 +24,10 @@ eval "curl $AUTH https://api.github.com/orgs/$ORG_NAME/members -o src/lib/api/li
 
 # Iterate over each member to get detailed information
 jq -r '.[].login' src/lib/api/listMembers.json | while read login; do
-    eval "curl $AUTH https://api.github.com/users/$login -o src/lib/api/members/$login.json"
+    eval "curl $AUTH https://api.github.com/users/$login -o src/lib/api/members/$login.json.tmp"
+    # Encode sensitive data in the individual member file
+    jq 'if .blog then .blog |= sub("o"; "&#111;") else . end' "src/lib/api/members/$login.json.tmp" > "src/lib/api/members/$login.json"
+    rm "src/lib/api/members/$login.json.tmp"
     sleep 1  # Add a delay to avoid hitting the rate limit
 done
 
@@ -38,7 +41,20 @@ if [ -d "src/lib/api/members" ] && [ "$(ls -A src/lib/api/members/*.json 2>/dev/
         else
             echo "," >> src/lib/api/summaryReport.json
         fi
-        jq '{login, id, avatar_url, html_url, name, company, blog, location, public_repos, followers, following}' "$file" >> src/lib/api/summaryReport.json
+        # Encode sensitive data (blog URLs) with HTML entities to prevent scraping
+        jq '{
+            login,
+            id,
+            avatar_url,
+            html_url,
+            name,
+            company,
+            blog: (.blog | if . then sub("o"; "&#111;") else . end),
+            location,
+            public_repos,
+            followers,
+            following
+        }' "$file" >> src/lib/api/summaryReport.json
     done
     echo "]" >> src/lib/api/summaryReport.json
 else

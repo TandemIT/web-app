@@ -44,7 +44,7 @@
 	}
 </script>
 
-<section class="pt-16 pb-36 dark:bg-neutral-50 dark:text-neutral-800">
+<section id="missie" class="pt-16 pb-36 dark:bg-neutral-50 dark:text-neutral-800">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="grid gap-10 lg:grid-cols-12">
 			<!-- Linker kolom met afbeelding en statistieken -->

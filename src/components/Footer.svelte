@@ -12,10 +12,10 @@
 	}
 
 	const socialLinks: SocialLink[] = [
-		{ icon: Facebook, url: 'https://www.facebook.com/tandem-it', name: 'Facebook' },
-		{ icon: Twitter, url: 'https://www.twitter.com/tandem-it', name: 'Twitter' },
-		{ icon: Instagram, url: 'https://www.instagram.com/tandem-it', name: 'Instagram' },
-		{ icon: Linkedin, url: 'https://www.linkedin.com/company/tandem-it', name: 'LinkedIn' }
+		{ icon: Facebook, url: 'https://www.f&#97;cebook.com/t&#97;ndem-it', name: 'Facebook' },
+		{ icon: Twitter, url: 'https://www.twitter.com/t&#97;ndem-it', name: 'Twitter' },
+		{ icon: Instagram, url: 'https://www.inst&#97;gr&#97;m.com/t&#97;ndem-it', name: 'Instagram' },
+		{ icon: Linkedin, url: 'https://www.linkedin.com/comp&#97;ny/t&#97;ndem-it', name: 'LinkedIn' }
 	];
 
 	interface QuickLink {
@@ -35,9 +35,21 @@
 	const contactInfo = {
 		visitAddress: ['plaats in', 'Utrecht'],
 		postAddress: ['Postbus', 'Utrecht'],
-		email: 'info.tandemit@hu.nl',
-		phone: '06 12345678'
+		email: 'info.t&#97;ndemit&#64;hu.nl', // Obfuscated
+		phone: '06 &#49;23&#52;5&#54;7&#56;' // Obfuscated with HTML entities
 	};
+
+	// Decode contact info client-side to avoid scrapers
+	let decodedContact = $derived({
+		email: contactInfo.email.replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec)),
+		phone: contactInfo.phone.replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec))
+	});
+
+	// Decode social media URLs client-side to avoid scrapers
+	let decodedSocialLinks = $derived(socialLinks.map(link => ({
+		...link,
+		url: link.url.replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec))
+	})));
 
 	const openingHours = [
 		{ day: 'Maandag', time: '09:30 - 16:30' },
@@ -103,8 +115,8 @@
 					{#each contactInfo.postAddress as line}
 						<p>{line}</p>
 					{/each}
-					<p class="mt-4">Email: {contactInfo.email}</p>
-					<p>Tel: {contactInfo.phone}</p>
+					<p class="mt-4">Email: {decodedContact.email}</p>
+					<p>Tel: {decodedContact.phone}</p>
 				</div>
 			</div>
 
@@ -131,7 +143,7 @@
 				{/if}
 			</p>
 			<div class="flex space-x-4">
-				{#each socialLinks as { icon: Icon, url, name }}
+				{#each decodedSocialLinks as { icon: Icon, url, name }}
 					<a
 						href={url}
 						class="text-secondary-400 hover:text-primary-400 transition-colors"

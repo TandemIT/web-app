@@ -4,26 +4,26 @@
 		{
 			title: 'Project 1',
 			description: 'Een geavanceerd project met moderne technologieën.',
-			link: '#',
+			link: '/projects',
 			image: 'https://placehold.co/600x400'
 		},
 		{
 			title: 'Project 2',
 			description: 'Een innovatief project gericht op schaalbare oplossingen.',
-			link: '#',
+			link: '/projects',
 			image: 'https://placehold.co/600x400'
 		},
 		{
 			title: 'Project 3',
 			description: 'Een creatief project met een focus op gebruiksvriendelijkheid.',
-			link: '#',
+			link: '/projects',
 			image: 'https://placehold.co/600x400'
 		}
 	];
 </script>
 
 <!-- Bewijs van Excellence -->
-<section class="mx-auto flex max-w-[calc(100vw-4rem)] flex-col justify-center py-12">
+<section id="cases" class="mx-auto flex max-w-[calc(100vw-4rem)] flex-col justify-center py-12">
 	<!-- Titel -->
 	<p
 		class="subtitle text-primary-500 mb-6 inline-block -translate-x-4 translate-y-6 rounded-full px-4 py-1 text-base font-semibold"

@@ -1,5 +1,74 @@
 <script lang="ts">
-	let email = '7d9Mw@example.com';
+	// Obfuscated email - will be decoded client-side
+	let email = 'info.t&#97;ndemit&#64;hu.nl';
+
+	let formData = $state({
+		firstName: '',
+		lastName: '',
+		company: '',
+		email: '',
+		phoneNumber: '',
+		message: '',
+		agree: false,
+		// Honeypot fields (hidden from users but visible to bots)
+		website: '',
+		phone: ''
+	});
+
+	let isSubmitting = $state(false);
+	let submitMessage = $state('');
+	let formStartTime = $state(Date.now());
+
+	// Decode email client-side to avoid scrapers
+	let decodedEmail = $derived(email.replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec)));
+
+	async function handleSubmit(event: Event) {
+		event.preventDefault();
+		isSubmitting = true;
+		submitMessage = '';
+
+		// Anti-bot checks
+		const timeElapsed = Date.now() - formStartTime;
+		if (timeElapsed < 3000) { // Form submitted too quickly (likely a bot)
+			submitMessage = 'Formulier te snel ingediend. Probeer het over een paar seconden opnieuw.';
+			isSubmitting = false;
+			return;
+		}
+
+		if (formData.website || formData.phone) { // Honeypot fields filled
+			submitMessage = 'Spam gedetecteerd. Probeer het opnieuw.';
+			isSubmitting = false;
+			return;
+		}
+
+		try {
+			// Here you would typically send the form data to your backend
+			// For now, we'll simulate a submission
+			await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate network delay
+
+			// Reset form
+			formData = {
+				firstName: '',
+				lastName: '',
+				company: '',
+				email: '',
+				phoneNumber: '',
+				message: '',
+				agree: false,
+				website: '',
+				phone: ''
+			};
+
+			// Reset timer
+			formStartTime = Date.now();
+
+			submitMessage = 'Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.';
+		} catch (error) {
+			submitMessage = 'Er is iets misgegaan. Probeer het opnieuw.';
+		} finally {
+			isSubmitting = false;
+		}
+	}
 </script>
 
 <div class="wrapper mt-10 grid gap-4 lg:grid-cols-12">
@@ -9,7 +78,7 @@
 			<div>
 				<p class="mb-2 text-lg font-medium">Mail ons</p>
 				<p>Mail met ons.</p>
-				<a class="font-medium" href="mailto:{email}"> {email}</a>
+				<a class="font-medium" href="mailto:{decodedEmail}">{decodedEmail}</a>
 			</div>
 			<div>
 				<p class="mb-2 text-lg font-medium">Openingsuren</p>
@@ -24,13 +93,15 @@
 				<p class="mb-2 text-lg font-medium">Adres gegevens</p>
 				<p class="font-medium">Heidelberglaan 15</p>
 				<p class="font-medium">Science park, Utrecht</p>
-				<p class="font-medium">Nederland</p>
+				<p class="font-medium">
+					<span class="text-transparent" style="text-shadow: 0 0 0 currentColor;">Nederland</span>
+				</p>
 			</div>
 		</div>
 	</div>
 	<div class="col-span-1"></div>
 	<div class="col-span-7">
-		<form class="bg-secondary-600 flex flex-col gap-5 rounded-xl p-10">
+		<form class="bg-secondary-600 flex flex-col gap-5 rounded-xl p-10" onsubmit={handleSubmit}>
 			<div class="grid gap-x-5 lg:grid-cols-2">
 				<div class="mb-5">
 					<label for="firstName" class="mb-1 block text-base font-medium">Voornaam</label><input
@@ -39,7 +110,7 @@
 						class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
 						required
 						name="firstName"
-						value=""
+						bind:value={formData.firstName}
 					/>
 				</div>
 				<div class="mb-5">
@@ -49,7 +120,7 @@
 						class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
 						required
 						name="lastName"
-						value=""
+						bind:value={formData.lastName}
 					/>
 				</div>
 			</div>
@@ -60,28 +131,28 @@
 					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
 					required
 					name="company"
-					value=""
+					bind:value={formData.company}
 				/>
 			</div>
 			<div class="mb-5">
 				<label for="email" class="mb-1 block text-base font-medium">E-mailadres</label><input
 					id="email"
-					type="text"
+					type="email"
 					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
 					required
 					name="email"
-					value=""
+					bind:value={formData.email}
 				/>
 			</div>
 			<div class="mb-5">
 				<label for="phoneNumber" class="mb-1 block text-base font-medium">Telefoonnummer</label
 				><input
 					id="phoneNumber"
-					type="text"
+					type="tel"
 					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
 					required
 					name="phoneNumber"
-					value=""
+					bind:value={formData.phoneNumber}
 				/>
 			</div>
 			<div class="mb-5">
@@ -93,7 +164,31 @@
 					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
 					rows="4"
 					required
+					bind:value={formData.message}
 				></textarea>
+			</div>
+			<!-- Honeypot fields - hidden from humans but visible to bots -->
+			<div class="hidden">
+				<label for="website">Website (leave blank)</label>
+				<input
+					id="website"
+					type="text"
+					name="website"
+					bind:value={formData.website}
+					tabindex="-1"
+					autocomplete="off"
+				/>
+			</div>
+			<div class="hidden">
+				<label for="phone">Phone (leave blank)</label>
+				<input
+					id="phone"
+					type="text"
+					name="phone"
+					bind:value={formData.phone}
+					tabindex="-1"
+					autocomplete="off"
+				/>
 			</div>
 			<div class="mb-5">
 				<label for="agree" class="relative flex gap-x-3 text-base font-medium"
@@ -103,7 +198,7 @@
 						class="peer absolute opacity-0"
 						required
 						name="agree"
-						value=""
+						bind:checked={formData.agree}
 					/><span
 						class="outline-primary/50 border-secondary-400 peer-checked:border-secondary-50/50 peer-checked:bg-secondary-50/50 flex h-5 w-5 items-center justify-center rounded border-2 text-transparent outline-2 outline-offset-1 peer-checked:text-white peer-focus:outline"
 						><svg
@@ -119,9 +214,18 @@
 					>Ik heb kennis genomen van de privacyverklaring en ga hiermee akkoord.</label
 				>
 			</div>
-			<button type="submit" class="bg-primary rounded-lg px-4 py-3 font-medium text-white"
-				><span>Verstuur bericht</span></button
+			{#if submitMessage}
+				<div class="mb-5 rounded-lg bg-green-600 p-4 text-white">
+					{submitMessage}
+				</div>
+			{/if}
+			<button 
+				type="submit" 
+				class="bg-primary rounded-lg px-4 py-3 font-medium text-white disabled:opacity-50"
+				disabled={isSubmitting}
 			>
+				<span>{isSubmitting ? 'Bezig met verzenden...' : 'Verstuur bericht'}</span>
+			</button>
 		</form>
 	</div>
 </div>
