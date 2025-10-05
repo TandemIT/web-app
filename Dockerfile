@@ -61,7 +61,7 @@ WORKDIR /usr/src/app
 
 # Copy only necessary build output + production dependencies
 COPY --from=deps /usr/src/app/node_modules ./node_modules
-COPY --from=build /usr/src/app/dist ./dist
+COPY --from=build /usr/src/app/build ./build
 COPY package.json ./
 
 # Copy scripts and cron configuration
@@ -81,4 +81,4 @@ USER appuser
 EXPOSE 3000
 
 # Start cron in background and run the app
-CMD ["sh", "-c", "crond && node dist/index.js"]
+CMD ["sh", "-c", "crond && node build/index.js"]
