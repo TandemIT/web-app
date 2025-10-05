@@ -151,7 +151,7 @@
 			</p>
 		</div>
 
-		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-items-center">
+		<div class="flex flex-wrap justify-center gap-6">
 			{#each members as member (member.id)}
 				{@render memberCard(member)}
 			{/each}
