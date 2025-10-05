@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Team from '../Team.svelte';
+
 	interface Section {
 		title: string;
 		content: string;
@@ -118,3 +120,7 @@
 		</div>
 	</div>
 </section>
+
+
+
+<Team />

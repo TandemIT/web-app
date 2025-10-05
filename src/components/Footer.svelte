@@ -33,8 +33,8 @@
 	];
 
 	const contactInfo = {
-		visitAddress: ['Heidelberglaan 15', '3584 CS Utrecht'],
-		postAddress: ['Postbus 182', '3500 AD Utrecht'],
+		visitAddress: ['plaats in', 'Utrecht'],
+		postAddress: ['Postbus', 'Utrecht'],
 		email: 'info.tandemit@hu.nl',
 		phone: '06 12345678'
 	};
@@ -45,7 +45,8 @@
 		{ day: 'Woensdag', time: '09:30 - 16:30' },
 		{ day: 'Donderdag', time: '09:30 - 16:30' },
 		{ day: 'Vrijdag', time: '09:30 - 16:30' },
-		{ day: 'Weekend', time: 'Gesloten' }
+		{ day: 'Zaterdag', time: 'Gesloten' },
+		{ day: 'Zondag', time: 'Gesloten' }
 	];
 
 	function scrollToTop() {
@@ -60,7 +61,7 @@
 			<div>
 				<h3 class="text-primary-400 mb-4 font-bold">Tandem IT</h3>
 				<p class=" mb-4">
-					Tandem IT is een innovatief IT-bedrijf dat zich richt op het ontwikkelen van
+					Tandem IT is een fictief IT-bedrijf dat zich richt op het ontwikkelen van
 					toekomstbestendige softwareoplossingen. In samenwerking met studenten van de Hogeschool
 					Utrecht werken we aan uitdagende projecten voor echte klanten.
 				</p>
