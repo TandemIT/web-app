@@ -1,70 +1,23 @@
 <script lang="ts">
-	import rawMembers from '$lib/api/summaryReport.json';
 	import Heading from './ui/Heading.svelte';
-
-	interface Member {
-		login: string;
-		id: number;
-		avatar_url: string;
-		html_url: string;
-		name: string | null;
-		company: string | null;
-		blog: string | null;
-		location: string | null;
-		public_repos: number;
-		followers: number;
-		following: number;
-	}
-
-	function validateMember(member: any): member is Member {
-		return (
-			typeof member.login === 'string' &&
-			typeof member.id === 'number' &&
-			typeof member.avatar_url === 'string' &&
-			typeof member.html_url === 'string' &&
-			(typeof member.name === 'string' || member.name === null) &&
-			(typeof member.company === 'string' || member.company === null) &&
-			(typeof member.blog === 'string' || member.blog === null) &&
-			(typeof member.location === 'string' || member.location === null) &&
-			typeof member.public_repos === 'number' &&
-			typeof member.followers === 'number' &&
-			typeof member.following === 'number'
-		);
-	}
-
-	const members: Member[] = rawMembers
-		.map((member: any) => ({
-			login: member.login,
-			id: member.id,
-			avatar_url: member.avatar_url,
-			html_url: member.html_url,
-			name: member.name || null,
-			company: member.company || null,
-			blog: member.blog || null,
-			location: member.location || null,
-			public_repos: member.public_repos || 0,
-			followers: member.followers || 0,
-			following: member.following || 0
-		}))
-		.filter(validateMember);
+	import Image from './ui/Image.svelte';
+	import { teamService } from '$lib/services/team';
 
 	// Decode encoded blog URLs client-side to avoid scrapers
-	let decodedMembers = $derived(members.map(member => ({
-		...member,
-		blog: member.blog ? member.blog.replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec)) : null
-	})));
+	let decodedMembers = $derived(teamService.getDecodedMembers());
 </script>
 
-{#snippet memberCard(member: Member)}
+{#snippet memberCard(member: typeof decodedMembers[0])}
 	<div
 		class="group flex w-full max-w-sm flex-col items-center rounded-2xl border border-secondary-100 bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
 	>
 		<div class="relative mb-6">
-			<img
-				src={member.avatar_url}
-				alt={`${member.name || member.login}`}
-				class="h-32 w-32 rounded-full border-4 border-secondary-100 object-cover transition-transform duration-300 group-hover:scale-110"
-				loading="lazy"
+			<Image
+				src={member.image}
+				alt={`${member.name}`}
+				class="h-32 w-32 rounded-full border-4 border-secondary-100 transition-transform duration-300 group-hover:scale-110"
+				width={128}
+				height={128}
 			/>
 			<div class="absolute -bottom-2 -right-2 rounded-full bg-primary-500 p-2">
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" viewBox="0 0 24 24" fill="currentColor">
@@ -75,7 +28,7 @@
 
 		<div class="space-y-2 text-center">
 			<Heading level={3} variant="card">
-				{member.name || member.login}
+				{member.name}
 			</Heading>
 			{#if member.company}
 				<p class="text-secondary-700 text-lg font-medium">{member.company}</p>

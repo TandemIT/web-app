@@ -1,102 +1,19 @@
 <script lang="ts">
 	import { Menu, X } from 'lucide-svelte';
 	import { fade } from 'svelte/transition';
-	import { browser } from '$app/environment';
-	import { page } from '$app/stores';
 	import Button from './ui/Button.svelte';
+	import { navigation } from '$lib/stores/navigation';
 
-	const links = [
-		{ href: '/', name: 'Home', id: null },
-		{ href: '/#aanpak', name: 'Aanpak', id: 'aanpak' },
-		{ href: '/#missie', name: 'Missie', id: 'missie' },
-		{ href: '/#cases', name: 'Cases', id: 'cases' },
-		{ href: '/about', name: 'Over ons', id: null }
-	];
-
-	let isMenuOpen = $state(false);
-	let activeSection = $state<string | null>(null);
-
-	// Intersection Observer to detect active section
-	$effect(() => {
-		if (!browser) return;
-
-		const observer = new IntersectionObserver(
-			(entries) => {
-				let hasActiveSection = false;
-				entries.forEach((entry) => {
-					if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-						activeSection = entry.target.id;
-						hasActiveSection = true;
-					}
-				});
-				
-				// Clear active section if no section is currently in view
-				if (!hasActiveSection) {
-					activeSection = null;
-				}
-			},
-			{
-				threshold: 0.5,
-				rootMargin: '-100px 0px -100px 0px'
-			}
-		);
-
-		// Observe all sections
-		const sections = document.querySelectorAll('#aanpak, #missie, #cases');
-		sections.forEach((section) => observer.observe(section));
-
-		return () => observer.disconnect();
-	});
-
-	// Reset active section when navigating to different pages
-	$effect(() => {
-		// If we're not on the homepage, clear any active section
-		if ($page.url.pathname !== '/') {
-			activeSection = null;
-		}
-	});
-
-	// Check if link is active
-	const isActiveLink = $derived((link: typeof links[0]) => {
-		if (link.id) {
-			return activeSection === link.id;
-		}
-		return $page.url.pathname === link.href;
-	});
+	// Destructure the stores we need
+	$: isMenuOpen = navigation.isMenuOpen;
+	$: isActiveLink = navigation.isActiveLink;
 
 	// Sluit het mobiele menu wanneer er buiten geklikt wordt
 	function closeMenu(event: MouseEvent) {
 		const target = event.target as HTMLElement;
 		if (!target.closest('nav') && !target.closest('.mobile-menu')) {
-			isMenuOpen = false;
+			navigation.closeMenu();
 		}
-	}
-
-	// Sluit het mobiele menu wanneer een link wordt aangeklikt
-	function handleLinkClick() {
-		isMenuOpen = false;
-	}
-
-	// Handle smooth scrolling for anchor links
-	function handleNavClick(event: MouseEvent, href: string) {
-		if (!browser) return;
-		
-		// Check if it's an anchor link
-		if (href.startsWith('/#')) {
-			event.preventDefault();
-			const id = href.substring(2); // Remove '/#'
-			const element = document.getElementById(id);
-			
-			if (element) {
-				element.scrollIntoView({ 
-					behavior: 'smooth',
-					block: 'start'
-				});
-			}
-		}
-		
-		// Close mobile menu
-		isMenuOpen = false;
 	}
 </script>
 
@@ -114,14 +31,14 @@
 
 			<!-- Desktop navigatie -->
 			<div class="hidden gap-x-6 md:flex lg:gap-x-8">
-				{#each links as link}
+				{#each navigation.links as link}
 					<a
 						href={link.href}
-						class="font-medium duration-300 {isActiveLink(link) 
-							? 'text-primary-300 border-b-2 border-primary-300' 
+						class="font-medium duration-300 {$isActiveLink(link)
+							? 'text-primary-300 border-b-2 border-primary-300'
 							: 'hover:text-secondary-50'}"
-						aria-current={isActiveLink(link) ? 'page' : undefined}
-						onclick={(e) => handleNavClick(e, link.href)}
+						aria-current={$isActiveLink(link) ? 'page' : undefined}
+						onclick={(e) => navigation.handleNavClick(e, link.href)}
 					>
 						{link.name}
 					</a>
@@ -134,12 +51,12 @@
 			<Button variant="primary" href="/contact" class="ml-4">Contact</Button>
 		<!-- Mobiel menu knop -->
 		<button
-			onclick={() => (isMenuOpen = !isMenuOpen)}
+			onclick={() => navigation.toggleMenu()}
 			class="text-secondary-50 hover:bg-secondary-900/10 ml-4 rounded-sm p-2 md:hidden"
 			aria-label="Toggle menu"
-			aria-expanded={isMenuOpen}
+			aria-expanded={$isMenuOpen}
 		>
-			{#if isMenuOpen}
+			{#if $isMenuOpen}
 				<X class="h-6 w-6" />
 			{:else}
 				<Menu class="h-6 w-6" />
@@ -149,7 +66,7 @@
 	</nav>
 
 	<!-- Mobiel menu -->
-	{#if isMenuOpen}
+	{#if $isMenuOpen}
 		<button
 			transition:fade={{ duration: 200 }}
 			class="bg-secondary-900/50 fixed inset-0 z-50 backdrop-blur-xs md:hidden"
@@ -157,14 +74,14 @@
 		>
 			<div class="wrapper mobile-menu bg-secondary-800 mt-16 rounded-lg p-4">
 				<ul class="space-y-4">
-					{#each links as link (link.href)}
+					{#each navigation.links as link (link.href)}
 						<li>
 							<a
 								href={link.href}
-								class="block font-medium duration-300 {isActiveLink(link) 
-									? 'text-primary-300' 
+								class="block font-medium duration-300 {$isActiveLink(link)
+									? 'text-primary-300'
 									: 'hover:text-secondary-50'}"
-								onclick={(e) => handleNavClick(e, link.href)}
+								onclick={(e) => navigation.handleNavClick(e, link.href)}
 							>
 								{link.name}
 							</a>
@@ -175,3 +92,4 @@
 		</button>
 	{/if}
 </header>
+
