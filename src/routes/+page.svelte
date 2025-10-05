@@ -60,7 +60,8 @@
 </div>
 
 	<Aanpak />
+	<!-- <div class="h-1 min-w-full bg-secondary-50"></div> -->
 	<Goals />
+	<!-- <div class="h-1 min-w-full bg-secondary-50"></div> -->
 	<Bewijs />
 	<!-- Devider for better viewing of the sections -->
-<!-- <div class="h-1 min-w-full bg-secondary-50"></div> -->

@@ -21,11 +21,18 @@
 
 		const observer = new IntersectionObserver(
 			(entries) => {
+				let hasActiveSection = false;
 				entries.forEach((entry) => {
 					if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
 						activeSection = entry.target.id;
+						hasActiveSection = true;
 					}
 				});
+				
+				// Clear active section if no section is currently in view
+				if (!hasActiveSection) {
+					activeSection = null;
+				}
 			},
 			{
 				threshold: 0.5,
@@ -38,6 +45,14 @@
 		sections.forEach((section) => observer.observe(section));
 
 		return () => observer.disconnect();
+	});
+
+	// Reset active section when navigating to different pages
+	$effect(() => {
+		// If we're not on the homepage, clear any active section
+		if ($page.url.pathname !== '/') {
+			activeSection = null;
+		}
 	});
 
 	// Check if link is active
