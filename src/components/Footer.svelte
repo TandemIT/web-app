@@ -26,9 +26,8 @@
 	const quickLinks: QuickLink[] = [
 		{ href: '/', label: 'Home' },
 		{ href: '/about', label: 'Over ons' },
-		{ href: '/services', label: 'Diensten' },
-		{ href: '/projects', label: 'Projecten' },
-		{ href: '/stages', label: 'Stageplekken' },
+		{ href: '/projects', label: 'Diensten' },
+		{ href: '/contact', label: 'Stageplekken' },
 		{ href: '/contact', label: 'Contact' }
 	];
 

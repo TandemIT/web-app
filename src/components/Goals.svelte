@@ -5,7 +5,6 @@
 	// import Tools from '@tabler/icons-svelte/icons/tools';
 	// import People from '@tabler/icons-svelte/icons/users';
 	import IconRosetteDiscountCheck from '@tabler/icons-svelte/icons/rosette-discount-check';
-	import About from './about/About.svelte';
 
 	interface Objective {
 		icon: typeof Globe; // Een van de iconen als type

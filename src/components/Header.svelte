@@ -23,6 +23,7 @@
 		<div class="flex flex-col items-center gap-x-6 sm:flex-row md:gap-x-10 lg:gap-x-14">
 			<a
 				href="/"
+				data-sveltekit-preload-data="hover"
 				class="font-grotesk text-secondary-50 flex items-center gap-x-2 px-4 text-lg font-medium"
 			>
 				<img src="/tandemIT.svg" alt="Tandem IT logo" width="32" height="32" />
@@ -34,6 +35,7 @@
 				{#each navigation.links as link}
 					<a
 						href={link.href}
+						data-sveltekit-preload-data="hover"
 						class="font-medium duration-300 {$isActiveLink(link)
 							? 'text-primary-300 border-b-2 border-primary-300'
 							: 'hover:text-secondary-50'}"
@@ -48,7 +50,7 @@
 
 		<div class="flex items-center">
 			<!-- CTA Button -->
-			<Button variant="primary" href="/contact" class="ml-4">Contact</Button>
+			<Button variant="primary" href="/contact" data-sveltekit-preload-data="hover" class="ml-4">Contact</Button>
 		<!-- Mobiel menu knop -->
 		<button
 			onclick={() => navigation.toggleMenu()}
@@ -78,6 +80,7 @@
 						<li>
 							<a
 								href={link.href}
+								data-sveltekit-preload-data="hover"
 								class="block font-medium duration-300 {$isActiveLink(link)
 									? 'text-primary-300'
 									: 'hover:text-secondary-50'}"

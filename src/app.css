@@ -10,6 +10,9 @@
 		'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 	--font-grotesk: 'Space Grotesk Variable', sans-serif;
 
+	/* Font loading optimization */
+	--font-display: swap;
+
 	/* Animation durations */
 	--transition-duration-fast: 150ms;
 	--transition-duration-default: 300ms;
