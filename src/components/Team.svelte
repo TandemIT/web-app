@@ -1,10 +1,16 @@
 <script lang="ts">
 	import Heading from './ui/Heading.svelte';
 	import TeamMemberCard from './ui/TeamMemberCard.svelte';
-	import { teamService } from '$lib/services/team';
+	import type { TeamMember } from '$lib/types';
 
-	// Decode encoded blog URLs client-side to avoid scrapers
-	let decodedMembers = $derived(teamService.getDecodedMembers());
+	interface Props {
+		teamMembers: TeamMember[];
+	}
+
+	let { teamMembers }: Props = $props();
+
+	// Use the provided team members instead of fetching from service
+	let decodedMembers = $derived(teamMembers);
 </script>
 
 <!-- Only show this section if there are team members -->

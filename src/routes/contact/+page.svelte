@@ -1,74 +1,28 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
+	import type { ActionData, PageData } from './$types';
+
 	// Obfuscated email - will be decoded client-side
 	let email = 'info.t&#97;ndemit&#64;hu.nl';
-
-	let formData = $state({
-		firstName: '',
-		lastName: '',
-		company: '',
-		email: '',
-		phoneNumber: '',
-		message: '',
-		agree: false,
-		// Honeypot fields (hidden from users but visible to bots)
-		website: '',
-		phone: ''
-	});
-
-	let isSubmitting = $state(false);
-	let submitMessage = $state('');
-	let formStartTime = $state(Date.now());
 
 	// Decode email client-side to avoid scrapers
 	let decodedEmail = $derived(email.replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec)));
 
-	async function handleSubmit(event: Event) {
-		event.preventDefault();
-		isSubmitting = true;
-		submitMessage = '';
-
-		// Anti-bot checks
-		const timeElapsed = Date.now() - formStartTime;
-		if (timeElapsed < 3000) { // Form submitted too quickly (likely a bot)
-			submitMessage = 'Formulier te snel ingediend. Probeer het over een paar seconden opnieuw.';
-			isSubmitting = false;
-			return;
-		}
-
-		if (formData.website || formData.phone) { // Honeypot fields filled
-			submitMessage = 'Spam gedetecteerd. Probeer het opnieuw.';
-			isSubmitting = false;
-			return;
-		}
-
-		try {
-			// Here you would typically send the form data to your backend
-			// For now, we'll simulate a submission
-			await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate network delay
-
-			// Reset form
-			formData = {
-				firstName: '',
-				lastName: '',
-				company: '',
-				email: '',
-				phoneNumber: '',
-				message: '',
-				agree: false,
-				website: '',
-				phone: ''
-			};
-
-			// Reset timer
-			formStartTime = Date.now();
-
-			submitMessage = 'Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.';
-		} catch (error) {
-			submitMessage = 'Er is iets misgegaan. Probeer het opnieuw.';
-		} finally {
-			isSubmitting = false;
-		}
+	interface Props {
+		data: PageData;
+		form: ActionData;
 	}
+
+	let { data, form }: Props = $props();
+
+	// Form data for binding
+	let firstName = $state(form?.data?.firstName || '');
+	let lastName = $state(form?.data?.lastName || '');
+	let company = $state(form?.data?.company || '');
+	let emailValue = $state(form?.data?.email || '');
+	let phoneNumber = $state(form?.data?.phoneNumber || '');
+	let message = $state(form?.data?.message || '');
+	let agree = $state(form?.data?.agree || false);
 </script>
 
 <div class="wrapper mt-10 grid gap-4 lg:grid-cols-12">
@@ -101,71 +55,84 @@
 	</div>
 	<div class="col-span-1"></div>
 	<div class="col-span-7">
-		<form class="bg-secondary-600 flex flex-col gap-5 rounded-xl p-10" onsubmit={handleSubmit}>
+		<form class="bg-secondary-600 flex flex-col gap-5 rounded-xl p-10" method="POST" use:enhance>
 			<div class="grid gap-x-5 lg:grid-cols-2">
 				<div class="mb-5">
-					<label for="firstName" class="mb-1 block text-base font-medium">Voornaam</label><input
+					<label for="firstName" class="mb-1 block text-base font-medium">Voornaam</label>
+					<input
 						id="firstName"
 						type="text"
 						class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
 						required
 						name="firstName"
-						bind:value={formData.firstName}
+						bind:value={firstName}
 					/>
+					{#if form?.errors?.firstName}
+						<p class="mt-1 text-sm text-red-400">{form.errors.firstName}</p>
+					{/if}
 				</div>
 				<div class="mb-5">
-					<label for="lastName" class="mb-1 block text-base font-medium">Achternaam</label><input
+					<label for="lastName" class="mb-1 block text-base font-medium">Achternaam</label>
+					<input
 						id="lastName"
 						type="text"
 						class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
 						required
 						name="lastName"
-						bind:value={formData.lastName}
+						bind:value={lastName}
 					/>
+					{#if form?.errors?.lastName}
+						<p class="mt-1 text-sm text-red-400">{form.errors.lastName}</p>
+					{/if}
 				</div>
 			</div>
 			<div class="mb-5">
-				<label for="company" class="mb-1 block text-base font-medium">Bedrijfsnaam</label><input
+				<label for="company" class="mb-1 block text-base font-medium">Bedrijfsnaam</label>
+				<input
 					id="company"
 					type="text"
 					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
-					required
 					name="company"
-					bind:value={formData.company}
+					bind:value={company}
 				/>
 			</div>
 			<div class="mb-5">
-				<label for="email" class="mb-1 block text-base font-medium">E-mailadres</label><input
+				<label for="email" class="mb-1 block text-base font-medium">E-mailadres</label>
+				<input
 					id="email"
 					type="email"
 					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
 					required
 					name="email"
-					bind:value={formData.email}
+					bind:value={emailValue}
 				/>
+				{#if form?.errors?.email}
+					<p class="mt-1 text-sm text-red-400">{form.errors.email}</p>
+				{/if}
 			</div>
 			<div class="mb-5">
-				<label for="phoneNumber" class="mb-1 block text-base font-medium">Telefoonnummer</label
-				><input
+				<label for="phoneNumber" class="mb-1 block text-base font-medium">Telefoonnummer</label>
+				<input
 					id="phoneNumber"
 					type="tel"
 					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
-					required
 					name="phoneNumber"
-					bind:value={formData.phoneNumber}
+					bind:value={phoneNumber}
 				/>
 			</div>
 			<div class="mb-5">
-				<label for="message" class="mb-1 block text-base font-medium"
-					>Bericht, vraag of opmerking</label
-				><textarea
+				<label for="message" class="mb-1 block text-base font-medium">Bericht, vraag of opmerking</label>
+				<textarea
 					name="message"
 					id="message"
 					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
 					rows="4"
 					required
-					bind:value={formData.message}
+					bind:value={message}
 				></textarea>
+				{#if form?.errors?.message}
+					<p class="mt-1 text-sm text-red-400">{form.errors.message}</p>
+				{/if}
 			</div>
 			<!-- Honeypot fields - hidden from humans but visible to bots -->
 			<div class="hidden">
@@ -174,7 +141,6 @@
 					id="website"
 					type="text"
 					name="website"
-					bind:value={formData.website}
 					tabindex="-1"
 					autocomplete="off"
 				/>
@@ -185,46 +151,61 @@
 					id="phone"
 					type="text"
 					name="phone"
-					bind:value={formData.phone}
 					tabindex="-1"
 					autocomplete="off"
 				/>
 			</div>
 			<div class="mb-5">
-				<label for="agree" class="relative flex gap-x-3 text-base font-medium"
-					><input
+				<label for="agree" class="relative flex gap-x-3 text-base font-medium">
+					<input
 						id="agree"
 						type="checkbox"
 						class="peer absolute opacity-0"
 						required
 						name="agree"
-						bind:checked={formData.agree}
-					/><span
+						bind:checked={agree}
+					/>
+					<span
 						class="outline-primary/50 border-secondary-400 peer-checked:border-secondary-50/50 peer-checked:bg-secondary-50/50 flex h-5 w-5 items-center justify-center rounded border-2 text-transparent outline-2 outline-offset-1 peer-checked:text-white peer-focus:outline"
-						><svg
+					>
+						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="14"
 							height="14"
 							fill="currentColor"
 							viewBox="0 0 256 256"
-							><path
+						>
+							<path
 								d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"
-							></path></svg
-						></span
-					>Ik heb kennis genomen van de privacyverklaring en ga hiermee akkoord.</label
-				>
+							></path>
+						</svg>
+					</span>
+					Ik heb kennis genomen van de privacyverklaring en ga hiermee akkoord.
+				</label>
+				{#if form?.errors?.agree}
+					<p class="mt-1 text-sm text-red-400">{form.errors.agree}</p>
+				{/if}
 			</div>
-			{#if submitMessage}
-				<div class="mb-5 rounded-lg bg-green-600 p-4 text-white">
-					{submitMessage}
+			{#if form?.error}
+				<div class="mb-5 rounded-lg bg-red-600 p-4 text-white">
+					{form.error}
 				</div>
 			{/if}
-			<button 
-				type="submit" 
+			{#if form?.errors?.general}
+				<div class="mb-5 rounded-lg bg-red-600 p-4 text-white">
+					{form.errors.general}
+				</div>
+			{/if}
+			{#if form?.success}
+				<div class="mb-5 rounded-lg bg-green-600 p-4 text-white">
+					{form.message}
+				</div>
+			{/if}
+			<button
+				type="submit"
 				class="bg-primary rounded-lg px-4 py-3 font-medium text-white disabled:opacity-50"
-				disabled={isSubmitting}
 			>
-				<span>{isSubmitting ? 'Bezig met verzenden...' : 'Verstuur bericht'}</span>
+				<span>Verstuur bericht</span>
 			</button>
 		</form>
 	</div>

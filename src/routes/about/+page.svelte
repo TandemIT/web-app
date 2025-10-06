@@ -1,6 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import Loading from '../../components/ui/Loading.svelte';
+	import type { PageData } from './$types';
+
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 
 	interface Section {
 		title: string;
@@ -137,7 +144,7 @@
 </section>
 
 {#if isTeamLoaded && Team}
-	<Team />
+	<Team teamMembers={data.teamMembers} />
 {:else}
 	<Loading message="Team laden..." />
 {/if}

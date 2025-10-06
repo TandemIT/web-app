@@ -5,7 +5,9 @@
 	import Footer from '../components/Footer.svelte';
 	import ErrorBoundary from '../components/ui/ErrorBoundary.svelte';
 	import Loading from '../components/ui/Loading.svelte';
+	import DevelopmentBanner from '../components/DevelopmentBanner.svelte';
 	import { navigating } from '$app/stores';
+	import { env } from '$env/dynamic/public';
 
 	import '@fontsource/poppins';
 	import '@fontsource-variable/space-grotesk';
@@ -23,7 +25,12 @@
 </svelte:head>
 
 <ErrorBoundary>
-	<div class="flex min-h-screen flex-col justify-between ">
+	{#if env.PUBLIC_SHOW_DEV_BANNER !== 'false'}
+		<DevelopmentBanner
+			message={env.PUBLIC_DEV_BANNER_MESSAGE || "🚧 This website is under development. Features may not work as expected."}
+		/>
+	{/if}
+	<div class="flex min-h-screen flex-col justify-between {env.PUBLIC_SHOW_DEV_BANNER !== 'false' ? 'pt-16' : ''}">
 		<Header />
 		{#if $navigating}
 			<div class="fixed inset-0 z-50 flex items-center justify-center bg-white/80 backdrop-blur-sm">
