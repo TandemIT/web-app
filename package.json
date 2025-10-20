@@ -16,24 +16,24 @@
 		"test": "npm run test:e2e"
 	},
 	"devDependencies": {
-		"@playwright/test": "^1.56.0",
-		"@sveltejs/adapter-node": "^5.3.3",
-		"@sveltejs/kit": "^2.46.5",
+		"@playwright/test": "^1.56.1",
+		"@sveltejs/adapter-node": "^5.4.0",
+		"@sveltejs/kit": "^2.47.2",
 		"@sveltejs/vite-plugin-svelte": "^5.1.1",
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@tailwindcss/forms": "^0.5.10",
-		"@tailwindcss/postcss": "^4.1.14",
+		"@tailwindcss/postcss": "^4.1.15",
 		"@tailwindcss/typography": "^0.5.19",
-		"lucide-svelte": "^0.545.0",
+		"lucide-svelte": "^0.546.0",
 		"mdsvex": "^0.12.6",
 		"prettier": "^3.6.2",
 		"prettier-plugin-svelte": "^3.4.0",
-		"prettier-plugin-tailwindcss": "^0.6.14",
-		"svelte": "^5.39.11",
+		"prettier-plugin-tailwindcss": "^0.7.1",
+		"svelte": "^5.41.1",
 		"svelte-check": "^4.3.3",
-		"tailwindcss": "^4.1.14",
+		"tailwindcss": "^4.1.15",
 		"typescript": "^5.9.3",
-		"vite": "^6.3.6"
+		"vite": "^6.4.1"
 	},
 	"dependencies": {
 		"@fontsource-variable/space-grotesk": "^5.2.10",
