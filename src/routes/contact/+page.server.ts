@@ -1,3 +1,4 @@
+import * as m from '$lib/paraglide/messages';
 import { fail } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
@@ -22,28 +23,28 @@ export const actions: Actions = {
 		const errors: Record<string, string> = {};
 
 		if (!firstName || firstName.length < 2) {
-			errors.firstName = 'Voornaam is verplicht en moet minimaal 2 karakters bevatten';
+			errors.firstName = m['contact.error_first_name']();
 		}
 
 		if (!lastName || lastName.length < 2) {
-			errors.lastName = 'Achternaam is verplicht en moet minimaal 2 karakters bevatten';
+			errors.lastName = m['contact.error_last_name']();
 		}
 
 		if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-			errors.email = 'Geldig e-mailadres is verplicht';
+			errors.email = m['contact.error_email']();
 		}
 
 		if (!message || message.length < 10) {
-			errors.message = 'Bericht is verplicht en moet minimaal 10 karakters bevatten';
+			errors.message = m['contact.error_message']();
 		}
 
 		if (!agree) {
-			errors.agree = 'U moet akkoord gaan met de voorwaarden';
+			errors.agree = m['contact.error_agree']();
 		}
 
 		// Honeypot check
 		if (website || phone) {
-			errors.general = 'Spam gedetecteerd. Probeer het opnieuw.';
+			errors.general = m['contact.error_spam']();
 		}
 
 		if (Object.keys(errors).length > 0) {
@@ -64,26 +65,16 @@ export const actions: Actions = {
 		try {
 			// Here you would typically send the email or save to database
 			// For now, we'll simulate processing
-			await new Promise(resolve => setTimeout(resolve, 1000));
-
-			// In a real app, you might send an email here
-			console.log('Contact form submitted:', {
-				firstName,
-				lastName,
-				company,
-				email,
-				phoneNumber,
-				message
-			});
+			await new Promise((resolve) => setTimeout(resolve, 1000));
 
 			return {
 				success: true,
-				message: 'Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.'
+				message: m['contact.success']()
 			};
 		} catch (error) {
 			console.error('Contact form error:', error);
 			return fail(500, {
-				error: 'Er is iets misgegaan bij het verzenden van uw bericht. Probeer het opnieuw.',
+				error: m['contact.error_submit'](),
 				data: {
 					firstName,
 					lastName,

@@ -3,7 +3,7 @@ name: Build and Push Docker Image
 on:
   workflow_dispatch:
 
-jobs: 
+jobs:
   docker:
     runs-on: ubuntu-latest
 

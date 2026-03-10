@@ -1,25 +1,6 @@
 <script lang="ts">
-	// Nu wat echte data invullen
-	const projects = [
-		{
-			title: 'Project 1',
-			description: 'Een geavanceerd project met moderne technologieën.',
-			link: '/projects',
-			image: 'https://placehold.co/600x400'
-		},
-		{
-			title: 'Project 2',
-			description: 'Een innovatief project gericht op schaalbare oplossingen.',
-			link: '/projects',
-			image: 'https://placehold.co/600x400'
-		},
-		{
-			title: 'Project 3',
-			description: 'Een creatief project met een focus op gebruiksvriendelijkheid.',
-			link: '/projects',
-			image: 'https://placehold.co/600x400'
-		}
-	];
+	import { showcaseProjects } from '$lib/content/home';
+	import * as m from '$lib/paraglide/messages';
 </script>
 
 <!-- Bewijs van Excellence -->
@@ -28,13 +9,13 @@
 	<p
 		class="subtitle text-primary-500 mb-6 inline-block -translate-x-4 translate-y-6 rounded-full px-4 py-1 text-base font-semibold"
 	>
-		Cases
+		{m['home.bewijs_cases']()}
 	</p>
-	<h1 class="font-grotesk text-4xl font-medium">Bewijs van Excellence</h1>
+	<h1 class="font-grotesk text-4xl font-medium">{m['home.bewijs_title']()}</h1>
 
 	<!-- Projecten grid -->
 	<div class="grid grid-cols-1 gap-16 sm:grid-cols-2">
-		{#each projects as project}
+		{#each showcaseProjects as project}
 			<div class="flex flex-col gap-2">
 				<h2 class="bg-secondary-300 font-grotesk w-fit translate-y-12 rounded-xl p-1 text-2xl">
 					{project.title}
@@ -60,13 +41,13 @@
 	<p
 		class="subtitle text-primary-500 mb-6 inline-block -translate-x-4 translate-y-6 rounded-full px-4 py-1 text-base font-semibold"
 	>
-		Insights
+		{m['home.bewijs_insights']()}
 	</p>
-	<h1 class="font-grotesk text-4xl font-medium">Meest recente Blogs</h1>
+	<h1 class="font-grotesk text-4xl font-medium">{m['home.bewijs_recent_blogs']()}</h1>
 
 	<!-- Projecten grid -->
 	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-		{#each projects as project}
+		{#each showcaseProjects as project}
 			<div class="flex flex-col gap-2">
 				<h2 class="bg-secondary-300 font-grotesk w-fit translate-y-12 rounded-xl p-1 text-2xl">
 					{project.title}
@@ -84,5 +65,7 @@
 			</div>
 		{/each}
 	</div>
-	<button class="font-grotesk mx-auto w-fit rounded-xl p-1 underline">Alle insights</button>
+	<button class="font-grotesk mx-auto w-fit rounded-xl p-1 underline"
+		>{m['home.bewijs_all_insights']()}</button
+	>
 </section>

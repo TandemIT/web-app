@@ -1,9 +1,11 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+	import * as m from '$lib/paraglide/messages';
 	import ArrowRight from '@tabler/icons-svelte/icons/arrow-right';
-	import Users from '@tabler/icons-svelte/icons/users';
+	import BrandGithub from '@tabler/icons-svelte/icons/brand-github';
 	import Code from '@tabler/icons-svelte/icons/code';
 	import Rocket from '@tabler/icons-svelte/icons/rocket';
-	import BrandGithub from '@tabler/icons-svelte/icons/brand-github';
+	import Users from '@tabler/icons-svelte/icons/users';
 
 	interface Feature {
 		icon: typeof Users; // Gebruik een van de iconen als type
@@ -11,36 +13,32 @@
 		description: string;
 	}
 
-	const features: Feature[] = [
+	const features = $derived<Feature[]>([
 		{
 			icon: Users,
-			title: 'Student-gedreven',
-			description:
-				'Een jong en dynamisch team van HBO-ICT studenten met frisse ideeën en moderne technische kennis.'
+			title: m['home.enthousiast_feature_student'](),
+			description: m['home.enthousiast_feature_student_desc']()
 		},
 		{
 			icon: Code,
-			title: 'Technisch onderlegd',
-			description:
-				'Expertise in moderne frameworks zoals React, Svelte, Node.js, netwerken en expertise in cloud-oplossingen.'
+			title: m['home.enthousiast_feature_technical'](),
+			description: m['home.enthousiast_feature_technical_desc']()
 		},
 		{
 			icon: Rocket,
-			title: 'Innovatief',
-			description:
-				'Focus op cutting-edge technologieën en moderne ontwikkelmethoden voor toekomstbestendige oplossingen.'
+			title: m['home.enthousiast_feature_innovative'](),
+			description: m['home.enthousiast_feature_innovative_desc']()
 		},
 		{
 			icon: BrandGithub,
-			title: 'Open source',
-			description:
-				'Actieve bijdrage aan open source projecten en gebruik van best practices in softwareontwikkeling.'
+			title: m['home.enthousiast_feature_open_source'](),
+			description: m['home.enthousiast_feature_open_source_desc']()
 		}
-	];
+	]);
 
 	// Smooth scroll naar de 'about' sectie
 	function goAbout() {
-		window.open('/about', '_self');
+		goto('/about');
 	}
 </script>
 
@@ -68,22 +66,20 @@
 				<button
 					onclick={goAbout}
 					class="subtitle text-primary-500 hover:bg-primary-50 mb-2 inline-block rounded-full px-4 py-1 text-sm font-semibold transition"
-					aria-label="Scroll naar de Over ons sectie"
+					aria-label={m['home.enthousiast_go_about_aria']()}
 				>
-					Over ons
+					{m['home.enthousiast_button']()}
 				</button>
 				<h2 class="mb-6 text-4xl font-bold tracking-tight text-neutral-900 lg:text-5xl">
-					Een hecht team van enthousiaste HBO-ICT studenten
+					{m['home.enthousiast_title']()}
 				</h2>
 				<p class="mb-8 text-lg text-neutral-600">
-					Bij Tandem IT combineren we theoretische kennis met praktische ervaring. Als
-					studentbedrijf van de Hogeschool Utrecht werken we aan real-world projecten onder
-					begeleiding van ervaren professionals.
+					{m['home.enthousiast_intro']()}
 				</p>
 
 				<!-- Features grid -->
 				<div class="mb-12 grid gap-8 sm:grid-cols-2">
-					{#each features as { icon: Icon, title, description }}
+					{#each features as { icon: Icon, title, description } (title)}
 						<div class="flex gap-x-3">
 							<div class="mt-1 shrink-0">
 								<Icon class="text-primary-600 h-6 w-6" aria-hidden="true" />
@@ -97,9 +93,7 @@
 				</div>
 
 				<p class="mb-8 text-neutral-600">
-					Onze missie is het bieden van hoogwaardige IT-oplossingen die het verschil maken voor onze
-					klanten, terwijl wij als studenten de kans krijgen om praktijkervaring op te doen in een
-					professionele omgeving.
+					{m['home.enthousiast_mission']()}
 				</p>
 
 				<!-- Call-to-action knoppen -->
@@ -107,9 +101,9 @@
 				<a
 					href="/about"
 					class="group text-secondary-600 right-auto left-0 inline-flex items-center rounded-lg text-base font-semibold underline transition"
-					aria-label="Lees meer"
+					aria-label={m['home.enthousiast_read_more_aria']()}
 				>
-					Lees meer
+					{m['home.enthousiast_read_more']()}
 					<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
 				</a>
 				<!-- <a

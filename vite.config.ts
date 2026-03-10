@@ -1,12 +1,16 @@
+import { paraglideVitePlugin } from '@inlang/paraglide-js';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-	plugins: [sveltekit()],
-	server: {
-		allowedHosts: true
-		},
-	preview: {
-		allowedHosts: true
-		}
+	plugins: [
+		sveltekit(),
+		paraglideVitePlugin({
+			project: './project.inlang',
+			outdir: './src/lib/paraglide',
+			strategy: ['url', 'cookie', 'globalVariable', 'baseLocale']
+		})
+	],
+	server: { allowedHosts: true },
+	preview: { allowedHosts: true }
 });

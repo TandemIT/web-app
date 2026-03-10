@@ -1,12 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import * as m from '$lib/paraglide/messages';
 	import type { ActionData, PageData } from './$types';
-
-	// Obfuscated email - will be decoded client-side
-	let email = 'info.t&#97;ndemit&#64;hu.nl';
-
-	// Decode email client-side to avoid scrapers
-	let decodedEmail = $derived(email.replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec)));
 
 	interface Props {
 		data: PageData;
@@ -15,28 +10,43 @@
 
 	let { data, form }: Props = $props();
 
+	// Decode email client-side to avoid scrapers
+	let decodedEmail = $derived(
+		data.contactInfo.email.replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec))
+	);
+
 	// Form data for binding
-	let firstName = $state(form?.data?.firstName || '');
-	let lastName = $state(form?.data?.lastName || '');
-	let company = $state(form?.data?.company || '');
-	let emailValue = $state(form?.data?.email || '');
-	let phoneNumber = $state(form?.data?.phoneNumber || '');
-	let message = $state(form?.data?.message || '');
-	let agree = $state(form?.data?.agree || false);
+	let firstName = $state('');
+	let lastName = $state('');
+	let company = $state('');
+	let emailValue = $state('');
+	let phoneNumber = $state('');
+	let message = $state('');
+	let agree = $state(false);
+
+	$effect(() => {
+		firstName = form?.data?.firstName || '';
+		lastName = form?.data?.lastName || '';
+		company = form?.data?.company || '';
+		emailValue = form?.data?.email || '';
+		phoneNumber = form?.data?.phoneNumber || '';
+		message = form?.data?.message || '';
+		agree = form?.data?.agree || false;
+	});
 </script>
 
 <div class="wrapper mt-10 grid gap-4 lg:grid-cols-12">
 	<div class="col-span-4">
 		<div class="bg-secondary-600 flex h-fit flex-col gap-6 rounded-xl p-10">
-			<h2 class="text-xl font-medium">Contact &amp; info</h2>
+			<h2 class="text-xl font-medium">{m['contact.sidebar_title']()}</h2>
 			<div>
-				<p class="mb-2 text-lg font-medium">Mail ons</p>
-				<p>Mail met ons.</p>
+				<p class="mb-2 text-lg font-medium">{m['contact.mail_us_title']()}</p>
+				<p>{m['contact.mail_us_description']()}</p>
 				<a class="font-medium" href="mailto:{decodedEmail}">{decodedEmail}</a>
 			</div>
 			<div>
-				<p class="mb-2 text-lg font-medium">Openingsuren</p>
-				<p>Ma-vr van 9:00 tot 17:00</p>
+				<p class="mb-2 text-lg font-medium">{m['contact.opening_hours_title']()}</p>
+				<p>{m['contact.opening_hours_value']()}</p>
 			</div>
 			<!-- <div>
 				<p class="mb-2 text-lg font-medium">Bedrijfsgegevens</p>
@@ -44,11 +54,13 @@
 				<p class="font-medium"></p>
 			</div> -->
 			<div>
-				<p class="mb-2 text-lg font-medium">Adres gegevens</p>
-				<p class="font-medium">Heidelberglaan 15</p>
-				<p class="font-medium">Science park, Utrecht</p>
+				<p class="mb-2 text-lg font-medium">{m['contact.address_details_title']()}</p>
+				<p class="font-medium">{data.contactInfo.visitAddress[0]}</p>
+				<p class="font-medium">{data.contactInfo.visitAddress[1]}</p>
 				<p class="font-medium">
-					<span class="text-transparent" style="text-shadow: 0 0 0 currentColor;">Nederland</span>
+					<span class="text-transparent" style="text-shadow: 0 0 0 currentColor;"
+						>{data.contactInfo.visitAddress[2]}</span
+					>
 				</p>
 			</div>
 		</div>
@@ -58,7 +70,9 @@
 		<form class="bg-secondary-600 flex flex-col gap-5 rounded-xl p-10" method="POST" use:enhance>
 			<div class="grid gap-x-5 lg:grid-cols-2">
 				<div class="mb-5">
-					<label for="firstName" class="mb-1 block text-base font-medium">Voornaam</label>
+					<label for="firstName" class="mb-1 block text-base font-medium"
+						>{m['contact.first_name']()}</label
+					>
 					<input
 						id="firstName"
 						type="text"
@@ -72,7 +86,9 @@
 					{/if}
 				</div>
 				<div class="mb-5">
-					<label for="lastName" class="mb-1 block text-base font-medium">Achternaam</label>
+					<label for="lastName" class="mb-1 block text-base font-medium"
+						>{m['contact.last_name']()}</label
+					>
 					<input
 						id="lastName"
 						type="text"
@@ -87,7 +103,9 @@
 				</div>
 			</div>
 			<div class="mb-5">
-				<label for="company" class="mb-1 block text-base font-medium">Bedrijfsnaam</label>
+				<label for="company" class="mb-1 block text-base font-medium"
+					>{m['contact.company']()}</label
+				>
 				<input
 					id="company"
 					type="text"
@@ -97,7 +115,7 @@
 				/>
 			</div>
 			<div class="mb-5">
-				<label for="email" class="mb-1 block text-base font-medium">E-mailadres</label>
+				<label for="email" class="mb-1 block text-base font-medium">{m['contact.email']()}</label>
 				<input
 					id="email"
 					type="email"
@@ -111,7 +129,9 @@
 				{/if}
 			</div>
 			<div class="mb-5">
-				<label for="phoneNumber" class="mb-1 block text-base font-medium">Telefoonnummer</label>
+				<label for="phoneNumber" class="mb-1 block text-base font-medium"
+					>{m['contact.phone_number']()}</label
+				>
 				<input
 					id="phoneNumber"
 					type="tel"
@@ -121,7 +141,9 @@
 				/>
 			</div>
 			<div class="mb-5">
-				<label for="message" class="mb-1 block text-base font-medium">Bericht, vraag of opmerking</label>
+				<label for="message" class="mb-1 block text-base font-medium"
+					>{m['contact.message']()}</label
+				>
 				<textarea
 					name="message"
 					id="message"
@@ -136,24 +158,12 @@
 			</div>
 			<!-- Honeypot fields - hidden from humans but visible to bots -->
 			<div class="hidden">
-				<label for="website">Website (leave blank)</label>
-				<input
-					id="website"
-					type="text"
-					name="website"
-					tabindex="-1"
-					autocomplete="off"
-				/>
+				<label for="website">{m['contact.honeypot_website']()}</label>
+				<input id="website" type="text" name="website" tabindex="-1" autocomplete="off" />
 			</div>
 			<div class="hidden">
-				<label for="phone">Phone (leave blank)</label>
-				<input
-					id="phone"
-					type="text"
-					name="phone"
-					tabindex="-1"
-					autocomplete="off"
-				/>
+				<label for="phone">{m['contact.honeypot_phone']()}</label>
+				<input id="phone" type="text" name="phone" tabindex="-1" autocomplete="off" />
 			</div>
 			<div class="mb-5">
 				<label for="agree" class="relative flex gap-x-3 text-base font-medium">
@@ -180,7 +190,7 @@
 							></path>
 						</svg>
 					</span>
-					Ik heb kennis genomen van de privacyverklaring en ga hiermee akkoord.
+					{m['contact.agree_text']()}
 				</label>
 				{#if form?.errors?.agree}
 					<p class="mt-1 text-sm text-red-400">{form.errors.agree}</p>
@@ -205,7 +215,7 @@
 				type="submit"
 				class="bg-primary rounded-lg px-4 py-3 font-medium text-white disabled:opacity-50"
 			>
-				<span>Verstuur bericht</span>
+				<span>{m['contact.submit']()}</span>
 			</button>
 		</form>
 	</div>

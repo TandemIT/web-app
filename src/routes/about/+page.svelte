@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { getAboutSectionContent, getAboutSectionTitle } from '$lib/content/about';
+	import * as m from '$lib/paraglide/messages';
+	import type { Component } from 'svelte';
 	import { onMount } from 'svelte';
 	import Loading from '../../components/ui/Loading.svelte';
 	import type { PageData } from './$types';
@@ -9,19 +12,13 @@
 
 	let { data }: Props = $props();
 
-	interface Section {
-		title: string;
-		content: string;
-		icon: string;
-	}
-
-	let Team: any = $state(null);
+	let Team = $state<Component<{ teamMembers: PageData['teamMembers'] }> | null>(null);
 	let isTeamLoaded = $state(false);
 
 	// Lazy load Team component
 	onMount(async () => {
 		try {
-			const module = await import('../../components/Team.svelte') as any;
+			const module = await import('../../components/Team.svelte');
 			Team = module.default;
 			isTeamLoaded = true;
 		} catch (error) {
@@ -29,47 +26,15 @@
 		}
 	});
 
-	const sections: Section[] = [
-		{
-			title: 'Onze missie',
-			content:
-				'Bij Tandem IT geloven we in de kracht van samenwerking en innovatie. Onze missie is om organisaties te ondersteunen met flexibele, schaalbare en veilige IT-oplossingen zodat zij zich volledig kunnen richten op groei en ontwikkeling.',
-			icon: '🎯'
-		},
-		{
-			title: 'Onze aanpak',
-			content:
-				'Wij combineren technische expertise met een persoonlijke benadering. Door nauw samen te werken met onze klanten, ontwikkelen we op maat gemaakte oplossingen die perfect aansluiten op de specifieke uitdagingen van elke organisatie.',
-			icon: '🤝'
-		},
-		{
-			title: 'Onze doelen',
-			content:
-				'Ons doel is om een betrouwbare partner te zijn in de digitale transformatie. Wij streven ernaar om bedrijfsprocessen te optimaliseren, de beveiliging te verbeteren en innovatie binnen organisaties te stimuleren.',
-			icon: '🎯'
-		},
-		{
-			title: 'Onze visie',
-			content:
-				'Wij zien een toekomst waarin technologie niet slechts een ondersteunende rol speelt, maar de drijvende kracht is achter groei en maatschappelijke vooruitgang. Bij Tandem IT werken we aan een duurzame digitale wereld waarin iedereen profiteert van technologische vernieuwing.',
-			icon: '🔭'
-		},
-		{
-			title: 'Onze geschiedenis',
-			content:
-				'Tandem IT is ontstaan uit een passie voor technologie en de ambitie om echte verandering teweeg te brengen. Sinds onze oprichting hebben we samengewerkt met diverse organisaties, waarbij we onze kennis en ervaring inzetten om complexe IT-uitdagingen op te lossen.',
-			icon: '📚'
-		},
-		{
-			title: 'Ons team',
-			content:
-				'Ons team bestaat uit enthousiaste studenten met een passie voor IT. Samen werken we aan uitdagende projecten en innovatieve oplossingen. Door onze krachten te bundelen, kunnen we het maximale resultaat behalen voor onze klanten.',
-			icon: '👥'
-		}
-	];
-
 	let activeSection = $state<number | null>(null);
-	let isAnimating = $state(false);
+
+	function getSectionTitle(sectionId: string) {
+		return getAboutSectionTitle(m, sectionId);
+	}
+
+	function getSectionContent(sectionId: string) {
+		return getAboutSectionContent(m, sectionId);
+	}
 
 	function handleMouseEnter(index: number) {
 		activeSection = index;
@@ -77,12 +42,6 @@
 
 	function handleMouseLeave() {
 		activeSection = null;
-	}
-
-	function handleKeyDown(event: KeyboardEvent, index: number) {
-		if (event.key === 'Enter' || event.key === ' ') {
-			activeSection = activeSection === index ? null : index;
-		}
 	}
 </script>
 
@@ -92,20 +51,17 @@
 			class="font-grotesk text-primary-300 hover:text-primary-200 mb-12 transform text-center
                        text-5xl font-semibold transition-all duration-500"
 		>
-			Wie zijn wij?
+			{m['about.page_title']()}
 		</h1>
 
 		<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-			{#each sections as section, index}
-				<div
+			{#each data.sections as section, index (section.id)}
+				<article
 					class="group bg-secondary-600 hover:bg-secondary-500 relative transform overflow-hidden
                                rounded-xl p-6 transition-all duration-300
                                hover:scale-[1.02] hover:shadow-xl"
 					onmouseenter={() => handleMouseEnter(index)}
 					onmouseleave={handleMouseLeave}
-					onkeydown={(e) => handleKeyDown(e, index)}
-					role="button"
-					tabindex="0"
 				>
 					<div
 						class="absolute top-4 right-4 transform text-2xl
@@ -120,7 +76,7 @@
                                   text-2xl font-medium transition-all
                                   duration-300"
 					>
-						{section.title}
+						{getSectionTitle(section.id)}
 					</h2>
 
 					<p
@@ -128,7 +84,7 @@
                                  transform leading-relaxed transition-all
                                  duration-300"
 					>
-						{section.content}
+						{getSectionContent(section.id)}
 					</p>
 
 					{#if activeSection === index}
@@ -137,7 +93,7 @@
                                       transform transition-all duration-300"
 						></div>
 					{/if}
-				</div>
+				</article>
 			{/each}
 		</div>
 	</div>
@@ -146,5 +102,5 @@
 {#if isTeamLoaded && Team}
 	<Team teamMembers={data.teamMembers} />
 {:else}
-	<Loading message="Team laden..." />
+	<Loading message={m['about.team_loading']()} />
 {/if}

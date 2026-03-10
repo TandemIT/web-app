@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from '$lib/paraglide/messages';
 	interface Job {
 		title: string;
 		description: string;
@@ -76,14 +77,14 @@
 				class="font-grotesk text-primary-300 hover:text-primary-200 transform
 						   text-5xl font-semibold transition-all duration-300"
 			>
-				Makecenter
+				{m['projects.makerspace_title']()}
 			</h1>
 
 			<h2 class="font-grotesk text-secondary-100 text-2xl font-medium">
-				Werk verricht onder Makecenter van het Veenlanden College uit Mijdrecht.
+				{m['projects.makerspace_subtitle']()}
 			</h2>
 
-			<p class="text-secondary-200 text-lg">De volgende werken zijn uitgevoerd:</p>
+			<p class="text-secondary-200 text-lg">{m['projects.makerspace_intro']()}</p>
 		</header>
 
 		<ul class="grid grid-cols-1 gap-6 md:grid-cols-2">

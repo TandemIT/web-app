@@ -1,26 +1,11 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
-	import Enthousiast from '../components/Enthousiast.svelte';
-	import Goals from '../components/Goals.svelte';
+	import * as m from '$lib/paraglide/messages';
 	import Aanpak from '../components/Aanpak.svelte';
 	import Bewijs from '../components/Bewijs.svelte';
+	import Enthousiast from '../components/Enthousiast.svelte';
+	import Goals from '../components/Goals.svelte';
 	import Button from '../components/ui/Button.svelte';
 	import Heading from '../components/ui/Heading.svelte';
-
-	// Handle smooth scrolling for anchor links
-	function handleScrollToSection(event: MouseEvent, sectionId: string) {
-		if (!browser) return;
-
-		event.preventDefault();
-		const element = document.getElementById(sectionId);
-
-		if (element) {
-			element.scrollIntoView({
-				behavior: 'smooth',
-				block: 'start'
-			});
-		}
-	}
 </script>
 
 <!-- +page.svelte -->
@@ -28,20 +13,15 @@
 	<div class="wrapper grid-cols-12 lg:grid">
 		<div class="col-span-7">
 			<Heading level={1} variant="hero" class="mb-4">
-				De partner voor infra- en security services door studenten.
+				{m['home.hero_title']()}
 			</Heading>
 			<p class="max-w-lg text-lg">
-				Bij Tandem IT werken studenten aan uitdagende projecten in netwerkinfrastructuur en
-				cyberbeveiliging. We ondersteunen scholen en organisaties zonder expertise of budget voor
-				professionele diensten.
+				{m['home.hero_description']()}
 			</p>
 			<div class="mt-7 flex items-center gap-x-3">
-				<Button variant="primary" href="/contact">Contacteer ons</Button>
-				<Button
-					variant="secondary"
-					onclick={(e: MouseEvent) => handleScrollToSection(e, 'cases')}
-				>
-					Bekijk onze cases
+				<Button variant="primary" href="/contact">{m['home.cta_contact']()}</Button>
+				<Button variant="secondary" href="/#cases" scrollTarget="cases">
+					{m['home.cta_cases']()}
 				</Button>
 			</div>
 		</div>
@@ -61,9 +41,9 @@
 	<img src="/Team.png" alt="Tandem IT Team" width="1640" height="688" class="relative -mt-20" />
 </div>
 
-	<Aanpak />
-	<!-- <div class="h-1 min-w-full bg-secondary-50"></div> -->
-	<Goals />
-	<!-- <div class="h-1 min-w-full bg-secondary-50"></div> -->
-	<Bewijs />
-	<!-- Devider for better viewing of the sections -->
+<Aanpak />
+<!-- <div class="h-1 min-w-full bg-secondary-50"></div> -->
+<Goals />
+<!-- <div class="h-1 min-w-full bg-secondary-50"></div> -->
+<Bewijs />
+<!-- Devider for better viewing of the sections -->

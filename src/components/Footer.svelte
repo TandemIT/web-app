@@ -1,6 +1,7 @@
 <!-- Footer -->
 <script lang="ts">
-	import { ChevronUp, Facebook, Twitter, Instagram, Linkedin } from 'lucide-svelte';
+	import * as m from '$lib/paraglide/messages';
+	import { ChevronUp, Facebook, Instagram, Linkedin, Twitter } from 'lucide-svelte';
 
 	const currentYear = new Date().getFullYear();
 	const startYear = 2024;
@@ -23,13 +24,13 @@
 		label: string;
 	}
 
-	const quickLinks: QuickLink[] = [
-		{ href: '/', label: 'Home' },
-		{ href: '/about', label: 'Over ons' },
-		{ href: '/projects', label: 'Diensten' },
-		{ href: '/contact', label: 'Stageplekken' },
-		{ href: '/contact', label: 'Contact' }
-	];
+	const quickLinks = $derived<QuickLink[]>([
+		{ href: '/', label: m['nav.home']() },
+		{ href: '/about', label: m['nav.about']() },
+		{ href: '/projects', label: m['footer.link_services']() },
+		{ href: '/contact', label: m['footer.link_internships']() },
+		{ href: '/contact', label: m['footer.contact']() }
+	]);
 
 	const contactInfo = {
 		visitAddress: ['plaats in', 'Utrecht'],
@@ -45,20 +46,22 @@
 	});
 
 	// Decode social media URLs client-side to avoid scrapers
-	let decodedSocialLinks = $derived(socialLinks.map(link => ({
-		...link,
-		url: link.url.replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec))
-	})));
+	let decodedSocialLinks = $derived(
+		socialLinks.map((link) => ({
+			...link,
+			url: link.url.replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec))
+		}))
+	);
 
-	const openingHours = [
-		{ day: 'Maandag', time: '09:30 - 16:30' },
-		{ day: 'Dinsdag', time: '09:30 - 16:30' },
-		{ day: 'Woensdag', time: '09:30 - 16:30' },
-		{ day: 'Donderdag', time: '09:30 - 16:30' },
-		{ day: 'Vrijdag', time: '09:30 - 16:30' },
-		{ day: 'Zaterdag', time: 'Gesloten' },
-		{ day: 'Zondag', time: 'Gesloten' }
-	];
+	const openingHours = $derived([
+		{ day: m['footer.day_monday'](), time: '09:30 - 16:30' },
+		{ day: m['footer.day_tuesday'](), time: '09:30 - 16:30' },
+		{ day: m['footer.day_wednesday'](), time: '09:30 - 16:30' },
+		{ day: m['footer.day_thursday'](), time: '09:30 - 16:30' },
+		{ day: m['footer.day_friday'](), time: '09:30 - 16:30' },
+		{ day: m['footer.day_saturday'](), time: m['footer.closed']() },
+		{ day: m['footer.day_sunday'](), time: m['footer.closed']() }
+	]);
 
 	function scrollToTop() {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -72,23 +75,21 @@
 			<div>
 				<h3 class="text-primary-400 mb-4 font-bold">Tandem IT</h3>
 				<p class=" mb-4">
-					Tandem IT is een fictief IT-bedrijf dat zich richt op het ontwikkelen van
-					toekomstbestendige softwareoplossingen. In samenwerking met studenten van de Hogeschool
-					Utrecht werken we aan uitdagende projecten voor echte klanten.
+					{m['footer.description']()}
 				</p>
 				<button
 					onclick={scrollToTop}
 					class="text-primary-400 hover:text-primary-300 flex items-center transition-colors"
-					aria-label="Scroll naar bovenkant pagina"
+					aria-label={m['footer.back_to_top']()}
 				>
 					<ChevronUp class="mr-2" />
-					Terug naar boven
+					{m['footer.back_to_top']()}
 				</button>
 			</div>
 
 			<!-- Snelle links -->
 			<div>
-				<h4 class="text-primary-400 mb-4 font-semibold">Snelle links</h4>
+				<h4 class="text-primary-400 mb-4 font-semibold">{m['footer.quick_links']()}</h4>
 				<nav>
 					<ul class="space-y-2">
 						{#each quickLinks as { href, label }}
@@ -104,24 +105,24 @@
 
 			<!-- Contactinformatie -->
 			<div>
-				<h4 class="text-primary-400 mb-4 font-semibold">Contact</h4>
+				<h4 class="text-primary-400 mb-4 font-semibold">{m['footer.contact']()}</h4>
 				<div class="space-y-2">
-					<p>Bezoekadres:</p>
+					<p>{m['footer.visit_address']()}</p>
 					{#each contactInfo.visitAddress as line}
 						<p>{line}</p>
 					{/each}
-					<p class="mt-4">Postadres:</p>
+					<p class="mt-4">{m['footer.post_address']()}</p>
 					{#each contactInfo.postAddress as line}
 						<p>{line}</p>
 					{/each}
-					<p class="mt-4">Email: {decodedContact.email}</p>
-					<p>Tel: {decodedContact.phone}</p>
+					<p class="mt-4">{m['footer.email_label']()}: {decodedContact.email}</p>
+					<p>{m['footer.phone_label']()}: {decodedContact.phone}</p>
 				</div>
 			</div>
 
 			<!-- Openingstijden -->
 			<div>
-				<h4 class="text-primary-400 mb-4 font-semibold">Openingstijden</h4>
+				<h4 class="text-primary-400 mb-4 font-semibold">{m['footer.opening_hours']()}</h4>
 				<div class="space-y-2">
 					{#each openingHours as { day, time }}
 						<p>{day}: {time}</p>
@@ -136,9 +137,12 @@
 		>
 			<p class="text-secondary-400 mb-4 md:mb-0">
 				{#if startYear === currentYear}
-					&copy; {currentYear} Tandem IT. Alle rechten voorbehouden.
+					&copy; {m['footer.rights_single_year']({ year: `${currentYear}` })}
 				{:else}
-					&copy; {startYear}-{currentYear} Tandem IT. Alle rechten voorbehouden.
+					&copy; {m['footer.rights_year_range']({
+						startYear: `${startYear}`,
+						endYear: `${currentYear}`
+					})}
 				{/if}
 			</p>
 			<div class="flex space-x-4">
@@ -146,7 +150,7 @@
 					<a
 						href={url}
 						class="text-secondary-400 hover:text-primary-400 transition-colors"
-						aria-label="Bezoek onze {name} pagina"
+						aria-label={m['footer.social_visit_aria']({ name })}
 						target="_blank"
 						rel="noopener noreferrer"
 					>

@@ -16,7 +16,7 @@ const config = {
 	},
 
 	extensions: ['.svelte', '.svx'],
-	
+
 	// Svelte 5 specific options
 	compilerOptions: {
 		// Enable modern compilation mode for better performance

@@ -1,11 +1,14 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
-	import { ArrowLeft, Home, RefreshCw, AlertTriangle } from 'lucide-svelte';
+	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
+	import * as m from '$lib/paraglide/messages';
+	import { AlertTriangle, ArrowLeft, Home, RefreshCw } from 'lucide-svelte';
 
 	// Get error details from the page store
-	let errorCode = $derived($page.status || 404);
-	let errorMessage = $derived($page.error?.message || 'Pagina niet gevonden');
+	let errorCode = $derived(page.status || 404);
+	let errorMessage = $derived(page.error?.message || m['error.not_found_title']());
 
 	// Error type detection
 	let errorType = $derived(() => {
@@ -15,42 +18,48 @@
 		return 'unknown';
 	});
 
-	// Error configuration based on type
-	const errorConfig = {
-		notFound: {
-			title: 'Pagina niet gevonden',
-			description: 'De pagina die je zoekt bestaat niet of is verplaatst.',
-			icon: '🔍',
-			suggestion: 'Controleer de URL of ga terug naar de homepage.'
-		},
-		server: {
-			title: 'Server probleem',
-			description: 'Er is een probleem opgetreden op onze servers.',
-			icon: '⚡',
-			suggestion: 'Probeer de pagina te vernieuwen of kom later terug.'
-		},
-		client: {
-			title: 'Aanvraag probleem',
-			description: 'Er is iets misgegaan met je aanvraag.',
-			icon: '⚠️',
-			suggestion: 'Controleer je invoer en probeer het opnieuw.'
-		},
-		unknown: {
-			title: 'Onbekende fout',
-			description: 'Er is een onverwachte fout opgetreden.',
-			icon: '❓',
-			suggestion: 'Probeer de pagina te vernieuwen.'
+	let currentConfig = $derived(() => {
+		if (errorType() === 'notFound') {
+			return {
+				title: m['error.not_found_title'](),
+				description: m['error.not_found_description'](),
+				icon: '🔍',
+				suggestion: m['error.not_found_suggestion']()
+			};
 		}
-	};
 
-	let currentConfig = $derived(errorConfig[errorType()]);
+		if (errorType() === 'server') {
+			return {
+				title: m['error.server_title'](),
+				description: m['error.server_description'](),
+				icon: '⚡',
+				suggestion: m['error.server_suggestion']()
+			};
+		}
+
+		if (errorType() === 'client') {
+			return {
+				title: m['error.client_title'](),
+				description: m['error.client_description'](),
+				icon: '⚠️',
+				suggestion: m['error.client_suggestion']()
+			};
+		}
+
+		return {
+			title: m['error.unknown_title'](),
+			description: m['error.unknown_description'](),
+			icon: '❓',
+			suggestion: m['error.unknown_suggestion']()
+		};
+	});
 
 	// Navigation functions
 	function goBack() {
 		if (browser && window.history.length > 1) {
 			window.history.back();
 		} else {
-			window.location.href = '/';
+			goto(resolve('/'));
 		}
 	}
 
@@ -62,47 +71,51 @@
 
 	function goHome() {
 		if (browser) {
-			window.location.href = '/';
+			goto(resolve('/'));
 		}
 	}
 </script>
 
 <svelte:head>
-	<title>{errorCode} - {currentConfig.title} | Tandem IT</title>
-	<meta name="description" content={currentConfig.description} />
+	<title>{errorCode} - {currentConfig().title} | Tandem IT</title>
+	<meta name="description" content={currentConfig().description} />
 </svelte:head>
 
-<div class="min-h-screen bg-gradient-to-br from-secondary-800 via-secondary-700 to-secondary-900 flex items-center justify-center px-4">
-	<div class="max-w-2xl w-full text-center">
+<div
+	class="from-secondary-800 via-secondary-700 to-secondary-900 flex min-h-screen items-center justify-center bg-linear-to-br px-4"
+>
+	<div class="w-full max-w-2xl text-center">
 		<!-- Error Icon and Code -->
 		<div class="mb-8">
-			<div class="inline-flex items-center justify-center w-24 h-24 mb-6 rounded-full bg-secondary-600 text-4xl">
-				{currentConfig.icon}
+			<div
+				class="bg-secondary-600 mb-6 inline-flex h-24 w-24 items-center justify-center rounded-full text-4xl"
+			>
+				{currentConfig().icon}
 			</div>
-			<div class="text-8xl font-grotesk font-bold text-primary-300 mb-2">
+			<div class="font-grotesk text-primary-300 mb-2 text-8xl font-bold">
 				{errorCode}
 			</div>
 		</div>
 
 		<!-- Error Content -->
 		<div class="mb-12">
-			<h1 class="text-4xl font-grotesk font-bold text-secondary-50 mb-4">
-				{currentConfig.title}
+			<h1 class="font-grotesk text-secondary-50 mb-4 text-4xl font-bold">
+				{currentConfig().title}
 			</h1>
-			<p class="text-xl text-secondary-200 mb-6 leading-relaxed">
-				{currentConfig.description}
+			<p class="text-secondary-200 mb-6 text-xl leading-relaxed">
+				{currentConfig().description}
 			</p>
-			<p class="text-lg text-secondary-300">
-				{currentConfig.suggestion}
+			<p class="text-secondary-300 text-lg">
+				{currentConfig().suggestion}
 			</p>
-			
-			{#if errorMessage && errorMessage !== currentConfig.description}
-				<div class="mt-6 p-4 bg-secondary-600/50 rounded-lg border border-secondary-500">
-					<div class="flex items-center justify-center gap-2 text-accent-300">
-						<AlertTriangle class="w-5 h-5" />
-						<span class="font-medium">Technische details:</span>
+
+			{#if errorMessage && errorMessage !== currentConfig().description}
+				<div class="bg-secondary-600/50 border-secondary-500 mt-6 rounded-lg border p-4">
+					<div class="text-accent-300 flex items-center justify-center gap-2">
+						<AlertTriangle class="h-5 w-5" />
+						<span class="font-medium">{m['error.technical_details']()}</span>
 					</div>
-					<p class="text-secondary-200 mt-2 text-sm font-mono">
+					<p class="text-secondary-200 mt-2 font-mono text-sm">
 						{errorMessage}
 					</p>
 				</div>
@@ -110,30 +123,30 @@
 		</div>
 
 		<!-- Action Buttons -->
-		<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+		<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
 			<button
 				onclick={goBack}
-				class="group inline-flex items-center gap-2 px-6 py-3 bg-secondary-600 hover:bg-secondary-500 text-secondary-50 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+				class="group bg-secondary-600 hover:bg-secondary-500 text-secondary-50 inline-flex items-center gap-2 rounded-lg px-6 py-3 font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
 			>
-				<ArrowLeft class="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-				Ga terug
+				<ArrowLeft class="h-5 w-5 transition-transform group-hover:-translate-x-1" />
+				{m['error.go_back']()}
 			</button>
 
 			<button
 				onclick={goHome}
-				class="group inline-flex items-center gap-2 px-6 py-3 bg-primary-500 hover:bg-primary-400 text-white rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+				class="group bg-primary-500 hover:bg-primary-400 inline-flex items-center gap-2 rounded-lg px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
 			>
-				<Home class="w-5 h-5" />
-				Homepage
+				<Home class="h-5 w-5" />
+				{m['error.homepage']()}
 			</button>
 
 			{#if errorType() === 'server' || errorType() === 'unknown'}
 				<button
 					onclick={refreshPage}
-					class="group inline-flex items-center gap-2 px-6 py-3 bg-accent-500 hover:bg-accent-400 text-white rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+					class="group bg-accent-500 hover:bg-accent-400 inline-flex items-center gap-2 rounded-lg px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
 				>
-					<RefreshCw class="w-5 h-5 transition-transform group-hover:rotate-180" />
-					Vernieuwen
+					<RefreshCw class="h-5 w-5 transition-transform group-hover:rotate-180" />
+					{m['error.refresh']()}
 				</button>
 			{/if}
 		</div>
@@ -141,21 +154,25 @@
 		<!-- Additional Help -->
 		<div class="mt-12 text-center">
 			<p class="text-secondary-400 mb-4">
-				Nog steeds problemen? Neem contact met ons op.
+				{m['error.still_having_issues']()}
 			</p>
 			<a
 				href="/contact"
-				class="inline-flex items-center gap-2 text-primary-300 hover:text-primary-200 font-medium transition-colors duration-300"
+				class="text-primary-300 hover:text-primary-200 inline-flex items-center gap-2 font-medium transition-colors duration-300"
 			>
-				Contacteer ons
-				<ArrowLeft class="w-4 h-4 rotate-180" />
+				{m['error.contact_us']()}
+				<ArrowLeft class="h-4 w-4 rotate-180" />
 			</a>
 		</div>
 
 		<!-- Decorative Elements -->
-		<div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-			<div class="decorative-circle-1 absolute w-64 h-64 rounded-full bg-primary-500/5 blur-3xl"></div>
-			<div class="decorative-circle-2 absolute w-96 h-96 rounded-full bg-accent-500/5 blur-3xl"></div>
+		<div class="pointer-events-none absolute top-0 left-0 h-full w-full overflow-hidden">
+			<div
+				class="decorative-circle-1 bg-primary-500/5 absolute h-64 w-64 rounded-full blur-3xl"
+			></div>
+			<div
+				class="decorative-circle-2 bg-accent-500/5 absolute h-96 w-96 rounded-full blur-3xl"
+			></div>
 		</div>
 	</div>
 </div>
@@ -199,7 +216,8 @@
 	}
 
 	@keyframes pulse {
-		0%, 100% {
+		0%,
+		100% {
 			opacity: 0.05;
 			transform: scale(1);
 		}
