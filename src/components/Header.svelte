@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { scrollTo } from '$lib/actions/scroll-to';
 	import * as m from '$lib/paraglide/messages';
@@ -67,7 +68,7 @@
 		<!-- Logo en hoofdnavigatie -->
 		<div class="flex flex-col items-center gap-x-6 sm:flex-row md:gap-x-10 lg:gap-x-14">
 			<a
-				href="/"
+				href={resolve('/')}
 				data-sveltekit-preload-data="hover"
 				class="font-grotesk text-secondary-50 flex items-center gap-x-2 px-4 text-lg font-medium"
 			>
@@ -79,7 +80,7 @@
 			<div class="hidden gap-x-6 md:flex lg:gap-x-8">
 				{#each navigation.links as link (link.href)}
 					<a
-						href={link.href}
+						href={resolve(link.href as `/${string}`)}
 						data-sveltekit-preload-data="hover"
 						class="font-medium duration-300 {$isActiveLink(link)
 							? 'text-primary-300 border-primary-300 border-b-2'
@@ -129,7 +130,7 @@
 					{#each navigation.links as link (link.href)}
 						<li>
 							<a
-								href={link.href}
+								href={resolve(link.href as `/${string}`)}
 								data-sveltekit-preload-data="hover"
 								class="block font-medium duration-300 {$isActiveLink(link)
 									? 'text-primary-300'

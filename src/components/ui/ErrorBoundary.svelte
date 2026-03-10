@@ -16,7 +16,7 @@
 <svelte:boundary>
 	{@render children()}
 
-	{#snippet failed(_error, reset)}
+	{#snippet failed(error, reset)}
 		<div class="error-boundary bg-secondary-800 flex min-h-screen items-center justify-center">
 			<div class="mx-auto max-w-md px-4 text-center">
 				<div class="mb-6">
@@ -42,6 +42,10 @@
 				<p class="text-secondary-300 mb-6">
 					{m['error.boundary_description']()}
 				</p>
+
+				{#if error && typeof error === 'object' && 'message' in error}
+					<p class="text-secondary-400 mb-4 text-sm">{String(error.message)}</p>
+				{/if}
 
 				<div class="space-y-3">
 					<button

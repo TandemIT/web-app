@@ -1,11 +1,12 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { scrollTo } from '$lib/actions/scroll-to';
 	import * as m from '$lib/paraglide/messages';
 	import ArrowRight from '@tabler/icons-svelte/icons/arrow-right';
 	import { Map, MessageSquareText, Rocket } from 'lucide-svelte';
 
 	interface Process {
-		icon: any;
+		icon: typeof MessageSquareText;
 		title: string;
 		description: string;
 	}
@@ -96,7 +97,7 @@
 					<p class="text-secondary-200 mb-8 text-lg">
 						{m['home.aanpak_secondary_desc']()}
 					</p>
-					<a href="/contact" class=" group inline-flex items-center underline">
+					<a href={resolve('/contact')} class=" group inline-flex items-center underline">
 						{m['home.aanpak_contact']()}
 						<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
 					</a>

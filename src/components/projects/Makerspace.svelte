@@ -50,16 +50,6 @@
 		window.open(href, '_blank', 'noopener,noreferrer');
 	}
 
-	let hoveredIndex = $state<number | null>(null);
-
-	function handleMouseEnter(index: number) {
-		hoveredIndex = index;
-	}
-
-	function handleMouseLeave() {
-		hoveredIndex = null;
-	}
-
 	function handleKeyPress(event: KeyboardEvent, href: string | undefined) {
 		if (event.key === 'Enter' || event.key === ' ') {
 			event.preventDefault();
@@ -88,12 +78,8 @@
 		</header>
 
 		<ul class="grid grid-cols-1 gap-6 md:grid-cols-2">
-			{#each jobs as job, index}
-				<li
-					class="group relative"
-					onmouseenter={() => handleMouseEnter(index)}
-					onmouseleave={handleMouseLeave}
-				>
+			{#each jobs as job, index (job.title + String(index))}
+				<li class="group relative">
 					<button
 						class="bg-secondary-600 hover:bg-secondary-500 focus-visible:ring-primary-300 block w-full transform
 								   cursor-pointer rounded-xl p-6
@@ -132,7 +118,7 @@
 
 						{#if job.tags}
 							<div class="flex flex-wrap gap-2">
-								{#each job.tags as tag}
+								{#each job.tags as tag (tag)}
 									<span
 										class="bg-secondary-700 text-secondary-100 rounded-full px-3
 												   py-1 text-base"

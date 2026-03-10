@@ -1,5 +1,6 @@
 <!-- Footer -->
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import * as m from '$lib/paraglide/messages';
 	import { ChevronUp, Facebook, Instagram, Linkedin, Twitter } from 'lucide-svelte';
 
@@ -7,7 +8,7 @@
 	const startYear = 2024;
 
 	interface SocialLink {
-		icon: any;
+		icon: typeof Facebook;
 		url: string;
 		name: string;
 	}
@@ -66,6 +67,10 @@
 	function scrollToTop() {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
+
+	function openExternal(url: string) {
+		window.open(url, '_blank', 'noopener,noreferrer');
+	}
 </script>
 
 <footer class=" bg-secondary-700 text-secondary-100 px-4 py-12 pb-4 font-sans">
@@ -92,9 +97,12 @@
 				<h4 class="text-primary-400 mb-4 font-semibold">{m['footer.quick_links']()}</h4>
 				<nav>
 					<ul class="space-y-2">
-						{#each quickLinks as { href, label }}
+						{#each quickLinks as { href, label } (href + label)}
 							<li>
-								<a {href} class="hover:text-primary-400 transition-colors">
+								<a
+									href={resolve(href as `/${string}`)}
+									class="hover:text-primary-400 transition-colors"
+								>
 									{label}
 								</a>
 							</li>
@@ -108,11 +116,11 @@
 				<h4 class="text-primary-400 mb-4 font-semibold">{m['footer.contact']()}</h4>
 				<div class="space-y-2">
 					<p>{m['footer.visit_address']()}</p>
-					{#each contactInfo.visitAddress as line}
+					{#each contactInfo.visitAddress as line (line)}
 						<p>{line}</p>
 					{/each}
 					<p class="mt-4">{m['footer.post_address']()}</p>
-					{#each contactInfo.postAddress as line}
+					{#each contactInfo.postAddress as line (line)}
 						<p>{line}</p>
 					{/each}
 					<p class="mt-4">{m['footer.email_label']()}: {decodedContact.email}</p>
@@ -124,7 +132,7 @@
 			<div>
 				<h4 class="text-primary-400 mb-4 font-semibold">{m['footer.opening_hours']()}</h4>
 				<div class="space-y-2">
-					{#each openingHours as { day, time }}
+					{#each openingHours as { day, time } (day)}
 						<p>{day}: {time}</p>
 					{/each}
 				</div>
@@ -146,16 +154,15 @@
 				{/if}
 			</p>
 			<div class="flex space-x-4">
-				{#each decodedSocialLinks as { icon: Icon, url, name }}
-					<a
-						href={url}
+				{#each decodedSocialLinks as { icon: Icon, url, name } (name)}
+					<button
+						type="button"
+						onclick={() => openExternal(url)}
 						class="text-secondary-400 hover:text-primary-400 transition-colors"
 						aria-label={m['footer.social_visit_aria']({ name })}
-						target="_blank"
-						rel="noopener noreferrer"
 					>
 						<Icon size={24} />
-					</a>
+					</button>
 				{/each}
 			</div>
 		</div>

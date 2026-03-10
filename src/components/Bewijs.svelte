@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { showcaseProjects } from '$lib/content/home';
 	import * as m from '$lib/paraglide/messages';
+
+	function openExternal(url: string) {
+		window.open(url, '_blank', 'noopener,noreferrer');
+	}
 </script>
 
 <!-- Bewijs van Excellence -->
@@ -15,19 +19,24 @@
 
 	<!-- Projecten grid -->
 	<div class="grid grid-cols-1 gap-16 sm:grid-cols-2">
-		{#each showcaseProjects as project}
+		{#each showcaseProjects as project (project.title)}
 			<div class="flex flex-col gap-2">
 				<h2 class="bg-secondary-300 font-grotesk w-fit translate-y-12 rounded-xl p-1 text-2xl">
 					{project.title}
 				</h2>
-				<a href={project.link} target="_blank" rel="noopener noreferrer">
+				<button
+					type="button"
+					onclick={() => openExternal(project.link)}
+					class="text-left"
+					aria-label={project.title}
+				>
 					<img
 						class="h-full w-full rounded-xl object-cover"
 						src={project.image}
 						alt={project.title}
 						loading="lazy"
 					/>
-				</a>
+				</button>
 
 				<p class=" bg-secondary-300 w-[75%] -translate-y-6 rounded-xl p-2">{project.description}</p>
 			</div>
@@ -47,19 +56,24 @@
 
 	<!-- Projecten grid -->
 	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-		{#each showcaseProjects as project}
+		{#each showcaseProjects as project (project.title)}
 			<div class="flex flex-col gap-2">
 				<h2 class="bg-secondary-300 font-grotesk w-fit translate-y-12 rounded-xl p-1 text-2xl">
 					{project.title}
 				</h2>
-				<a href={project.link} target="_blank" rel="noopener noreferrer">
+				<button
+					type="button"
+					onclick={() => openExternal(project.link)}
+					class="text-left"
+					aria-label={project.title}
+				>
 					<img
 						class="h-full w-full rounded-xl object-cover"
 						src={project.image}
 						alt={project.title}
 						loading="lazy"
 					/>
-				</a>
+				</button>
 
 				<p class=" bg-secondary-300 w-[75%] -translate-y-8 rounded-xl p-2">{project.description}</p>
 			</div>

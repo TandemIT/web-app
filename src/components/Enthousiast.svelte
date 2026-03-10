@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import * as m from '$lib/paraglide/messages';
 	import ArrowRight from '@tabler/icons-svelte/icons/arrow-right';
 	import BrandGithub from '@tabler/icons-svelte/icons/brand-github';
@@ -38,7 +39,7 @@
 
 	// Smooth scroll naar de 'about' sectie
 	function goAbout() {
-		goto('/about');
+		goto(resolve('/about'));
 	}
 </script>
 
@@ -99,7 +100,7 @@
 				<!-- Call-to-action knoppen -->
 				<!-- <div class="flex justify-between"> -->
 				<a
-					href="/about"
+					href={resolve('/about')}
 					class="group text-secondary-600 right-auto left-0 inline-flex items-center rounded-lg text-base font-semibold underline transition"
 					aria-label={m['home.enthousiast_read_more_aria']()}
 				>

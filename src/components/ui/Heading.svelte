@@ -1,9 +1,11 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
+
 	interface Props {
 		level: 1 | 2 | 3 | 4 | 5 | 6;
 		variant?: 'hero' | 'section' | 'card';
 		class?: string;
-		children: any;
+		children: Snippet;
 	}
 
 	let { level, variant = 'section', class: className = '', children }: Props = $props();

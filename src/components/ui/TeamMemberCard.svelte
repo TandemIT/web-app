@@ -14,6 +14,10 @@
 	let decodedBlog = $derived(
 		member.blog ? (member.blog.startsWith('http') ? member.blog : `https://${member.blog}`) : null
 	);
+
+	function openExternal(url: string) {
+		window.open(url, '_blank', 'noopener,noreferrer');
+	}
 </script>
 
 <div
@@ -68,10 +72,9 @@
 
 	<div class="mt-6 flex flex-wrap justify-center gap-3">
 		{#if decodedBlog}
-			<a
-				href={decodedBlog}
-				target="_blank"
-				rel="noopener noreferrer"
+			<button
+				type="button"
+				onclick={() => openExternal(decodedBlog)}
 				class="bg-primary-500 hover:bg-primary-600 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-white transition-colors duration-200"
 			>
 				<svg
@@ -86,12 +89,11 @@
 					<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
 				</svg>
 				{m['team.website']()}
-			</a>
+			</button>
 		{/if}
-		<a
-			href={member.html_url}
-			target="_blank"
-			rel="noopener noreferrer"
+		<button
+			type="button"
+			onclick={() => openExternal(member.html_url)}
 			class="bg-secondary-600 hover:bg-secondary-700 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-white transition-colors duration-200"
 		>
 			<svg
@@ -105,7 +107,7 @@
 				/>
 			</svg>
 			{m['team.github']()}
-		</a>
+		</button>
 	</div>
 
 	<div class="text-secondary-500 mt-6 flex items-center justify-center gap-6 text-sm">

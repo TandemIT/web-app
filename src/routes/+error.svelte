@@ -157,7 +157,7 @@
 				{m['error.still_having_issues']()}
 			</p>
 			<a
-				href="/contact"
+				href={resolve('/contact')}
 				class="text-primary-300 hover:text-primary-200 inline-flex items-center gap-2 font-medium transition-colors duration-300"
 			>
 				{m['error.contact_us']()}

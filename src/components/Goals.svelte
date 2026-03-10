@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { scrollTo } from '$lib/actions/scroll-to';
 	import * as m from '$lib/paraglide/messages';
 	import ArrowRight from '@tabler/icons-svelte/icons/arrow-right';
@@ -65,7 +66,10 @@
 							</div>
 						</div>
 					{/each}
-					<a class="bg-primary-300 flex flex-col justify-between rounded-2xl p-4" href="/contact">
+					<a
+						class="bg-primary-300 flex flex-col justify-between rounded-2xl p-4"
+						href={resolve('/contact')}
+					>
 						<h3 class="text-xl font-bold dark:text-black">{m['home.goals_cta_title']()}</h3>
 
 						<p

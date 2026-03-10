@@ -1,22 +1,21 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { scrollTo } from '$lib/actions/scroll-to';
 	import type { Snippet } from 'svelte';
 
 	interface Props {
 		variant?: 'primary' | 'secondary';
-		size?: 'sm' | 'md' | 'lg';
 		href?: string;
 		scrollTarget?: string | null;
 		disabled?: boolean;
 		type?: 'button' | 'submit' | 'reset';
 		class?: string;
 		children: Snippet;
-		[key: string]: any; // Allow additional props
+		[key: string]: unknown;
 	}
 
 	let {
 		variant = 'primary',
-		size = 'md',
 		href,
 		scrollTarget = null,
 		disabled = false,
@@ -29,7 +28,7 @@
 
 {#if href}
 	<a
-		{href}
+		href={resolve(href as `/${string}`)}
 		use:scrollTo={scrollTarget}
 		class="button button-{variant} {className}"
 		class:disabled
