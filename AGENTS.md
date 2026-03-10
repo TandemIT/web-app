@@ -181,7 +181,7 @@ Generated code should:
 
 Agents should prioritize **clarity and maintainability over cleverness**.
 
-## Official MCP Instructions
+# 10. Official MCP Instructions
 
 You are able to use the Svelte MCP server, where you have access to comprehensive Svelte 5 and SvelteKit documentation. Here's how to use the available tools effectively:
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { goto } from '$app/navigation';
+	import { goto, refreshAll } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import * as m from '$lib/paraglide/messages';
@@ -64,15 +64,11 @@
 	}
 
 	function refreshPage() {
-		if (browser) {
-			window.location.reload();
-		}
+		if (browser) refreshAll();
 	}
 
 	function goHome() {
-		if (browser) {
-			goto(resolve('/'));
-		}
+		goto(resolve('/'));
 	}
 </script>
 

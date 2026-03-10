@@ -1,10 +1,6 @@
 <script lang="ts">
 	import { showcaseProjects } from '$lib/content/home';
 	import * as m from '$lib/paraglide/messages';
-
-	function openExternal(url: string) {
-		window.open(url, '_blank', 'noopener,noreferrer');
-	}
 </script>
 
 <!-- Bewijs van Excellence -->
@@ -24,9 +20,10 @@
 				<h2 class="bg-secondary-300 font-grotesk w-fit translate-y-12 rounded-xl p-1 text-2xl">
 					{project.title}
 				</h2>
-				<button
-					type="button"
-					onclick={() => openExternal(project.link)}
+				<a
+					href={project.link}
+					target="_blank"
+					rel="noopener noreferrer"
 					class="text-left"
 					aria-label={project.title}
 				>
@@ -36,7 +33,7 @@
 						alt={project.title}
 						loading="lazy"
 					/>
-				</button>
+				</a>
 
 				<p class=" bg-secondary-300 w-[75%] -translate-y-6 rounded-xl p-2">{project.description}</p>
 			</div>
@@ -61,9 +58,10 @@
 				<h2 class="bg-secondary-300 font-grotesk w-fit translate-y-12 rounded-xl p-1 text-2xl">
 					{project.title}
 				</h2>
-				<button
-					type="button"
-					onclick={() => openExternal(project.link)}
+				<a
+					href={project.link}
+					target="_blank"
+					rel="noopener noreferrer"
 					class="text-left"
 					aria-label={project.title}
 				>
@@ -73,7 +71,7 @@
 						alt={project.title}
 						loading="lazy"
 					/>
-				</button>
+				</a>
 
 				<p class=" bg-secondary-300 w-[75%] -translate-y-8 rounded-xl p-2">{project.description}</p>
 			</div>

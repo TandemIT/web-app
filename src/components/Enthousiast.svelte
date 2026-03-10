@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import * as m from '$lib/paraglide/messages';
 	import ArrowRight from '@tabler/icons-svelte/icons/arrow-right';
@@ -36,11 +35,6 @@
 			description: m['home.enthousiast_feature_open_source_desc']()
 		}
 	]);
-
-	// Smooth scroll naar de 'about' sectie
-	function goAbout() {
-		goto(resolve('/about'));
-	}
 </script>
 
 <section id="missie" class="pt-16 pb-36 dark:bg-neutral-50 dark:text-neutral-800">
@@ -64,13 +58,13 @@
 
 			<!-- Rechter kolom met content -->
 			<div class="lg:col-span-7 lg:col-start-6">
-				<button
-					onclick={goAbout}
+				<a
+					href={resolve('/about')}
 					class="subtitle text-primary-500 hover:bg-primary-50 mb-2 inline-block rounded-full px-4 py-1 text-sm font-semibold transition"
 					aria-label={m['home.enthousiast_go_about_aria']()}
 				>
 					{m['home.enthousiast_button']()}
-				</button>
+				</a>
 				<h2 class="mb-6 text-4xl font-bold tracking-tight text-neutral-900 lg:text-5xl">
 					{m['home.enthousiast_title']()}
 				</h2>

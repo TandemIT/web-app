@@ -67,10 +67,6 @@
 	function scrollToTop() {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
-
-	function openExternal(url: string) {
-		window.open(url, '_blank', 'noopener,noreferrer');
-	}
 </script>
 
 <footer class=" bg-secondary-700 text-secondary-100 px-4 py-12 pb-4 font-sans">
@@ -155,14 +151,15 @@
 			</p>
 			<div class="flex space-x-4">
 				{#each decodedSocialLinks as { icon: Icon, url, name } (name)}
-					<button
-						type="button"
-						onclick={() => openExternal(url)}
+					<a
+						href={url}
+						target="_blank"
+						rel="noopener noreferrer"
 						class="text-secondary-400 hover:text-primary-400 transition-colors"
 						aria-label={m['footer.social_visit_aria']({ name })}
 					>
 						<Icon size={24} />
-					</button>
+					</a>
 				{/each}
 			</div>
 		</div>
