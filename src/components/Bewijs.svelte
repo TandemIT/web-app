@@ -18,7 +18,9 @@
 	<div class="grid grid-cols-1 gap-16 sm:grid-cols-2">
 		{#each showcaseProjects as project (project.title)}
 			<div class="flex flex-col gap-2">
-				<h2 class="bg-secondary-300 font-grotesk w-fit translate-y-12 rounded-xl p-1 text-2xl">
+				<h2
+					class="bg-secondary-300 font-grotesk w-fit translate-y-12 rounded-xl p-1 text-2xl"
+				>
 					{project.title}
 				</h2>
 				<a
@@ -36,7 +38,9 @@
 					/>
 				</a>
 
-				<p class=" bg-secondary-300 w-[75%] -translate-y-6 rounded-xl p-2">{project.description}</p>
+				<p class=" bg-secondary-300 w-[75%] -translate-y-6 rounded-xl p-2">
+					{project.description}
+				</p>
 			</div>
 		{/each}
 	</div>
@@ -56,7 +60,9 @@
 	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 		{#each showcaseProjects as project (project.title)}
 			<div class="flex flex-col gap-2">
-				<h2 class="bg-secondary-300 font-grotesk w-fit translate-y-12 rounded-xl p-1 text-2xl">
+				<h2
+					class="bg-secondary-300 font-grotesk w-fit translate-y-12 rounded-xl p-1 text-2xl"
+				>
 					{project.title}
 				</h2>
 				<a
@@ -74,7 +80,9 @@
 					/>
 				</a>
 
-				<p class=" bg-secondary-300 w-[75%] -translate-y-8 rounded-xl p-2">{project.description}</p>
+				<p class=" bg-secondary-300 w-[75%] -translate-y-8 rounded-xl p-2">
+					{project.description}
+				</p>
 			</div>
 		{/each}
 	</div>

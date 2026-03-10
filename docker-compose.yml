@@ -1,12 +1,12 @@
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      target: runtime
-    environment:
-      NODE_ENV: production
-      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
-    ports:
-      - '${APP_PORT:-3000}:3000'
-    restart: unless-stopped
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+            target: runtime
+        environment:
+            NODE_ENV: production
+            GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+        ports:
+            - '${APP_PORT:-3000}:3000'
+        restart: unless-stopped

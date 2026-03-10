@@ -67,7 +67,11 @@
 	</div>
 	<div class="col-span-1"></div>
 	<div class="col-span-7">
-		<form class="bg-secondary-600 flex flex-col gap-5 rounded-xl p-10" method="POST" use:enhance>
+		<form
+			class="bg-secondary-600 flex flex-col gap-5 rounded-xl p-10"
+			method="POST"
+			use:enhance
+		>
 			<div class="grid gap-x-5 lg:grid-cols-2">
 				<div class="mb-5">
 					<label for="firstName" class="mb-1 block text-base font-medium"
@@ -115,7 +119,9 @@
 				/>
 			</div>
 			<div class="mb-5">
-				<label for="email" class="mb-1 block text-base font-medium">{m['contact.email']()}</label>
+				<label for="email" class="mb-1 block text-base font-medium"
+					>{m['contact.email']()}</label
+				>
 				<input
 					id="email"
 					type="email"

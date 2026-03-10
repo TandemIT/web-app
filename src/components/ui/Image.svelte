@@ -25,7 +25,9 @@
 
 <div class="relative overflow-hidden {className}">
 	{#if !isLoaded && !hasError}
-		<div class="bg-secondary-200 absolute inset-0 flex animate-pulse items-center justify-center">
+		<div
+			class="bg-secondary-200 absolute inset-0 flex animate-pulse items-center justify-center"
+		>
 			{#if placeholder}
 				<img src={placeholder} alt="" class="h-full w-full object-cover opacity-50" />
 			{:else}

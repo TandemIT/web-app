@@ -63,7 +63,9 @@
 			<div class="relative flex flex-col gap-16 lg:w-1/2">
 				{#each processes as process (process.title)}
 					{@const ProcessIcon = process.icon}
-					<div class="border-secondary-50 relative flex rounded-xl border-2 bg-transparent p-6">
+					<div
+						class="border-secondary-50 relative flex rounded-xl border-2 bg-transparent p-6"
+					>
 						<!-- Icon -->
 						<div class="text-secondary-50 mr-6 shrink-0">
 							<ProcessIcon size={40} />
@@ -91,7 +93,9 @@
 					>
 						{m['home.aanpak_button']()}
 					</button>
-					<h2 class="text-secondary-50 mb-6 text-4xl font-bold tracking-tight lg:text-5xl">
+					<h2
+						class="text-secondary-50 mb-6 text-4xl font-bold tracking-tight lg:text-5xl"
+					>
 						{m['home.aanpak_secondary_title']()}
 					</h2>
 					<p class="text-secondary-200 mb-8 text-lg">
@@ -99,7 +103,10 @@
 					</p>
 					<a href={resolve('/contact')} class=" group inline-flex items-center underline">
 						{m['home.aanpak_contact']()}
-						<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
+						<ArrowRight
+							class="transition group-hover:translate-x-0.5"
+							aria-hidden="true"
+						/>
 					</a>
 				</div>
 			</div>

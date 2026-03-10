@@ -95,13 +95,15 @@
 					</a>
 				{/each}
 			</div>
-			
 		</div>
-		
+
 		<div class="flex items-center">
 			<!-- CTA Button -->
-			<Button variant="primary" href="/contact" data-sveltekit-preload-data="hover" class="m-4"
-				>{m['nav.cta_contact']()}</Button
+			<Button
+				variant="primary"
+				href="/contact"
+				data-sveltekit-preload-data="hover"
+				class="m-4">{m['nav.cta_contact']()}</Button
 			>
 			<LanguageSwitcher />
 			<!-- Mobiel menu knop -->
@@ -149,5 +151,5 @@
 				</ul>
 			</div>
 		</div>
-		{/if}
+	{/if}
 </header>

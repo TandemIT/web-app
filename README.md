@@ -58,30 +58,30 @@ src/
 
 1. **Install dependencies**:
 
-   ```bash
-   pnpm install
-   ```
+    ```bash
+    pnpm install
+    ```
 
 2. **Start development server**:
 
-   ```bash
-   pnpm run dev
+    ```bash
+    pnpm run dev
 
-   # Or open in browser automatically
-   pnpm run dev -- --open
-   ```
+    # Or open in browser automatically
+    pnpm run dev -- --open
+    ```
 
 3. **Available Scripts**:
-   ```bash
-   pnpm run dev          # Start development server
-   pnpm run build        # Build for production
-   pnpm run preview      # Preview production build
-   pnpm run check        # Type checking with svelte-check
-   pnpm run check:watch  # Type checking in watch mode
-   pnpm run format       # Format code with Prettier
-   pnpm run lint         # Check code formatting
-   pnpm run test:e2e     # Run Playwright E2E tests
-   ```
+    ```bash
+    pnpm run dev          # Start development server
+    pnpm run build        # Build for production
+    pnpm run preview      # Preview production build
+    pnpm run check        # Type checking with svelte-check
+    pnpm run check:watch  # Type checking in watch mode
+    pnpm run format       # Format code with Prettier
+    pnpm run lint         # Check code formatting
+    pnpm run test:e2e     # Run Playwright E2E tests
+    ```
 
 ## 🎨 Design System
 
@@ -92,13 +92,14 @@ The application uses a carefully crafted design system with CSS custom propertie
 ```css
 /* Primary (Green) */
 --color-primary-300: #2ced94 /* Active states, CTAs */ --color-primary-400: #1dce7c
-	/* Hover states */ --color-primary-500: #13a260 /* Primary buttons */ /* Secondary (Blue-grey) */
-	--color-secondary-50: #ffffff /* Text on dark backgrounds */ --color-secondary-200: #b9cbcc
-	/* Subtle text */ --color-secondary-600: #1a545a /* Card backgrounds */
-	--color-secondary-700: #004147 /* Section backgrounds */ --color-secondary-800: #002124
-	/* Dark backgrounds */ --color-secondary-900: #000000 /* Deepest backgrounds */
-	/* Accent (Warm orange) */ --color-accent-300: #fdba74 /* Warning states */
-	--color-accent-400: #fb923c /* Hover accents */ --color-accent-500: #f97316 /* Accent buttons */;
+	/* Hover states */ --color-primary-500: #13a260 /* Primary buttons */
+	/* Secondary (Blue-grey) */ --color-secondary-50: #ffffff /* Text on dark backgrounds */
+	--color-secondary-200: #b9cbcc /* Subtle text */ --color-secondary-600: #1a545a
+	/* Card backgrounds */ --color-secondary-700: #004147 /* Section backgrounds */
+	--color-secondary-800: #002124 /* Dark backgrounds */ --color-secondary-900: #000000
+	/* Deepest backgrounds */ /* Accent (Warm orange) */ --color-accent-300: #fdba74
+	/* Warning states */ --color-accent-400: #fb923c /* Hover accents */ --color-accent-500: #f97316
+	/* Accent buttons */;
 ```
 
 ### Typography
@@ -133,13 +134,13 @@ The homepage consists of several key sections that can be easily modified:
 - **Purpose**: Company goals and objectives
 - **Navigation**: Linked from Header "Missie"
 - **Data Structure**:
-  ```typescript
-  interface Objective {
-  	icon: typeof Globe;
-  	title: string;
-  	description: string;
-  }
-  ```
+    ```typescript
+    interface Objective {
+    	icon: typeof Globe;
+    	title: string;
+    	description: string;
+    }
+    ```
 
 #### 4. Cases Section (`src/components/Bewijs.svelte`)
 

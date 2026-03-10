@@ -70,14 +70,19 @@
 						class="bg-primary-300 flex flex-col justify-between rounded-2xl p-4"
 						href={resolve('/contact')}
 					>
-						<h3 class="text-xl font-bold dark:text-black">{m['home.goals_cta_title']()}</h3>
+						<h3 class="text-xl font-bold dark:text-black">
+							{m['home.goals_cta_title']()}
+						</h3>
 
 						<p
 							class="group inline-flex items-center p-2 text-xl underline transition dark:text-black"
 							aria-label={m['home.goals_contact_aria']()}
 						>
 							{m['home.goals_cta_action']()}
-							<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
+							<ArrowRight
+								class="transition group-hover:translate-x-0.5"
+								aria-hidden="true"
+							/>
 						</p>
 					</a>
 				</div>

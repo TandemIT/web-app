@@ -65,6 +65,12 @@
 <div style="display:none">
 	<!-- Hidden locale links keep alternate-language routes discoverable to crawlers. -->
 	{#each locales as locale (locale)}
-		<a href={resolve(localizeHref(page.url.pathname, { locale }) as `/${string}`)}>{locale}</a>
+		<a
+			href={resolve(
+				localizeHref(`${page.url.pathname}${page.url.search}${page.url.hash}`, {
+					locale
+				}) as `/${string}`
+			)}>{locale}</a
+		>
 	{/each}
 </div>
