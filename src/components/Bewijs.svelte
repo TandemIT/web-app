@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { showcaseProjects } from '$lib/content/home';
 	import * as m from '$lib/paraglide/messages';
 </script>
@@ -21,7 +22,7 @@
 					{project.title}
 				</h2>
 				<a
-					href={project.link}
+					href={resolve(project.link as `/${string}`)}
 					target="_blank"
 					rel="noopener noreferrer"
 					class="text-left"
@@ -59,7 +60,7 @@
 					{project.title}
 				</h2>
 				<a
-					href={project.link}
+					href={resolve(project.link as `/${string}`)}
 					target="_blank"
 					rel="noopener noreferrer"
 					class="text-left"

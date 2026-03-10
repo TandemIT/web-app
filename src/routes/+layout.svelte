@@ -13,7 +13,6 @@
 	import DevelopmentBanner from '../components/DevelopmentBanner.svelte';
 	import Footer from '../components/Footer.svelte';
 	import Header from '../components/Header.svelte';
-	import LanguageSwitcher from '../components/LanguageSwitcher.svelte';
 	import ErrorBoundary from '../components/ui/ErrorBoundary.svelte';
 	import Loading from '../components/ui/Loading.svelte';
 </script>
@@ -45,9 +44,6 @@
 			? 'pt-16'
 			: ''}"
 	>
-		<div class="wrapper flex justify-end pt-3">
-			<LanguageSwitcher />
-		</div>
 
 		<Header />
 

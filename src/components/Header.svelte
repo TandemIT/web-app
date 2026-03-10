@@ -8,6 +8,7 @@
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import Button from './ui/Button.svelte';
+	import LanguageSwitcher from './LanguageSwitcher.svelte';
 
 	const isMenuOpen = navigation.isMenuOpen;
 	const isActiveLink = navigation.isActiveLink;
@@ -94,13 +95,15 @@
 					</a>
 				{/each}
 			</div>
+			
 		</div>
-
+		
 		<div class="flex items-center">
 			<!-- CTA Button -->
-			<Button variant="primary" href="/contact" data-sveltekit-preload-data="hover" class="ml-4"
+			<Button variant="primary" href="/contact" data-sveltekit-preload-data="hover" class="m-4"
 				>{m['nav.cta_contact']()}</Button
 			>
+			<LanguageSwitcher />
 			<!-- Mobiel menu knop -->
 			<button
 				onclick={() => navigation.toggleMenu()}
@@ -146,5 +149,5 @@
 				</ul>
 			</div>
 		</div>
-	{/if}
+		{/if}
 </header>

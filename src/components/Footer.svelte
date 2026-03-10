@@ -151,15 +151,15 @@
 			</p>
 			<div class="flex space-x-4">
 				{#each decodedSocialLinks as { icon: Icon, url, name } (name)}
-					<a
-						href={url}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-secondary-400 hover:text-primary-400 transition-colors"
-						aria-label={m['footer.social_visit_aria']({ name })}
-					>
-						<Icon size={24} />
-					</a>
+					<form action={url} method="GET" target="_blank" rel="noopener noreferrer">
+						<button
+							type="submit"
+							class="text-secondary-400 hover:text-primary-400 transition-colors"
+							aria-label={m['footer.social_visit_aria']({ name })}
+						>
+							<Icon size={24} />
+						</button>
+					</form>
 				{/each}
 			</div>
 		</div>
