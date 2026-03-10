@@ -42,22 +42,6 @@
 			icon: '🛡️'
 		}
 	];
-
-	function goHref(href: string | undefined, event: MouseEvent) {
-		event.preventDefault();
-		if (!href) return;
-
-		window.open(href, '_blank', 'noopener,noreferrer');
-	}
-
-	function handleKeyPress(event: KeyboardEvent, href: string | undefined) {
-		if (event.key === 'Enter' || event.key === ' ') {
-			event.preventDefault();
-			if (href) {
-				window.open(href, '_blank', 'noopener,noreferrer');
-			}
-		}
-	}
 </script>
 
 <section class="bg-secondary-700 py-16">
@@ -80,61 +64,93 @@
 		<ul class="grid grid-cols-1 gap-6 md:grid-cols-2">
 			{#each jobs as job, index (job.title + String(index))}
 				<li class="group relative">
-					<button
-						class="bg-secondary-600 hover:bg-secondary-500 focus-visible:ring-primary-300 block w-full transform
+					{#if job.href}
+						<a
+							href={job.href}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="bg-secondary-600 hover:bg-secondary-500 focus-visible:ring-primary-300 block w-full transform
 								   cursor-pointer rounded-xl p-6
 								   text-left transition-all
 								   duration-300 hover:shadow-xl
 								   focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-						onclick={(e) => goHref(job.href, e)}
-						onkeydown={(e) => handleKeyPress(e, job.href)}
-					>
-						<div class="mb-4 flex items-start justify-between">
-							<div class="flex-1">
-								<h3
-									class="font-grotesk text-primary-300 group-hover:text-primary-200 mb-1
+						>
+							<div class="mb-4 flex items-start justify-between">
+								<div class="flex-1">
+									<h3
+										class="font-grotesk text-primary-300 group-hover:text-primary-200 mb-1
 											  flex items-center gap-2 text-2xl font-medium"
-								>
-									<span>{job.icon}</span>
-									{job.title}
-								</h3>
-								{#if job.date}
-									<p class="text-secondary-300 text-base">{job.date}</p>
-								{/if}
-							</div>
+									>
+										<span>{job.icon}</span>
+										{job.title}
+									</h3>
+									{#if job.date}
+										<p class="text-secondary-300 text-base">{job.date}</p>
+									{/if}
+								</div>
 
-							{#if job.href}
 								<span
 									class="text-primary-300 translate-x-2 transform opacity-0
-											   transition-all duration-300 group-hover:translate-x-0
-											   group-hover:opacity-100"
+										   transition-all duration-300 group-hover:translate-x-0
+										   group-hover:opacity-100"
 								>
 									→
 								</span>
+							</div>
+
+							<p class="text-secondary-100 mb-4">{job.description}</p>
+
+							{#if job.tags}
+								<div class="flex flex-wrap gap-2">
+									{#each job.tags as tag (tag)}
+										<span
+											class="bg-secondary-700 text-secondary-100 rounded-full px-3
+												   py-1 text-base"
+										>
+											{tag}
+										</span>
+									{/each}
+								</div>
+							{/if}
+
+							<div
+								class="bg-primary-300 absolute bottom-0 left-0 h-1 w-full
+								  scale-x-0 transform transition-transform duration-300
+								  group-hover:scale-x-100"
+							></div>
+						</a>
+					{:else}
+						<div class="bg-secondary-600 block w-full rounded-xl p-6 text-left">
+							<div class="mb-4 flex items-start justify-between">
+								<div class="flex-1">
+									<h3
+										class="font-grotesk text-primary-300 mb-1 flex items-center gap-2 text-2xl font-medium"
+									>
+										<span>{job.icon}</span>
+										{job.title}
+									</h3>
+									{#if job.date}
+										<p class="text-secondary-300 text-base">{job.date}</p>
+									{/if}
+								</div>
+							</div>
+
+							<p class="text-secondary-100 mb-4">{job.description}</p>
+
+							{#if job.tags}
+								<div class="flex flex-wrap gap-2">
+									{#each job.tags as tag (tag)}
+										<span
+											class="bg-secondary-700 text-secondary-100 rounded-full px-3
+												   py-1 text-base"
+										>
+											{tag}
+										</span>
+									{/each}
+								</div>
 							{/if}
 						</div>
-
-						<p class="text-secondary-100 mb-4">{job.description}</p>
-
-						{#if job.tags}
-							<div class="flex flex-wrap gap-2">
-								{#each job.tags as tag (tag)}
-									<span
-										class="bg-secondary-700 text-secondary-100 rounded-full px-3
-												   py-1 text-base"
-									>
-										{tag}
-									</span>
-								{/each}
-							</div>
-						{/if}
-
-						<div
-							class="bg-primary-300 absolute bottom-0 left-0 h-1 w-full
-									  scale-x-0 transform transition-transform duration-300
-									  group-hover:scale-x-100"
-						></div>
-					</button>
+					{/if}
 				</li>
 			{/each}
 		</ul>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { refreshAll } from '$app/navigation';
 	import * as m from '$lib/paraglide/messages';
 	import type { Snippet } from 'svelte';
 
@@ -10,6 +11,10 @@
 
 	function createErrorId() {
 		return `error_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
+	}
+
+	function reloadBoundary() {
+		refreshAll();
 	}
 </script>
 
@@ -56,7 +61,7 @@
 					</button>
 
 					<button
-						onclick={() => window.location.reload()}
+						onclick={reloadBoundary}
 						class="bg-secondary-600 hover:bg-secondary-700 rounded-lg px-6 py-2 font-medium text-white transition-colors duration-200"
 					>
 						{m['error.boundary_reload']()}

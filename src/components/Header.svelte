@@ -47,8 +47,9 @@
 			{ threshold: 0.5, rootMargin: '-100px 0px -100px 0px' }
 		);
 
-		for (const section of document.querySelectorAll('#aanpak, #missie, #cases')) {
-			observer.observe(section);
+		for (const sectionId of ['aanpak', 'missie', 'cases']) {
+			const section = document.getElementById(sectionId);
+			if (section) observer.observe(section);
 		}
 
 		return () => observer.disconnect();
