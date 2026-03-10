@@ -31,6 +31,12 @@ Agents MUST derive the structure from the actual repository rather than assuming
 Typical layout:
 
 ```
+.github/
+  agents/       # specialized repository AI agents
+  prompts/      # slash command definitions (/svelte, /security, /lint, /i18n, /import-hygiene, /repo-audit)
+  workflows/    # GitHub Actions CI (lint, security audit, docker, dependabot)
+  AGENTS.md     # agent system documentation
+
 src/
   routes/        # SvelteKit routing
   lib/           # reusable modules and utilities
