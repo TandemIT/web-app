@@ -50,15 +50,14 @@ FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS final
 # Set environment
 ENV NODE_ENV=production
 
-# Install only runtime packages required by cron + getMembers.sh
+# Install only runtime packages required by cron + getMembers.sh, then create
+# a deterministic non-root user/group for the runtime container.
 RUN apk add --no-cache \
-    bash \
     curl \
     jq \
-    dcron
-
-# Create non-root user/group explicitly for deterministic UID/GID ownership
-RUN addgroup -S -g 10001 appgroup && adduser -S -u 10001 -G appgroup appuser
+    dcron \
+    && addgroup -S -g 10001 appgroup \
+    && adduser -S -u 10001 -G appgroup appuser
 
 # Set working directory
 WORKDIR /usr/src/app
@@ -70,13 +69,15 @@ COPY --chown=appuser:appgroup package.json ./
 
 # Copy scripts and cron configuration
 COPY --chown=appuser:appgroup getMembers.sh ./getMembers.sh
-COPY cronjobs /etc/crontabs/appuser
+COPY --chown=appuser:appgroup cronjobs /etc/crontabs/appuser
 
 # Ensure cron job file, script permissions, and log file are writable for app user
-RUN chmod 600 /etc/crontabs/appuser \
+RUN chmod 755 /usr/sbin/crond \
+    && chmod 600 /etc/crontabs/appuser \
     && chmod 755 ./getMembers.sh \
+    && touch /var/run/crond.pid \
     && touch /var/log/cron.log \
-    && chown appuser:appgroup /var/log/cron.log
+    && chown appuser:appgroup /var/run/crond.pid /var/log/cron.log
 
 # Switch to non-root user
 USER appuser
