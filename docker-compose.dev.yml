@@ -1,0 +1,30 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    working_dir: /workspace
+    environment:
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      CHOKIDAR_USEPOLLING: "true"
+      NODE_OPTIONS: --inspect=0.0.0.0:9229
+    ports:
+      - "${VITE_PORT:-5173}:5173"
+      - "24678:24678"
+      - "9229:9229"
+    volumes:
+      - .:/workspace
+      - node_modules:/workspace/node_modules
+      - pnpm-store:/pnpm/store
+    command:
+      [
+        "sh",
+        "-lc",
+        "pnpm install --frozen-lockfile --store-dir /pnpm/store && pnpm run dev --host 0.0.0.0"
+      ]
+    init: true
+
+volumes:
+  node_modules:
+  pnpm-store:

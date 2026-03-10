@@ -1,51 +1,42 @@
 # syntax=docker/dockerfile:1
 
 ARG NODE_VERSION=24.9.0
-ARG PNPM_VERSION=9.14.4
+ARG PNPM_VERSION=10.32.0
 ARG ALPINE_VERSION=3.22
 
 ################################################################################
 # Base image — pinned Node.js + Alpine for deterministic builds
 FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS base
 
-# Set working directory
-WORKDIR /usr/src/app
-
 # Use corepack to activate a pinned pnpm version instead of global npm install
 ENV PNPM_HOME=/pnpm
+ENV PNPM_STORE_DIR=/pnpm/store
 ENV PATH=${PNPM_HOME}:${PATH}
+
+# Set working directory
+WORKDIR /usr/src/app
 
 # Cache corepack artifacts and keep pnpm version deterministic
 RUN --mount=type=cache,target=/root/.cache/node/corepack \
     corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
 
 ################################################################################
-# Dependencies layer (only installs production dependencies)
-FROM base AS deps
-
-# Install production dependencies only
-RUN --mount=type=bind,source=package.json,target=package.json \
-    --mount=type=bind,source=pnpm-lock.yaml,target=pnpm-lock.yaml \
-    --mount=type=cache,target=/pnpm/store \
-    pnpm install --prod --frozen-lockfile --store-dir /pnpm/store
-
-################################################################################
 # Build layer — installs all dependencies and compiles app
 FROM base AS build
 
 # Install all dependencies (including devDependencies)
-RUN --mount=type=bind,source=package.json,target=package.json \
-    --mount=type=bind,source=pnpm-lock.yaml,target=pnpm-lock.yaml \
+RUN --mount=type=bind,source=package.json,target=package.json,readonly \
+    --mount=type=bind,source=pnpm-lock.yaml,target=pnpm-lock.yaml,readonly \
     --mount=type=cache,target=/pnpm/store \
-    pnpm install --frozen-lockfile --store-dir /pnpm/store
+    pnpm install --frozen-lockfile --store-dir ${PNPM_STORE_DIR}
 
 # Copy project files and build
 COPY . .
 RUN pnpm run build
 
 ################################################################################
-# Final runtime layer — pinned, minimal, and non-root
-FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS final
+# Runtime layer — pinned, minimal, and non-root
+FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS runtime
 
 # Set environment
 ENV NODE_ENV=production
@@ -63,9 +54,7 @@ RUN apk add --no-cache \
 WORKDIR /usr/src/app
 
 # Copy only necessary runtime artifacts with correct ownership
-COPY --from=deps --chown=appuser:appgroup /usr/src/app/node_modules ./node_modules
 COPY --from=build --chown=appuser:appgroup /usr/src/app/build ./build
-COPY --chown=appuser:appgroup package.json ./
 
 # Copy scripts and cron configuration
 COPY --chown=appuser:appgroup getMembers.sh ./getMembers.sh

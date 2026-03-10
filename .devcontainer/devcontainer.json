@@ -1,0 +1,27 @@
+{
+  "name": "tandem-web-app",
+  "dockerComposeFile": ["../docker-compose.dev.yml"],
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopCompose",
+  "forwardPorts": [5173, 24678, 9229],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "sh",
+        "files.watcherExclude": {
+          "**/.git/**": true,
+          "**/node_modules/**": true,
+          "**/.svelte-kit/**": true,
+          "**/build/**": true
+        }
+      },
+      "extensions": [
+        "svelte.svelte-vscode",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-vscode.js-debug-nightly"
+      ]
+    }
+  }
+}
