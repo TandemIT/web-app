@@ -11,34 +11,49 @@
 
 	const jobs: Job[] = [
 		{
-			title: 'Netwerkbeheerder',
-			description: 'Werk verricht onder Makecenter van het Veenlanden College uit Mijdrecht.',
+			title: m['projects.makerspace_job_1_title'](),
+			description: m['projects.makerspace_job_1_description'](),
 			href: 'https://makecenter.nl',
-			tags: ['Netwerk', 'Beheer', 'Infrastructuur'],
-			date: '2023 - heden',
+			tags: [
+				m['projects.makerspace_tag_network'](),
+				m['projects.makerspace_tag_management'](),
+				m['projects.makerspace_tag_infrastructure']()
+			],
+			date: m['projects.makerspace_date_2023_present'](),
 			icon: '🌐'
 		},
 		{
-			title: 'Bookstack',
-			description:
-				'Documentatie website opgezet voor de projecten van de studenten van het Veenlanden College.',
+			title: m['projects.makerspace_job_2_title'](),
+			description: m['projects.makerspace_job_2_description'](),
 			href: 'https://bookstack.makerspace-vlc.nl',
-			tags: ['Documentatie', 'Web', 'Knowledge Base'],
-			date: '2023',
+			tags: [
+				m['projects.makerspace_tag_documentation'](),
+				m['projects.makerspace_tag_web'](),
+				m['projects.makerspace_tag_knowledge_base']()
+			],
+			date: m['projects.makerspace_date_2023'](),
 			icon: '📚'
 		},
 		{
-			title: 'Netwerkbeheerder',
-			description: 'Werk verricht onder Makecenter van het Veenlanden College uit Mijdrecht.',
-			tags: ['Netwerk', 'Support', 'Maintenance'],
-			date: '2022 - 2023',
+			title: m['projects.makerspace_job_3_title'](),
+			description: m['projects.makerspace_job_3_description'](),
+			tags: [
+				m['projects.makerspace_tag_network'](),
+				m['projects.makerspace_tag_support'](),
+				m['projects.makerspace_tag_maintenance']()
+			],
+			date: m['projects.makerspace_date_2022_2023'](),
 			icon: '🔧'
 		},
 		{
-			title: 'Netwerkbeheerder',
-			description: 'Werk verricht onder Makecenter van het Veenlanden College uit Mijdrecht.',
-			tags: ['Netwerk', 'Planning', 'Security'],
-			date: '2021 - 2022',
+			title: m['projects.makerspace_job_4_title'](),
+			description: m['projects.makerspace_job_4_description'](),
+			tags: [
+				m['projects.makerspace_tag_network'](),
+				m['projects.makerspace_tag_planning'](),
+				m['projects.makerspace_tag_security']()
+			],
+			date: m['projects.makerspace_date_2021_2022'](),
 			icon: '🛡️'
 		}
 	];
@@ -65,7 +80,12 @@
 			{#each jobs as job, index (job.title + String(index))}
 				<li class="group relative">
 					{#if job.href}
-						<form action={job.href} method="GET" target="_blank" rel="noopener noreferrer">
+						<form
+							action={job.href}
+							method="GET"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
 							<button
 								type="submit"
 								class="bg-secondary-600 hover:bg-secondary-500 focus-visible:ring-primary-300 block w-full transform

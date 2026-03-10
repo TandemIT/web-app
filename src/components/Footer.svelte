@@ -16,8 +16,16 @@
 	const socialLinks: SocialLink[] = [
 		{ icon: Facebook, url: 'https://www.f&#97;cebook.com/t&#97;ndem-it', name: 'Facebook' },
 		{ icon: Twitter, url: 'https://www.twitter.com/t&#97;ndem-it', name: 'Twitter' },
-		{ icon: Instagram, url: 'https://www.inst&#97;gr&#97;m.com/t&#97;ndem-it', name: 'Instagram' },
-		{ icon: Linkedin, url: 'https://www.linkedin.com/comp&#97;ny/t&#97;ndem-it', name: 'LinkedIn' }
+		{
+			icon: Instagram,
+			url: 'https://www.inst&#97;gr&#97;m.com/t&#97;ndem-it',
+			name: 'Instagram'
+		},
+		{
+			icon: Linkedin,
+			url: 'https://www.linkedin.com/comp&#97;ny/t&#97;ndem-it',
+			name: 'LinkedIn'
+		}
 	];
 
 	interface QuickLink {
@@ -33,12 +41,12 @@
 		{ href: '/contact', label: m['footer.contact']() }
 	]);
 
-	const contactInfo = {
-		visitAddress: ['plaats in', 'Utrecht'],
-		postAddress: ['Postbus', 'Utrecht'],
+	const contactInfo = $derived({
+		visitAddress: [m['footer.visit_city_label'](), m['footer.visit_city_value']()],
+		postAddress: [m['footer.post_box_label'](), m['footer.post_city_value']()],
 		email: 'info.t&#97;ndemit&#64;hu.nl', // Obfuscated
 		phone: '06 &#49;23&#52;5&#54;7&#56;' // Obfuscated with HTML entities
-	};
+	});
 
 	// Decode contact info client-side to avoid scrapers
 	let decodedContact = $derived({
