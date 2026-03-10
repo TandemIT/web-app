@@ -7,14 +7,14 @@
 	let { children } = $props();
 
 	import { navigating, page } from '$app/state';
+	import DevelopmentBanner from '$components/DevelopmentBanner.svelte';
+	import Footer from '$components/Footer.svelte';
+	import Header from '$components/Header.svelte';
+	import ErrorBoundary from '$components/ui/ErrorBoundary.svelte';
+	import Loading from '$components/ui/Loading.svelte';
 	import { env } from '$env/dynamic/public';
 	import '@fontsource-variable/space-grotesk';
 	import '@fontsource/poppins';
-	import DevelopmentBanner from '../components/DevelopmentBanner.svelte';
-	import Footer from '../components/Footer.svelte';
-	import Header from '../components/Header.svelte';
-	import ErrorBoundary from '../components/ui/ErrorBoundary.svelte';
-	import Loading from '../components/ui/Loading.svelte';
 </script>
 
 <svelte:head>
@@ -44,11 +44,12 @@
 			? 'pt-16'
 			: ''}"
 	>
-
 		<Header />
 
 		{#if navigating.to}
-			<div class="fixed inset-0 z-50 flex items-center justify-center bg-white/80 backdrop-blur-sm">
+			<div
+				class="fixed inset-0 z-50 flex items-center justify-center bg-white/80 backdrop-blur-sm"
+			>
 				<Loading size="lg" />
 			</div>
 		{/if}

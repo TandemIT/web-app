@@ -1,11 +1,11 @@
 <script lang="ts">
+	import Aanpak from '$components/Aanpak.svelte';
+	import Bewijs from '$components/Bewijs.svelte';
+	import Enthousiast from '$components/Enthousiast.svelte';
+	import Goals from '$components/Goals.svelte';
+	import Button from '$components/ui/Button.svelte';
+	import Heading from '$components/ui/Heading.svelte';
 	import * as m from '$lib/paraglide/messages';
-	import Aanpak from '../components/Aanpak.svelte';
-	import Bewijs from '../components/Bewijs.svelte';
-	import Enthousiast from '../components/Enthousiast.svelte';
-	import Goals from '../components/Goals.svelte';
-	import Button from '../components/ui/Button.svelte';
-	import Heading from '../components/ui/Heading.svelte';
 </script>
 
 <!-- +page.svelte -->

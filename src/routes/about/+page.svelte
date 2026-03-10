@@ -3,7 +3,7 @@
 	import * as m from '$lib/paraglide/messages';
 	import type { Component } from 'svelte';
 	import { onMount } from 'svelte';
-	import Loading from '../../components/ui/Loading.svelte';
+	import Loading from '$components/ui/Loading.svelte';
 	import type { PageData } from './$types';
 
 	interface Props {
@@ -18,7 +18,7 @@
 	// Lazy load Team component
 	onMount(async () => {
 		try {
-			const module = await import('../../components/Team.svelte');
+			const module = await import('$components/Team.svelte');
 			Team = module.default;
 			isTeamLoaded = true;
 		} catch (error) {

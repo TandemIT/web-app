@@ -1,8 +1,8 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages';
 	import type { TeamMember } from '$lib/types';
-	import Heading from '../ui/Heading.svelte';
-	import Image from '../ui/Image.svelte';
+	import Heading from './Heading.svelte';
+	import Image from './Image.svelte';
 
 	interface Props {
 		member: TeamMember;
@@ -12,7 +12,11 @@
 
 	// Decode encoded blog URLs client-side to avoid scrapers
 	let decodedBlog = $derived(
-		member.blog ? (member.blog.startsWith('http') ? member.blog : `https://${member.blog}`) : null
+		member.blog
+			? member.blog.startsWith('http')
+				? member.blog
+				: `https://${member.blog}`
+			: null
 	);
 </script>
 
@@ -58,7 +62,9 @@
 					stroke="currentColor"
 					stroke-width="2"
 				>
-					<path d="M12 21s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 7.2c0 7.3-8 11.8-8 11.8z" />
+					<path
+						d="M12 21s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 7.2c0 7.3-8 11.8-8 11.8z"
+					/>
 					<circle cx="12" cy="9" r="3" />
 				</svg>
 				{member.location}
