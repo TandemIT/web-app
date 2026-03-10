@@ -117,10 +117,7 @@
 
 	<!-- Mobiel menu -->
 	{#if $isMenuOpen}
-		<div
-			transition:fade={{ duration: 200 }}
-			class="fixed inset-0 z-50 md:hidden"
-		>
+		<div transition:fade={{ duration: 200 }} class="fixed inset-0 z-50 md:hidden">
 			<button
 				type="button"
 				class="bg-secondary-900/50 absolute inset-0 backdrop-blur-xs"

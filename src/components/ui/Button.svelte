@@ -28,11 +28,23 @@
 </script>
 
 {#if href}
-	<a {href} use:scrollTo={scrollTarget} class="button button-{variant} {className}" class:disabled {...rest}>
+	<a
+		{href}
+		use:scrollTo={scrollTarget}
+		class="button button-{variant} {className}"
+		class:disabled
+		{...rest}
+	>
 		{@render children()}
 	</a>
 {:else}
-	<button use:scrollTo={scrollTarget} class="button button-{variant} {className}" {disabled} {type} {...rest}>
+	<button
+		use:scrollTo={scrollTarget}
+		class="button button-{variant} {className}"
+		{disabled}
+		{type}
+		{...rest}
+	>
 		{@render children()}
 	</button>
 {/if}

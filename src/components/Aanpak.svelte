@@ -28,7 +28,6 @@
 			description: m['home.aanpak_process_3_desc']()
 		}
 	]);
-
 </script>
 
 <!-- Hero Section -->

@@ -28,7 +28,6 @@
 			description: m['home.goals_goal_desc']()
 		}
 	]);
-
 </script>
 
 <section class="py-16">
