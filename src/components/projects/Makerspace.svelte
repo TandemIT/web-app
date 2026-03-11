@@ -1,5 +1,6 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages';
+
 	interface Job {
 		title: string;
 		description: string;
@@ -11,18 +12,6 @@
 
 	const jobs: Job[] = [
 		{
-			title: m['projects.makerspace_job_1_title'](),
-			description: m['projects.makerspace_job_1_description'](),
-			href: 'https://makecenter.nl',
-			tags: [
-				m['projects.makerspace_tag_network'](),
-				m['projects.makerspace_tag_management'](),
-				m['projects.makerspace_tag_infrastructure']()
-			],
-			date: m['projects.makerspace_date_2023_present'](),
-			icon: '🌐'
-		},
-		{
 			title: m['projects.makerspace_job_2_title'](),
 			description: m['projects.makerspace_job_2_description'](),
 			href: 'https://bookstack.makerspace-vlc.nl',
@@ -33,28 +22,6 @@
 			],
 			date: m['projects.makerspace_date_2023'](),
 			icon: '📚'
-		},
-		{
-			title: m['projects.makerspace_job_3_title'](),
-			description: m['projects.makerspace_job_3_description'](),
-			tags: [
-				m['projects.makerspace_tag_network'](),
-				m['projects.makerspace_tag_support'](),
-				m['projects.makerspace_tag_maintenance']()
-			],
-			date: m['projects.makerspace_date_2022_2023'](),
-			icon: '🔧'
-		},
-		{
-			title: m['projects.makerspace_job_4_title'](),
-			description: m['projects.makerspace_job_4_description'](),
-			tags: [
-				m['projects.makerspace_tag_network'](),
-				m['projects.makerspace_tag_planning'](),
-				m['projects.makerspace_tag_security']()
-			],
-			date: m['projects.makerspace_date_2021_2022'](),
-			icon: '🛡️'
 		}
 	];
 </script>
@@ -66,7 +33,7 @@
 				class="font-grotesk text-primary-300 hover:text-primary-200 transform
 						   text-5xl font-semibold transition-all duration-300"
 			>
-				{m['projects.makerspace_title']()}
+				Makerspace
 			</h1>
 
 			<h2 class="font-grotesk text-secondary-100 text-2xl font-medium">
@@ -162,7 +129,7 @@
 									{#each job.tags as tag (tag)}
 										<span
 											class="bg-secondary-700 text-secondary-100 rounded-full px-3
-												   py-1 text-base"
+											   py-1 text-base"
 										>
 											{tag}
 										</span>

@@ -15,7 +15,8 @@
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix && prettier --write .",
 		"test:e2e": "playwright test",
-		"test": "npm run test:e2e"
+		"test": "npm run test:e2e",
+		"paraglide": "paraglide-js compile project.inlang --outdir ./src/lib/paraglide"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^2.0.3",
