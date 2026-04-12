@@ -130,7 +130,7 @@
 
 			<button
 				onclick={goHome}
-				class="group bg-primary-500 hover:bg-primary-400 inline-flex items-center gap-2 rounded-lg px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
+				class="group bg-primary-500 hover:bg-primary-400 text-secondary-50 inline-flex items-center gap-2 rounded-lg px-6 py-3 font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
 			>
 				<Home class="h-5 w-5" />
 				{m['error.homepage']()}
@@ -139,7 +139,7 @@
 			{#if errorType() === 'server' || errorType() === 'unknown'}
 				<button
 					onclick={refreshPage}
-					class="group bg-accent-500 hover:bg-accent-400 inline-flex items-center gap-2 rounded-lg px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
+					class="group bg-accent-500 hover:bg-accent-400 text-secondary-50 inline-flex items-center gap-2 rounded-lg px-6 py-3 font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
 				>
 					<RefreshCw class="h-5 w-5 transition-transform group-hover:rotate-180" />
 					{m['error.refresh']()}
@@ -164,10 +164,10 @@
 		<!-- Decorative Elements -->
 		<div class="pointer-events-none absolute top-0 left-0 h-full w-full overflow-hidden">
 			<div
-				class="decorative-circle-1 bg-primary-500/5 absolute h-64 w-64 rounded-full blur-3xl"
+				class="decorative-circle-1 perf-decorative-blur bg-primary-500/5 absolute h-64 w-64 rounded-full"
 			></div>
 			<div
-				class="decorative-circle-2 bg-accent-500/5 absolute h-96 w-96 rounded-full blur-3xl"
+				class="decorative-circle-2 perf-decorative-blur bg-accent-500/5 absolute h-96 w-96 rounded-full"
 			></div>
 		</div>
 	</div>

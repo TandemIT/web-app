@@ -29,7 +29,7 @@
 {#if overlay}
 	<!-- Full overlay loading -->
 	<div
-		class="bg-secondary-900/80 fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm"
+		class="bg-secondary-900/80 perf-backdrop-blur fixed inset-0 z-50 flex items-center justify-center"
 		transition:fade={{ duration: 200 }}
 	>
 		<div class="text-center">

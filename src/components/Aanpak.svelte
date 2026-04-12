@@ -42,11 +42,11 @@
 				{m['home.aanpak_button']()}
 			</button>
 			<div class="relative">
-				<h1
+				<h2
 					class="font-grotesk text-secondary-50 mb-6 max-w-3xl text-5xl leading-tight font-medium lg:text-6xl"
 				>
 					{m['home.aanpak_title']()}
-				</h1>
+				</h2>
 				<p class="text-secondary-200 max-w-lg text-lg">
 					{m['home.aanpak_intro']()}
 				</p>
@@ -73,9 +73,9 @@
 
 						<!-- Content -->
 						<div>
-							<h2 class="text-secondary-50 mb-3 text-xl font-bold lg:text-2xl">
+							<h3 class="text-secondary-50 mb-3 text-xl font-bold lg:text-2xl">
 								{process.title}
-							</h2>
+							</h3>
 							<p class="text-secondary-200">
 								{process.description}
 							</p>

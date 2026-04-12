@@ -52,7 +52,7 @@
 				<h2 class="mb-6 text-4xl font-bold lg:text-5xl dark:text-white">
 					{m['home.goals_title']()}
 				</h2>
-				<h2 class="mb-6 text-xl font-bold lg:text-2xl">{m['home.goals_description']()}</h2>
+				<p class="mb-6 text-xl font-bold lg:text-2xl">{m['home.goals_description']()}</p>
 
 				<div class="mb-10 grid gap-8 sm:grid-cols-2">
 					{#each Objectives as { icon: Icon, title, description } (title)}

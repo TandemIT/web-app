@@ -37,7 +37,7 @@
 	]);
 </script>
 
-<section id="missie" class="pt-16 pb-36 dark:bg-neutral-50 dark:text-neutral-800">
+<section id="missie" class="bg-secondary-50 text-secondary-700 pt-16 pb-36">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="grid gap-10 lg:grid-cols-12">
 			<!-- Linker kolom met afbeelding en statistieken -->
@@ -65,10 +65,10 @@
 				>
 					{m['home.enthousiast_button']()}
 				</a>
-				<h2 class="mb-6 text-4xl font-bold tracking-tight text-neutral-900 lg:text-5xl">
+				<h2 class="text-secondary-800 mb-6 text-4xl font-bold tracking-tight lg:text-5xl">
 					{m['home.enthousiast_title']()}
 				</h2>
-				<p class="mb-8 text-lg text-neutral-600">
+				<p class="text-secondary-600 mb-8 text-lg">
 					{m['home.enthousiast_intro']()}
 				</p>
 
@@ -80,36 +80,26 @@
 								<Icon class="text-primary-600 h-6 w-6" aria-hidden="true" />
 							</div>
 							<div>
-								<h3 class="text-lg font-semibold text-neutral-900">{title}</h3>
-								<p class="mt-2 text-base text-neutral-600">{description}</p>
+								<h3 class="text-secondary-800 text-lg font-semibold">{title}</h3>
+								<p class="text-secondary-600 mt-2 text-base">{description}</p>
 							</div>
 						</div>
 					{/each}
 				</div>
 
-				<p class="mb-8 text-neutral-600">
+				<p class="text-secondary-600 mb-8">
 					{m['home.enthousiast_mission']()}
 				</p>
 
-				<!-- Call-to-action knoppen -->
-				<!-- <div class="flex justify-between"> -->
+				<!-- Call-to-action -->
 				<a
 					href={resolve('/about')}
-					class="group text-secondary-600 right-auto left-0 inline-flex items-center rounded-lg text-base font-semibold underline transition"
+					class="group text-secondary-600 inline-flex items-center rounded-lg text-base font-semibold underline transition"
 					aria-label={m['home.enthousiast_read_more_aria']()}
 				>
 					{m['home.enthousiast_read_more']()}
 					<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
 				</a>
-				<!-- <a
-						href="/contact"
-						class="group text-secondary-600 right-0 left-auto inline-flex items-center rounded-lg text-base font-semibold underline transition"
-						aria-label="Neem contact op"
-					>
-						Neem contact op
-						<ArrowRight class="transition group-hover:translate-x-0.5" aria-hidden="true" />
-					</a> -->
-				<!-- </div> -->
 			</div>
 		</div>
 	</div>

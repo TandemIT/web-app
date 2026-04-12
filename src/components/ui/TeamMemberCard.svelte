@@ -21,7 +21,7 @@
 </script>
 
 <div
-	class="group border-secondary-100 flex w-full max-w-sm flex-col items-center rounded-2xl border bg-white p-8 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+	class="group border-secondary-200 bg-secondary-50 flex w-full max-w-sm flex-col items-center rounded-2xl border p-8 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
 >
 	<div class="relative mb-6">
 		<Image
@@ -34,7 +34,7 @@
 		<div class="bg-primary-500 absolute -right-2 -bottom-2 rounded-full p-2">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
-				class="h-4 w-4 text-white"
+				class="text-secondary-50 h-4 w-4"
 				viewBox="0 0 24 24"
 				fill="currentColor"
 			>
@@ -77,7 +77,7 @@
 			<form action={decodedBlog} method="GET" target="_blank" rel="noopener noreferrer">
 				<button
 					type="submit"
-					class="bg-primary-500 hover:bg-primary-600 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-white transition-colors duration-200"
+					class="bg-primary-500 hover:bg-primary-400 text-secondary-50 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +97,7 @@
 		<form action={member.html_url} method="GET" target="_blank" rel="noopener noreferrer">
 			<button
 				type="submit"
-				class="bg-secondary-600 hover:bg-secondary-700 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-white transition-colors duration-200"
+				class="bg-secondary-600 hover:bg-secondary-500 text-secondary-50 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

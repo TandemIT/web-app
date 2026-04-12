@@ -84,7 +84,9 @@
 					<a
 						href={resolve(link.href as `/${string}`)}
 						data-sveltekit-preload-data="hover"
-						class="font-medium duration-300 {$isActiveLink(link)
+						class="focus-visible:ring-primary-300 rounded-sm px-1 font-medium duration-300 focus-visible:ring-2 focus-visible:outline-none {$isActiveLink(
+							link
+						)
 							? 'text-primary-300 border-primary-300 border-b-2'
 							: 'hover:text-secondary-50'}"
 						aria-current={$isActiveLink(link) ? 'page' : undefined}
@@ -109,7 +111,7 @@
 			<!-- Mobiel menu knop -->
 			<button
 				onclick={() => navigation.toggleMenu()}
-				class="text-secondary-50 hover:bg-secondary-900/10 ml-4 rounded-sm p-2 md:hidden"
+				class="text-secondary-50 hover:bg-secondary-900/10 ml-4 inline-flex min-h-11 min-w-11 items-center justify-center rounded-md p-2.5 md:hidden"
 				aria-label={m['nav.menu_toggle_aria']()}
 				aria-expanded={$isMenuOpen}
 			>
@@ -127,7 +129,7 @@
 		<div transition:fade={{ duration: 200 }} class="fixed inset-0 z-50 md:hidden">
 			<button
 				type="button"
-				class="bg-secondary-900/50 absolute inset-0 backdrop-blur-xs"
+				class="bg-secondary-900/50 perf-backdrop-blur absolute inset-0"
 				onclick={closeMenu}
 				aria-label={m['nav.menu_toggle_aria']()}
 			></button>
@@ -138,9 +140,11 @@
 							<a
 								href={resolve(link.href as `/${string}`)}
 								data-sveltekit-preload-data="hover"
-								class="block font-medium duration-300 {$isActiveLink(link)
+								class="focus-visible:ring-primary-300 block min-h-11 rounded-md px-2 py-3 font-medium duration-300 focus-visible:ring-2 focus-visible:outline-none {$isActiveLink(
+									link
+								)
 									? 'text-primary-300'
-									: 'hover:text-secondary-50'}"
+									: 'hover:text-secondary-50 hover:bg-secondary-700/60'}"
 								use:scrollTo={link.id}
 								onclick={handleNavClick}
 							>

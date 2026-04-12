@@ -30,7 +30,7 @@
 				}) as `/${string}`
 			)}
 			data-sveltekit-reload
-			class="focus-visible:ring-primary-500 focus-visible:ring-offset-secondary-50 rounded-full px-3 py-1.5 text-xs font-semibold tracking-wide no-underline transition-all duration-200 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+			class="focus-visible:ring-primary-500 focus-visible:ring-offset-secondary-50 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full px-3.5 py-2 text-sm font-semibold tracking-wide no-underline transition-all duration-200 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
 			class:bg-secondary-800={locale === currentLocale}
 			class:text-secondary-50={locale === currentLocale}
 			class:shadow-sm={locale === currentLocale}

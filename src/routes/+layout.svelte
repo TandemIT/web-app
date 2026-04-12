@@ -48,14 +48,14 @@
 
 		{#if navigating.to}
 			<div
-				class="fixed inset-0 z-50 flex items-center justify-center bg-white/80 backdrop-blur-sm"
+				class="bg-secondary-50/80 perf-backdrop-blur fixed inset-0 z-50 flex items-center justify-center"
 			>
 				<Loading size="lg" />
 			</div>
 		{/if}
 
-		<div class="min-h-height">{@render children()}</div>
 		<!-- For svelte routing to work correctly, add the pages you want to the page.svelte -->
+		<div class="min-h-height">{@render children()}</div>
 		<Footer />
 	</div>
 </ErrorBoundary>

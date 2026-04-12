@@ -58,7 +58,7 @@
 	::before,
 	::backdrop,
 	::file-selector-button {
-		border-color: var(--color-gray-200, currentColor);
+		border-color: var(--color-secondary-300, currentColor);
 	}
 
 	html {
@@ -109,7 +109,7 @@
 
 	/* Enhanced button styles */
 	.button {
-		@apply inline-block rounded-tl-2xl rounded-tr-lg rounded-br-2xl rounded-bl-lg border-2 border-transparent px-5 py-2.5 font-semibold transition-all duration-300 ease-in-out;
+		@apply inline-flex min-h-11 items-center justify-center rounded-tl-2xl rounded-tr-lg rounded-br-2xl rounded-bl-lg border-2 border-transparent px-5 py-2.5 font-semibold transition-all duration-300 ease-in-out;
 
 		/* Improved focus states */
 		&:focus-visible {
@@ -195,6 +195,14 @@
 	.text-pretty {
 		text-wrap: pretty;
 	}
+
+	.perf-backdrop-blur {
+		backdrop-filter: blur(4px);
+	}
+
+	.perf-decorative-blur {
+		filter: blur(40px);
+	}
 }
 
 /* Print styles */
@@ -213,5 +221,19 @@
 	.group button {
 		transition: none;
 		transform: none;
+	}
+
+	.perf-backdrop-blur,
+	.perf-decorative-blur {
+		backdrop-filter: none;
+		filter: none;
+	}
+}
+
+@media (max-width: 768px), (pointer: coarse), (update: slow) {
+	.perf-backdrop-blur,
+	.perf-decorative-blur {
+		backdrop-filter: none;
+		filter: none;
 	}
 }

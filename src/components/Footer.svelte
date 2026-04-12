@@ -88,7 +88,7 @@
 				</p>
 				<button
 					onclick={scrollToTop}
-					class="text-primary-400 hover:text-primary-300 flex items-center transition-colors"
+					class="text-primary-400 hover:text-primary-300 inline-flex min-h-11 items-center rounded-md px-3 transition-colors"
 					aria-label={m['footer.back_to_top']()}
 				>
 					<ChevronUp class="mr-2" />
@@ -105,7 +105,7 @@
 							<li>
 								<a
 									href={resolve(href as `/${string}`)}
-									class="hover:text-primary-400 transition-colors"
+									class="hover:text-primary-400 focus-visible:ring-primary-300 rounded-sm transition-colors focus-visible:ring-2 focus-visible:outline-none"
 								>
 									{label}
 								</a>
@@ -145,7 +145,7 @@
 
 		<!-- Onderste balk -->
 		<div
-			class="mt-8 flex flex-col items-center justify-between border-t border-gray-800 pt-6 md:flex-row"
+			class="border-secondary-600 mt-8 flex flex-col items-center justify-between border-t pt-6 md:flex-row"
 		>
 			<p class="text-secondary-400 mb-4 md:mb-0">
 				{#if startYear === currentYear}
@@ -157,12 +157,12 @@
 					})}
 				{/if}
 			</p>
-			<div class="flex space-x-4">
+			<div class="flex gap-2">
 				{#each decodedSocialLinks as { icon: Icon, url, name } (name)}
 					<form action={url} method="GET" target="_blank" rel="noopener noreferrer">
 						<button
 							type="submit"
-							class="text-secondary-400 hover:text-primary-400 transition-colors"
+							class="text-secondary-400 hover:text-primary-400 focus-visible:ring-primary-300 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-2 transition-colors focus-visible:ring-2 focus-visible:outline-none"
 							aria-label={m['footer.social_visit_aria']({ name })}
 						>
 							<Icon size={24} />

@@ -7,9 +7,18 @@
 	import Makerspace from '$components/projects/Makerspace.svelte';
 </script>
 
-<section class="relative flex min-h-[calc(100vh-4.35rem)] flex-col overflow-hidden">
-	<Makerspace />
-</section>
-<section class="relative flex min-h-[calc(100vh-4.35rem)] flex-col overflow-hidden">
-	<Makecenter />
-</section>
+<main>
+	<h1 class="sr-only">Projects</h1>
+	<section
+		class="relative flex min-h-[calc(100vh-4.35rem)] flex-col overflow-hidden"
+		aria-labelledby="makerspace-title"
+	>
+		<Makerspace />
+	</section>
+	<section
+		class="relative flex min-h-[calc(100vh-4.35rem)] flex-col overflow-hidden"
+		aria-labelledby="makecenter-title"
+	>
+		<Makecenter />
+	</section>
+</main>

@@ -15,23 +15,18 @@
 		data.contactInfo.email.replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec))
 	);
 
-	// Form data for binding
-	let firstName = $state('');
-	let lastName = $state('');
-	let company = $state('');
-	let emailValue = $state('');
-	let phoneNumber = $state('');
-	let message = $state('');
-	let agree = $state(false);
+	let firstLiveError = $derived.by(() => {
+		if (!form?.errors) return '';
 
-	$effect(() => {
-		firstName = form?.data?.firstName || '';
-		lastName = form?.data?.lastName || '';
-		company = form?.data?.company || '';
-		emailValue = form?.data?.email || '';
-		phoneNumber = form?.data?.phoneNumber || '';
-		message = form?.data?.message || '';
-		agree = form?.data?.agree || false;
+		return (
+			form.errors.general ||
+			form.errors.firstName ||
+			form.errors.lastName ||
+			form.errors.email ||
+			form.errors.message ||
+			form.errors.agree ||
+			''
+		);
 	});
 </script>
 
@@ -48,11 +43,6 @@
 				<p class="mb-2 text-lg font-medium">{m['contact.opening_hours_title']()}</p>
 				<p>{m['contact.opening_hours_value']()}</p>
 			</div>
-			<!-- <div>
-				<p class="mb-2 text-lg font-medium">Bedrijfsgegevens</p>
-				<p class="font-medium"></p>
-				<p class="font-medium"></p>
-			</div> -->
 			<div>
 				<p class="mb-2 text-lg font-medium">{m['contact.address_details_title']()}</p>
 				<p class="font-medium">{data.contactInfo.visitAddress[0]}</p>
@@ -72,6 +62,18 @@
 			method="POST"
 			use:enhance
 		>
+			<div class="sr-only" aria-live="assertive" aria-atomic="true">
+				{#if form?.error}
+					{form.error}
+				{:else if firstLiveError}
+					{firstLiveError}
+				{/if}
+			</div>
+			<div class="sr-only" aria-live="polite" aria-atomic="true">
+				{#if form?.success}
+					{form.message}
+				{/if}
+			</div>
 			<div class="grid gap-x-5 lg:grid-cols-2">
 				<div class="mb-5">
 					<label for="firstName" class="mb-1 block text-base font-medium"
@@ -81,12 +83,16 @@
 						id="firstName"
 						type="text"
 						class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
+						aria-invalid={form?.errors?.firstName ? 'true' : undefined}
+						aria-describedby={form?.errors?.firstName ? 'firstName-error' : undefined}
 						required
 						name="firstName"
-						bind:value={firstName}
+						value={form?.data?.firstName || ''}
 					/>
 					{#if form?.errors?.firstName}
-						<p class="mt-1 text-sm text-red-400">{form.errors.firstName}</p>
+						<p id="firstName-error" class="mt-1 text-sm text-red-400">
+							{form.errors.firstName}
+						</p>
 					{/if}
 				</div>
 				<div class="mb-5">
@@ -97,12 +103,16 @@
 						id="lastName"
 						type="text"
 						class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
+						aria-invalid={form?.errors?.lastName ? 'true' : undefined}
+						aria-describedby={form?.errors?.lastName ? 'lastName-error' : undefined}
 						required
 						name="lastName"
-						bind:value={lastName}
+						value={form?.data?.lastName || ''}
 					/>
 					{#if form?.errors?.lastName}
-						<p class="mt-1 text-sm text-red-400">{form.errors.lastName}</p>
+						<p id="lastName-error" class="mt-1 text-sm text-red-400">
+							{form.errors.lastName}
+						</p>
 					{/if}
 				</div>
 			</div>
@@ -115,7 +125,7 @@
 					type="text"
 					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
 					name="company"
-					bind:value={company}
+					value={form?.data?.company || ''}
 				/>
 			</div>
 			<div class="mb-5">
@@ -126,12 +136,14 @@
 					id="email"
 					type="email"
 					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
+					aria-invalid={form?.errors?.email ? 'true' : undefined}
+					aria-describedby={form?.errors?.email ? 'email-error' : undefined}
 					required
 					name="email"
-					bind:value={emailValue}
+					value={form?.data?.email || ''}
 				/>
 				{#if form?.errors?.email}
-					<p class="mt-1 text-sm text-red-400">{form.errors.email}</p>
+					<p id="email-error" class="mt-1 text-sm text-red-400">{form.errors.email}</p>
 				{/if}
 			</div>
 			<div class="mb-5">
@@ -143,7 +155,7 @@
 					type="tel"
 					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
 					name="phoneNumber"
-					bind:value={phoneNumber}
+					value={form?.data?.phoneNumber || ''}
 				/>
 			</div>
 			<div class="mb-5">
@@ -154,12 +166,16 @@
 					name="message"
 					id="message"
 					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
+					aria-invalid={form?.errors?.message ? 'true' : undefined}
+					aria-describedby={form?.errors?.message ? 'message-error' : undefined}
 					rows="4"
 					required
-					bind:value={message}
+					value={form?.data?.message || ''}
 				></textarea>
 				{#if form?.errors?.message}
-					<p class="mt-1 text-sm text-red-400">{form.errors.message}</p>
+					<p id="message-error" class="mt-1 text-sm text-red-400">
+						{form.errors.message}
+					</p>
 				{/if}
 			</div>
 			<!-- Honeypot fields - hidden from humans but visible to bots -->
@@ -177,12 +193,14 @@
 						id="agree"
 						type="checkbox"
 						class="peer absolute opacity-0"
+						aria-invalid={form?.errors?.agree ? 'true' : undefined}
+						aria-describedby={form?.errors?.agree ? 'agree-error' : undefined}
 						required
 						name="agree"
-						bind:checked={agree}
+						checked={form?.data?.agree || false}
 					/>
 					<span
-						class="outline-primary/50 border-secondary-400 peer-checked:border-secondary-50/50 peer-checked:bg-secondary-50/50 flex h-5 w-5 items-center justify-center rounded border-2 text-transparent outline-2 outline-offset-1 peer-checked:text-white peer-focus:outline"
+						class="outline-primary/50 border-secondary-400 peer-checked:border-secondary-50/50 peer-checked:bg-secondary-50/50 peer-checked:text-secondary-50 flex h-5 w-5 items-center justify-center rounded border-2 text-transparent outline-2 outline-offset-1 peer-focus:outline"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -199,27 +217,39 @@
 					{m['contact.agree_text']()}
 				</label>
 				{#if form?.errors?.agree}
-					<p class="mt-1 text-sm text-red-400">{form.errors.agree}</p>
+					<p id="agree-error" class="mt-1 text-sm text-red-400">{form.errors.agree}</p>
 				{/if}
 			</div>
 			{#if form?.error}
-				<div class="mb-5 rounded-lg bg-red-600 p-4 text-white">
+				<div
+					class="bg-accent-500 text-secondary-50 mb-5 rounded-lg p-4"
+					role="alert"
+					aria-live="assertive"
+				>
 					{form.error}
 				</div>
 			{/if}
 			{#if form?.errors?.general}
-				<div class="mb-5 rounded-lg bg-red-600 p-4 text-white">
+				<div
+					class="bg-accent-500 text-secondary-50 mb-5 rounded-lg p-4"
+					role="alert"
+					aria-live="assertive"
+				>
 					{form.errors.general}
 				</div>
 			{/if}
 			{#if form?.success}
-				<div class="mb-5 rounded-lg bg-green-600 p-4 text-white">
+				<div
+					class="bg-primary-500 text-secondary-50 mb-5 rounded-lg p-4"
+					role="status"
+					aria-live="polite"
+				>
 					{form.message}
 				</div>
 			{/if}
 			<button
 				type="submit"
-				class="bg-primary rounded-lg px-4 py-3 font-medium text-white disabled:opacity-50"
+				class="bg-primary-500 text-secondary-50 rounded-lg px-4 py-3 font-medium disabled:opacity-50"
 			>
 				<span>{m['contact.submit']()}</span>
 			</button>
