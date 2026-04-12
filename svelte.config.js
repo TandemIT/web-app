@@ -23,7 +23,9 @@ const config = {
 	// Svelte 5 specific options
 	compilerOptions: {
 		// Enable modern compilation mode for better performance
-		modernAst: true
+		modernAst: true,
+		runes: ({ filename }) =>
+			filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 	}
 };
 

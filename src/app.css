@@ -203,6 +203,11 @@
 	.perf-decorative-blur {
 		filter: blur(40px);
 	}
+
+	.content-auto {
+		content-visibility: auto;
+		contain-intrinsic-size: 1px 900px;
+	}
 }
 
 /* Print styles */

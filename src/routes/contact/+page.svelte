@@ -82,7 +82,7 @@
 					<input
 						id="firstName"
 						type="text"
-						class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
+						class="border-secondary-400 focus:bg-secondary-50/5 focus-visible:ring-primary-300 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 focus-visible:ring-2 focus-visible:outline-none"
 						aria-invalid={form?.errors?.firstName ? 'true' : undefined}
 						aria-describedby={form?.errors?.firstName ? 'firstName-error' : undefined}
 						required
@@ -102,7 +102,7 @@
 					<input
 						id="lastName"
 						type="text"
-						class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
+						class="border-secondary-400 focus:bg-secondary-50/5 focus-visible:ring-primary-300 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 focus-visible:ring-2 focus-visible:outline-none"
 						aria-invalid={form?.errors?.lastName ? 'true' : undefined}
 						aria-describedby={form?.errors?.lastName ? 'lastName-error' : undefined}
 						required
@@ -123,7 +123,7 @@
 				<input
 					id="company"
 					type="text"
-					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
+					class="border-secondary-400 focus:bg-secondary-50/5 focus-visible:ring-primary-300 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 focus-visible:ring-2 focus-visible:outline-none"
 					name="company"
 					value={form?.data?.company || ''}
 				/>
@@ -135,7 +135,7 @@
 				<input
 					id="email"
 					type="email"
-					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
+					class="border-secondary-400 focus:bg-secondary-50/5 focus-visible:ring-primary-300 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 focus-visible:ring-2 focus-visible:outline-none"
 					aria-invalid={form?.errors?.email ? 'true' : undefined}
 					aria-describedby={form?.errors?.email ? 'email-error' : undefined}
 					required
@@ -153,7 +153,7 @@
 				<input
 					id="phoneNumber"
 					type="tel"
-					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
+					class="border-secondary-400 focus:bg-secondary-50/5 focus-visible:ring-primary-300 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 focus-visible:ring-2 focus-visible:outline-none"
 					name="phoneNumber"
 					value={form?.data?.phoneNumber || ''}
 				/>
@@ -165,7 +165,7 @@
 				<textarea
 					name="message"
 					id="message"
-					class="border-secondary-400 focus:bg-secondary-50/5 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 outline-none"
+					class="border-secondary-400 focus:bg-secondary-50/5 focus-visible:ring-primary-300 w-full rounded-lg border-2 bg-transparent px-3 py-3 duration-300 focus-visible:ring-2 focus-visible:outline-none"
 					aria-invalid={form?.errors?.message ? 'true' : undefined}
 					aria-describedby={form?.errors?.message ? 'message-error' : undefined}
 					rows="4"

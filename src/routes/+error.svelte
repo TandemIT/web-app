@@ -122,7 +122,7 @@
 		<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
 			<button
 				onclick={goBack}
-				class="group bg-secondary-600 hover:bg-secondary-500 text-secondary-50 inline-flex items-center gap-2 rounded-lg px-6 py-3 font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+				class="group bg-secondary-600 hover:bg-secondary-500 focus-visible:ring-primary-300 text-secondary-50 inline-flex min-h-11 items-center gap-2 rounded-lg px-6 py-3 font-medium transition-colors duration-200 focus-visible:ring-2 focus-visible:outline-none"
 			>
 				<ArrowLeft class="h-5 w-5 transition-transform group-hover:-translate-x-1" />
 				{m['error.go_back']()}
@@ -130,7 +130,7 @@
 
 			<button
 				onclick={goHome}
-				class="group bg-primary-500 hover:bg-primary-400 text-secondary-50 inline-flex items-center gap-2 rounded-lg px-6 py-3 font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+				class="group bg-primary-500 hover:bg-primary-400 focus-visible:ring-primary-300 text-secondary-50 inline-flex min-h-11 items-center gap-2 rounded-lg px-6 py-3 font-medium transition-colors duration-200 focus-visible:ring-2 focus-visible:outline-none"
 			>
 				<Home class="h-5 w-5" />
 				{m['error.homepage']()}
@@ -139,7 +139,7 @@
 			{#if errorType() === 'server' || errorType() === 'unknown'}
 				<button
 					onclick={refreshPage}
-					class="group bg-accent-500 hover:bg-accent-400 text-secondary-50 inline-flex items-center gap-2 rounded-lg px-6 py-3 font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+					class="group bg-accent-500 hover:bg-accent-400 focus-visible:ring-primary-300 text-secondary-50 inline-flex min-h-11 items-center gap-2 rounded-lg px-6 py-3 font-medium transition-colors duration-200 focus-visible:ring-2 focus-visible:outline-none"
 				>
 					<RefreshCw class="h-5 w-5 transition-transform group-hover:rotate-180" />
 					{m['error.refresh']()}
@@ -174,30 +174,6 @@
 </div>
 
 <style>
-	/* Custom animation for error code */
-	@keyframes bounce-in {
-		0% {
-			transform: scale(0.3);
-			opacity: 0;
-		}
-		50% {
-			transform: scale(1.1);
-		}
-		100% {
-			transform: scale(1);
-			opacity: 1;
-		}
-	}
-
-	.text-8xl {
-		animation: bounce-in 0.6s ease-out;
-	}
-
-	/* Hover effect for buttons */
-	button:hover {
-		transform: translateY(-2px);
-	}
-
 	/* Decorative elements positioning and animation */
 	.decorative-circle-1 {
 		top: 25%;

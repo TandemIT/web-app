@@ -64,8 +64,7 @@ export const actions: Actions = {
 
 		try {
 			// Here you would typically send the email or save to database
-			// For now, we'll simulate processing
-			await new Promise((resolve) => setTimeout(resolve, 1000));
+			// For now, we return immediately with a success response.
 
 			return {
 				success: true,

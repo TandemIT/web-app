@@ -34,23 +34,36 @@
 			alt="Tandem IT logo"
 			width="1542"
 			height="914"
+			decoding="async"
+			fetchpriority="high"
 			class=" overflow-invisible absolute inset-y-0 right-0 bottom-0 -z-10 h-auto w-3/4 origin-bottom-right object-contain"
 		/>
 	</section>
 
 	<!-- Other section, this will make sense for the routing in sveltekit -->
-	<Enthousiast />
+	<div class="content-auto">
+		<Enthousiast />
+	</div>
 	<div class="wrapper">
 		<img
 			src="/Team.png"
 			alt="Tandem IT Team"
 			width="1640"
 			height="688"
+			loading="lazy"
+			decoding="async"
+			fetchpriority="low"
 			class="relative -mt-20"
 		/>
 	</div>
 
-	<Aanpak />
-	<Goals />
-	<Bewijs />
+	<div class="content-auto">
+		<Aanpak />
+	</div>
+	<div class="content-auto">
+		<Goals />
+	</div>
+	<div class="content-auto">
+		<Bewijs />
+	</div>
 </main>

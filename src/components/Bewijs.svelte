@@ -36,7 +36,11 @@
 						class="h-full w-full rounded-xl object-cover"
 						src={project.image}
 						alt={project.title}
+						width="600"
+						height="400"
 						loading="lazy"
+						decoding="async"
+						sizes="(max-width: 640px) 100vw, 50vw"
 					/>
 				</a>
 
@@ -63,32 +67,29 @@
 		{m['home.bewijs_recent_blogs']()}
 	</h2>
 
-	<!-- Projecten grid -->
-	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+	<!-- Insights list -->
+	<div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
 		{#each showcaseProjects as project (project.title)}
-			<div class="flex flex-col gap-3">
-				<h3 class="font-grotesk text-secondary-50 text-2xl font-medium">
-					{project.title}
-				</h3>
+			<article class="bg-secondary-600/60 border-secondary-500 rounded-xl border p-4">
 				<a
 					href={resolve(project.link as `/${string}`)}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="text-left"
+					class="group block text-left"
 					aria-label={project.title}
 				>
-					<img
-						class="h-full w-full rounded-xl object-cover"
-						src={project.image}
-						alt={project.title}
-						loading="lazy"
-					/>
+					<p class="text-primary-300 mb-2 text-sm font-semibold">Insight</p>
+					<h3 class="font-grotesk text-secondary-50 mb-2 text-xl font-medium">
+						{project.title}
+					</h3>
+					<p class="text-secondary-200 text-base">{project.description}</p>
+					<p
+						class="text-primary-300 mt-3 inline-flex items-center underline transition-transform duration-200 group-hover:translate-x-0.5"
+					>
+						Lees meer
+					</p>
 				</a>
-
-				<p class="text-secondary-200 text-base">
-					{project.description}
-				</p>
-			</div>
+			</article>
 		{/each}
 	</div>
 	<a

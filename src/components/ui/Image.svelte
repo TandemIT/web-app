@@ -6,6 +6,8 @@
 		width?: number;
 		height?: number;
 		loading?: 'lazy' | 'eager';
+		decoding?: 'async' | 'sync' | 'auto';
+		fetchpriority?: 'high' | 'low' | 'auto';
 		placeholder?: string;
 	}
 
@@ -16,6 +18,8 @@
 		width,
 		height,
 		loading = 'lazy',
+		decoding = 'async',
+		fetchpriority = 'auto',
 		placeholder
 	}: Props = $props();
 
@@ -29,7 +33,13 @@
 			class="bg-secondary-200 absolute inset-0 flex animate-pulse items-center justify-center"
 		>
 			{#if placeholder}
-				<img src={placeholder} alt="" class="h-full w-full object-cover opacity-50" />
+				<img
+					src={placeholder}
+					alt=""
+					loading="lazy"
+					decoding="async"
+					class="h-full w-full object-cover opacity-50"
+				/>
 			{:else}
 				<svg class="text-secondary-400 h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
 					<path
@@ -56,6 +66,8 @@
 		{width}
 		{height}
 		{loading}
+		{decoding}
+		{fetchpriority}
 		onload={() => {
 			isLoaded = true;
 			hasError = false;

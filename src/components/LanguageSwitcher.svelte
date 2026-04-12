@@ -25,7 +25,7 @@
 		<!-- Localized links preserve current page and use Paraglide's official routing strategy. -->
 		<a
 			href={resolve(
-				localizeHref(`${page.url.pathname}${page.url.search}${page.url.hash}`, {
+				localizeHref(page.url.pathname, {
 					locale
 				}) as `/${string}`
 			)}

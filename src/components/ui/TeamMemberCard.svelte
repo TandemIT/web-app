@@ -77,7 +77,7 @@
 			<form action={decodedBlog} method="GET" target="_blank" rel="noopener noreferrer">
 				<button
 					type="submit"
-					class="bg-primary-500 hover:bg-primary-400 text-secondary-50 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200"
+					class="bg-primary-500 hover:bg-primary-400 focus-visible:ring-primary-300 text-secondary-50 flex min-h-11 min-w-11 items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 focus-visible:ring-2 focus-visible:outline-none"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +97,7 @@
 		<form action={member.html_url} method="GET" target="_blank" rel="noopener noreferrer">
 			<button
 				type="submit"
-				class="bg-secondary-600 hover:bg-secondary-500 text-secondary-50 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200"
+				class="bg-secondary-600 hover:bg-secondary-500 focus-visible:ring-primary-300 text-secondary-50 flex min-h-11 min-w-11 items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 focus-visible:ring-2 focus-visible:outline-none"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

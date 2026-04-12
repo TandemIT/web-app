@@ -14,7 +14,8 @@
 	import Loading from '$components/ui/Loading.svelte';
 	import { env } from '$env/dynamic/public';
 	import '@fontsource-variable/space-grotesk';
-	import '@fontsource/poppins';
+	import '@fontsource/poppins/latin-400.css';
+	import '@fontsource/poppins/latin-ext-400.css';
 </script>
 
 <svelte:head>
@@ -26,10 +27,6 @@
 
 	<!-- Resource hints for better performance -->
 	<link rel="dns-prefetch" href="//githubusercontent.com" />
-
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-
-	<link rel="preconnect" href="https://fonts.gstatic.com" />
 </svelte:head>
 
 <ErrorBoundary>
@@ -67,7 +64,7 @@
 	{#each locales as locale (locale)}
 		<a
 			href={resolve(
-				localizeHref(`${page.url.pathname}${page.url.search}${page.url.hash}`, {
+				localizeHref(page.url.pathname, {
 					locale
 				}) as `/${string}`
 			)}>{locale}</a

@@ -44,25 +44,27 @@
 			<div class="lg:col-span-7">
 				<button
 					use:scrollTo={'mission'}
-					class="subtitle text-primary-600 mb-3 inline-block rounded-full px-4 text-base font-semibold"
+					class="subtitle text-primary-500 mb-3 inline-block rounded-full px-4 text-base font-semibold"
 					aria-label={m['home.goals_scroll_mission_aria']()}
 				>
 					{m['home.goals_button']()}
 				</button>
-				<h2 class="mb-6 text-4xl font-bold lg:text-5xl dark:text-white">
+				<h2 class="text-secondary-50 mb-6 text-4xl font-bold lg:text-5xl">
 					{m['home.goals_title']()}
 				</h2>
-				<p class="mb-6 text-xl font-bold lg:text-2xl">{m['home.goals_description']()}</p>
+				<p class="text-secondary-100 mb-6 text-xl font-bold lg:text-2xl">
+					{m['home.goals_description']()}
+				</p>
 
 				<div class="mb-10 grid gap-8 sm:grid-cols-2">
 					{#each Objectives as { icon: Icon, title, description } (title)}
 						<div class="bg-secondary-600 flex flex-col gap-x-4 rounded-2xl p-4">
 							<div class="mt-1 flex shrink-0 gap-2">
-								<Icon class="text-primary-600 h-7 w-7" aria-hidden="true" />
-								<h3 class="text-xl font-semibold dark:text-white">{title}</h3>
+								<Icon class="text-primary-500 h-7 w-7" aria-hidden="true" />
+								<h3 class="text-secondary-50 text-xl font-semibold">{title}</h3>
 							</div>
 							<div>
-								<p class="mt-2 text-base">{description}</p>
+								<p class="text-secondary-100 mt-2 text-base">{description}</p>
 							</div>
 						</div>
 					{/each}
@@ -70,12 +72,12 @@
 						class="bg-primary-300 flex flex-col justify-between rounded-2xl p-4"
 						href={resolve('/contact')}
 					>
-						<h3 class="text-xl font-bold dark:text-black">
+						<h3 class="text-secondary-700 text-xl font-bold">
 							{m['home.goals_cta_title']()}
 						</h3>
 
 						<p
-							class="group inline-flex items-center p-2 text-xl underline transition dark:text-black"
+							class="text-secondary-700 group inline-flex items-center p-2 text-xl underline transition"
 							aria-label={m['home.goals_contact_aria']()}
 						>
 							{m['home.goals_cta_action']()}
