@@ -22,9 +22,9 @@
 		"@eslint/compat": "^2.1.0",
 		"@eslint/js": "^9.39.5",
 		"@inlang/paraglide-js": "^2.23.0",
-		"@playwright/test": "^1.62.0",
+		"@playwright/test": "^1.62.1",
 		"@sveltejs/adapter-node": "^5.5.7",
-		"@sveltejs/kit": "^2.70.1",
+		"@sveltejs/kit": "^2.70.2",
 		"@sveltejs/vite-plugin-svelte": "^5.1.1",
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@tailwindcss/forms": "^0.5.11",
@@ -52,7 +52,7 @@
 	"dependencies": {
 		"@fontsource-variable/space-grotesk": "^5.3.0",
 		"@fontsource/poppins": "^5.3.0",
-		"@tabler/icons-svelte": "^3.45.0"
+		"@tabler/icons-svelte": "^3.46.0"
 	},
 	"packageManager": "pnpm@10.7.1+sha512.2d92c86b7928dc8284f53494fb4201f983da65f0fb4f0d40baafa5cf628fa31dae3e5968f12466f17df7e97310e30f343a648baea1b9b350685dafafffdf5808"
 }
