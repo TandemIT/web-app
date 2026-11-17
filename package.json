@@ -22,7 +22,7 @@
 		"@eslint/compat": "^2.1.1",
 		"@eslint/js": "^9.39.5",
 		"@inlang/paraglide-js": "^2.29.3",
-		"@playwright/test": "^1.65.0",
+		"@playwright/test": "^1.65.1",
 		"@sveltejs/adapter-node": "^5.5.8",
 		"@sveltejs/kit": "^2.70.4",
 		"@sveltejs/vite-plugin-svelte": "^5.1.1",
@@ -39,20 +39,20 @@
 		"lint-staged": "^16.4.0",
 		"lucide-svelte": "^0.577.0",
 		"mdsvex": "^0.12.8",
-		"prettier": "^3.9.10",
+		"prettier": "^3.10.1",
 		"prettier-plugin-svelte": "^3.5.2",
 		"prettier-plugin-tailwindcss": "^0.8.1",
 		"svelte": "^5.57.3",
 		"svelte-check": "^4.7.8",
 		"tailwindcss": "^4.3.5",
 		"typescript": "^5.9.3",
-		"typescript-eslint": "^8.72.1",
-		"vite": "^6.4.5"
+		"typescript-eslint": "^8.72.2",
+		"vite": "^6.4.6"
 	},
 	"dependencies": {
 		"@fontsource-variable/space-grotesk": "^5.3.0",
 		"@fontsource/poppins": "^5.3.0",
-		"@tabler/icons-svelte": "^3.50.0"
+		"@tabler/icons-svelte": "^3.52.0"
 	},
 	"packageManager": "pnpm@10.7.1+sha512.2d92c86b7928dc8284f53494fb4201f983da65f0fb4f0d40baafa5cf628fa31dae3e5968f12466f17df7e97310e30f343a648baea1b9b350685dafafffdf5808"
 }
